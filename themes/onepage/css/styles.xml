@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<styles version="1.0">
+  
+    <set name="HTML Header">
+        <style name="Background Color" variable="header-background" type="color" />
+	<style name="Background Linear Color" variable="header-linear-background" type="color" />
+	<style name="Border Top Color" variable="header-border-top" type="color" />
+	<style name="Navmenu Text Color" variable="header-menu-text" type="color" />
+	<style name="Navmenu Text active Color" variable="header-menu-active-text" type="color" />
+	<style name="Navmenu Text hover Color" variable="header-menu-hover-text" type="color" />
+    </set>
+  
+    <set name="HTML Body">
+	<style name="Primary Color" variable="primary-action" type="color" />
+        <style name="Secondary Color" variable="secondary-action" type="color" />
+	
+        <style name="Background Color" variable="body-background" type="color" />
+        <style name="Text Color" variable="body-text" type="color" />
+	<style name="Text Size" variable="body-text" type="size" />
+    </set>
+
+    <set name="HTML Footer">
+        <style name="Background Color" variable="footer-background" type="color" />
+	<style name="Border Top Color" variable="footer-border-top" type="color" />
+        <style name="Text Color" variable="footer-text" type="color" />
+	<style name="Text Size" variable="footer-text" type="size" />
+	
+	<style name="Copyright Background Color" variable="footer-copyright-background" type="color" />
+	
+	
+	
+    </set>
+</styles>

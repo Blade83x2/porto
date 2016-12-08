@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<schema version="0.3">
+	<table name="PortoPackageNavTop">
+		<field name="bID" type="I">
+            <key />
+            <unsigned />
+            <autoincrement />
+            <notnull />
+		</field>
+        <field name="link1_text" type="C" size="120" />
+        <field name="link1_page_id" type="I" />
+        <field name="link2_text" type="C" size="120" />
+        <field name="link2_page_id" type="I" />
+        <field name="tel" type="C" size="120" />
+	</table>
+</schema>

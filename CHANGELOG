@@ -1,0 +1,336 @@
+Porto Package für Concrete5 >= 5.7 entwickelt von Johannes Krämer.
+
+---------------------------------------------------------------------------------
+
+-::BUGS::-
+ - Elemente beim Drucken eventuell ausblenden (.hidden-print)
+ - Navigation Ansicht bei Tablet
+ - Controller > UpdateScript Datenbank auslesen und mit create/insert neu schreiben
+ - Profil -> User kann kein Bild hoch laden
+ - Timeline img-rounded
+
+
+---------------------------------------------------------------------------------
+
+-::TODOS::-
+ - https://www.concrete5.org/documentation/developers/5.7/appendix/form-widget-reference/
+
+
+
+
+
+ - getThemeResponsiveImageMap type  und responsive images prüfen ob auch die kleinen versionen geladen werden
+ // $file, our file object.
+ $image = \Core::make('html/image', array($file));
+ $tag = $image->getTag();
+
+
+
+ ---------------------------------------------------------------------------------
+
+Version 0.6.35
+
+In dieser Version wurde die Deutsche Sprache komplett integriert! Alle Seiten mussten sich der W3C Validierung unterziehen und es wurden einige Bugs entfernt.
+
+ - Add-> Porto Package Deutsches Sprachpaket für Block MP3 Audio Player
+ - Add-> Porto Package Deutsches Sprachpaket für Dashboard
+ - BUGFIX-> MP3 Audio Player Fehler beseitigt wenn das Album kein Bild hatte
+ - BUGFIX-> Werte für Gender werden jetzt geschrieben (bei einem Update sollte das User Gender Attribute vorher gelöscht werden um es neu zu schreiben)
+ - BUGFIX-> Alle Seiten sind Valide
+ - BUGFIX-> Userprofile responsive
+ - BUGFIX-> Navigation LoginBox Schriften angepasst
+ - BUGFIX-> Blog -> Tags werden nur noch angezeigt wenn gesetzt
+ - Add-> Block Audio Player hinzugefügt
+ - BUGFIX-> - Images für Geschlecht (Mänlich / Weiblich / Unbekant) im onepage template
+ - BUGFIX-> Alle in der Version 5.7 eingestuften "deprecated" Vorkommen wurden ersetzt
+ - Add-> Pro & Contra Auflistung
+ - Add-> Breadcrump-Navigation Text (Sie sind hier:) im Dashboard hinzugefügt
+ - Add-> Nivo Slider (Auf der Landing Page gibt es extra eine Area für den Slider)
+ - BUGFIX-> History Block wird jetzt immer richtig angezeigt
+ - BUGFIX-> Site Logo ist jetzt responsive
+ - BUGFIX-> Suche wird jetzt in responsive Navigation für Tablets angezeigt
+ - BUGFIX-> Token für Registrierung wurde nicht gesendet
+ - BUGFIX-> Responsive Loginbox wird in der richtigen Größe angezeigt
+ - BUGFIX-> LOGINBOX Style wird jetzt über Page-Design gesteuert
+ - BUGFIX-> Navigation Benutzerlinks werden richtig angezeigt
+ - BUGFIX-> Geschlecht wird bei der Packageinstallation richtig installiert
+ - Add-> Images für Geschlecht (Mänlich / Weiblich / Unbekant)
+ - BUGFIX-> Benutzer / Account Seite responsive
+ - BUGFIX-> Benutzer / Nachrichten Seite responsive
+ - BUGFIX-> Profilseite zeigt nur noch ausgefüllte Attribute an
+ - BUGFIX-> Block Text Heading validation Fehler beseitigt
+ - Add-> Hilfe Einträge im Dashboard
+ - BUGFIX-> OnePage NavMaker funktioniert jetzt korrekt
+
+ 
+---------------------------------------------------------------------------------
+
+Version 0.5.25
+
+Diese Version benötigt mindestens concrete5 5.7.5.2! Die Übersetzung wurde auch fertig gestellt und ist komplett in Englisch.
+
+ - Blocktype Help überall eingebaut
+ - Lightbox eingebaut. Bei Benutzung dem Image die Klasse lightbox2 zuweisen ------------------------------------------- verursacht vermutlich fehler
+ - BUGFIX-> Member Listing stürzte immer ab
+ - Anbieter für User auswählbar machen im Routenplanner
+ - Add-> Block Calculate Route -> Benutzer können jetzt den Service Provider selbst auswählen
+ - Block Calculate Route hinzugefügt. Nutzbare Dienste: google, falk, bahn, bing, map24, klicktel, viamichelin
+ - Block Contact Us hinzugefügt
+ - Installation -> Auswahlboxen für Fileset, Cronjobs & Blocks erstellt
+ - Deinstallation -> Fileset kann jetzt bei deinstallation behalten werden
+ - Installation -> Routing Fehler entfernt
+ - Package Controller-> Sprachpaket in Englisch
+ - Footer Templates wurden aufgeräumt
+ - OnePage Login Button in Navigation
+ - Block Text Heading für Überschriften mit Effekten hinzugefügt
+ - Porto Theme ins Englische übersetzt
+ - Meldung Enable Breadcrump- Navigation kann nur bei porto Theme funktionieren
+ - Meldung Headertype kann bei OnePage nicht gewählt werden
+---------------------------------------------------------------------------------
+
+Version 0.5.18
+
+In dieser Version ist alles implementiert, was in concrete5 als Standart gilt. Ausserdem wurden 3 Blog Listings mit Image bzw Slide Vorschau eingebaut sowie den Blog selbst.
+Für Registrierte Nutzer hat sich im Profil einiges geändert. Das Profil Unterstützt jetzt Firmenaccounts sowie Privataccounts. Die Porto OnePage Technik wurde ebenfalls hinzugefügt.
+
+ - Job -> Clear Empty Workflow Progress hinzugefügt
+ - White Label Grafik hinzugefügt (concrete5_dashboard_icon.png) 23x23 Pixel
+ - White Label Name hinzugefügt (Seitenname)
+ - Standart Emailadresse auf noreply@server geändert
+ - Standart Emailname auf Seitenname geändert
+ - Concrete5 Version im Quelltext ausgeblendet
+ - Newsansicht beim Login deaktiviert
+ - Megamenu Color, Background & Hover einstellbar
+ - Button Color, Background & Hover einstellbar
+ - Breadcrump Text & Background Color einstellbar
+ - OnePage Theme ins Englische übersetzt
+ - Dashboard wurde in verschiedene Sektionen aufgeteilt
+ - Dashboard wurde ins Englische übersetzt
+ - Breadcrump Navigationslink [wenn auf Startseite] in jedem Pagetype entfernt
+ - Responsive Youtube Videos
+ - Leere Suche Fehlermeldung im Dashboard platziert
+ - Bugfix->  Maintenance Mode wurde wieder auf originale c5 Datei verlegt (Funktionierte nicht..)
+ - OnePage Navigations Validierungsfehler entfernt
+ - Porto (Theme) Style Designer vervollständigt
+ - OnePage (Theme) Style Designer vervollständigt
+ - OnePage Theme hinzugefügt
+ - Block OnePage Nav Marker hinzugefügt
+ - Metatags für Pagetypes hinzugefügt
+ --> Kanonische URLs
+ --> Revisit after
+ --> Page-Topic
+ --> Audience
+ --> Robots
+ - User Attribute Keys hinzugefügt für Privatpersonen sowie Firmen
+ --> Profil als Firma präsentieren
+ --> Firmen Name
+ --> Firmen Logo
+ --> Firmen Branche
+ --> Firmen Standort
+ --> Firmen Links
+ --> Firmen Motto
+ --> Anrede (Herr|Frau)
+ --> Vorname
+ --> Nachname
+ --> Wohnort
+ --> Bild
+ --> Social Links
+ --> Zitat
+ - Dashboard Unterseiten für Unterteilung angelegt
+ - Bugfix-> Bilder werden jetzt für das Blog Listing auf die tatsächliche Templategröße verkleinert
+ - Block Team Member fertig gestellt
+ - Breite von Systemseiten wurde maximiert
+ - Bei Installation wird die Konfiguration schon voreingestellt
+ - Timeline Template für Bloglisting
+ - Large Template für Bloglisting
+ - Medium Template für Bloglisting
+ - Neuen Blog Pagetype
+ - Modalbox mit Info bei leerer Suchanfrage
+
+---------------------------------------------------------------------------------
+
+Version 0.4.96
+
+Hier wurde das Aussehen vom Porto Package nochmals überarbeitet und es wurden viele Einstellmöglichkeiten im Dashboard eingebaut.
+Unlogische Konfigurationswerte dürften jetzt alle erkannt werden. Das Package wurde an die Marketplace Standarts von Concrete5 angepasst.
+
+ - Neuer Ordner mit System Bildern für denn Import beim Installieren
+ - Beim Update wurden alle Dateien nochmals ins System geladen und waren damit doppelt vorhanden
+ - Fehler im Fileimporter entfernt
+ - Die Breadcrump Area wurde entfernt und wird jetzt automatisch erkannt
+ - Alle Area und Global Area Namen wurden an denn Concrete5 Standard angepasst
+ - Dashboard-> Prüfen ob benutzer eine 404 Seite designd hat
+ - Dashboard-> Prüfen ob benutzer eine 301 Seite designd hat
+ - Neuer Feststehender Footertype
+ - Manufacturer Information in Dashboard eingebaut
+ - 3 verschiedene Modalboxen eingebaut
+ - Dashboard-> Ausgabe ist jetzt responsive
+ - Dashboard-> Sticky Menu hat jetzt Auswahl (aus|immer an|animieren)
+ - Dashboard-> Für Sticky Menu Logo kann jetzt top geändert werden
+ - Dashboard-> Vorschau für Headertypes erstellt
+ - Dashboard-> Vorschau für Footertypes erstellt
+ - Bugfix-> Alle SELECT Statements wurden mit * versehen um Updateprobleme zu beheben
+ - SpeedUp-> Variablen werden bei this->inc() übergeben
+ - Suchfunktion im Responsivemenü
+ - ~420 Font Awesome Menuicons für Navigation hinzugefügt
+ - Loginfunktion im Responsivemenü
+ - Themeheader Types 2,3,5 Fehler in responsivemenu entfernt
+ - Admin Verknüpfung im Benutzermenü hinzugefügt (Nur für Admins)
+ - Dashboard-> Optionen für Suchfunktion werden jetzt nur noch angezeigt, wenn das gewählte Headertemplate die Suchbox unterstützt.
+ - Theme aktivieren Info im Dashboard wenn nicht aktiviert ist
+ - Einstellmöglichkeiten die von anderen abhängig sind, werden nur dann angezeigt wenn alle Abhängigkeiten vorhanden sind
+ - Logische Fehler werden jetzt besser erkannt (Bsp: Kein Hintergrund Bild aber Hintergrund fixieren an)
+ - Neue Area für Header-Slider hinzugefügt
+ - Required Tooken für die Formular-Echtheitsprüfung wird jetzt bei der Installation generiert und ist nicht mehr Hardgecodet
+ - Breadcrump-Banner kann jetzt komplet im Dashboard ausgeschaltet werden
+ - Tag words Template erstellt
+ - Sociallinks Block vom Porto Package entfernt
+ - Template für Social_links erstellt (14 vorkonfigurierte Dienste)
+ - ThemeResponsiveImageMapping, Picturefill und Thumbnail-Types hinzugefügt
+ - Validierungsfehler im Dashboard behoben
+ - PermissionKeys eingebunden. Das Speichern im Dashboard klappt jetzt nur noch, wenn ausreichende Rechte dafür vorhanden sind
+ - Benutzer und SuperUser (falls Unterschiedlich) werden beim Installieren in die Porto Admin Gruppe hinzugefügt
+ - Porto Admins Gruppe in Installer eingebunden
+ - Porto UserAttributeSet in Installer eingebunden
+ - Voransicht Tooltip Bild für Types im Dashboard (packages/porto/themes/porto/img/help/dashboard/.....)
+ - Male und FeMale Bilder für Geschlechtsangabe im Profil vorhanden
+ - BUG->> Responsivemenu Darstellung funktioniert jetzt korrekt (</li> fehlte)
+ - Registrieren Link wurde auf Register Seite angezeigt
+ - Collection Attribut "Anzeigen aber nicht verlinken" für Obermenüs erstellt.
+ - Concrete5 Userbuttons für eingelogte nicht admins werden jetzt nicht mehr angezeigt, da das Theme diese Funktionen mitbringt
+ - Startbutton Verlinkung aus dem eigenen Profil wurde entfernt
+ - Farbkorektur der Links in der Navigations-Anmeldebox und Benutzerbox
+ - Dashboard -> Selektor für Hintergrund Grafik wird nicht angezeigt wenn Boxed Mode nicht aktiv ist
+ - StickyMenü kann jetzt aktiviert/deaktiviert werden
+ - ScrollToTop Funktion kann jetzt aktiviert/deaktiviert werdeb
+ - Tooltips können jetzt aktiviert/deaktiviert werden
+ - FileSets wurden beim Installer aufgeteilt
+ - Alle Element-Effekte werden jetzt im EditMode nicht mehr geladen
+ - Es kann jetzt eine Unterschiedliche Grafik für das Logo gewählt werden
+ - Logo Breite und Höhe einstellbar
+ - MiniLogo Breite und Höhe einstellbar
+ - ContentDeliveryNetwork kann als Datenquelle für Scripte ausgewählt werden
+ - Footerinfo Text aus Seiten-Meta-Description oder Seiten-Beschreibung laden
+ - GlobalArea im Footer für Footerinfo Text hinzugefügt
+ - Zufall Modus für Effekte (Random)
+ - Seitentyp für Wartungsmodus hinzugefügt
+ - Dashboard Route Check für Systemseiten
+ - Sidebars auf 3 zu 9 Verhältnis umgestellt
+ - Left & Right Sidebar Areas in Sidebar und Main umbenannt
+ - GridSystem sorgte für Anzeigefehler und wurde entfernt. Dafür wurde ein neuer Seitentyp "Grid" mit aktiviertem Grid erstellt.
+ - Block History
+ - BugFix > Suche in Header Templates hat auf der gewählten Suchen Seite für Fehler gesorgt
+ - Template für Suche
+ - 50 Neue Hintergrund Bilder bei der Installation
+ - Neues AutoNav Template für Sitemap Links
+
+---------------------------------------------------------------------------------
+
+Version 0.4.00
+
+Diese Version bringt gravierende Neuerungen mit sich!
+Das Dashboard wurde erweitert und es wurden neue Seitentypen erstellt. Neben denn neuen Block-Templates wurden die Concrete Member & Account Seiten implementiert.
+
+ - Navigation->Loginbox
+ - Page->members/profile/view/2
+ - Page->members/directory
+ - Page->members/profile
+ - Page->account/messages/inbox/write/2
+ - Page->account/messages/inbox/view_mailbox/sent
+ - Page->account/messages/inbox/view_mailbox/inbox
+ - Page->account/messages/inbox
+ - Page->account/avatar
+ - Page->account/edit_profile
+ - Page->account
+ - Page->register
+ - Page->Login + Passwort vergessen erstellt
+ - Laden von JS und CSS Dateien über Controller
+ - Sicherheitsüberprüfung im Dashboard eingebunden
+ - FileSet Import im Installer für Logos und Hintergrundbilder hinzugefügt
+ - Bei der Installation werden jetzt alle Seitentypen auch automatisch hinzugefügt
+ - Bootstrap 3 GRID ist jetzt in fast jeder Area (Layout) einstellbar
+ - Validieren der Dashboard Daten mit Fehler-Analyse
+ - Suchtext wird bei der Suche wieder in die Textbox geschrieben
+ - Alles ist HTML5 valide
+ - Dynamisches Fusslogo im Theme
+ - Theme Footer Type-> 1 bis 4 hinzugefügt
+ - Theme Header Type-> 1 bis 5 hinzugefügt
+ - Page-> 404 erstellt
+ - Page-> 301 erstellt
+ - Dashboard-> Theme HeaderType select
+ - Dashboard-> Theme FooterType select
+ - Block-> Page_List Template "porto_footer_attribute_show_link_in_footer_col3_max5" erstellt
+ - Block-> Page_List Template "porto_footer_attribute_show_link_in_footer_col6_max15" erstellt
+ - Block-> Page_List Template "porto_footer_list_links" erstellt
+ - Block-> Page_List Template "porto_footer_list_pages_col3_max5" erstellt
+ - Eingabe für "Informationen auf der Seite" im Dasboard erstellt
+     ---- Copyright
+     ---- Ribbon Text für Kontakt
+     ---- Anrede (Firma, Frau, Herr)
+     ---- Name
+     ---- Strasse + Hausnummer
+     ---- PLZ + Ort
+     ---- Telefon
+     ---- Fax
+     ---- Mobil
+     ---- E-Mail
+     ---- Web
+
+---------------------------------------------------------------------------------
+
+Version 0.3.00
+
+In dieser Version wurde der Page-Header fertig gestellt. Alles was in denn Seitenheader rein kommt, kann jetzt dynamisch geladen werden.
+Alle Einstellungen die im Dashboard vorgenommen werden können, greifen jetzt auch auf der Seite.
+
+ - Dynamisches Logo im Theme
+ - Dynamische Such-Funktion im Theme
+ - Such-Funktion Textbox Placeholder
+ - Google Analytics implementiert
+ - Dashboard-> Boxed Mode
+ - Dashboard-> Hintergrund Grafik
+ - Dashboard-> Hintergrund CSS fixed
+ - BlocktypeSet "Porto" angelegt
+ - Block-> NavInfo Header erstellt
+ - Block-> Sociallinks erstellt
+     ---- facebook
+     ---- twitter
+     ---- linkedIn
+     ---- youtube
+     ---- github
+     ---- rss
+     ---- google+
+ - Block-> AutoNav Porto Template erstellt
+ - AttributeSet "Porto Collection" angelegt
+ - AttributeSet->AttributeKey "Megamenu volle Breite" angelegt
+ - AttributeSet->AttributeKey "Thumbnail Bild" angelegt
+ - AttributeSet->AttributeKey "Zeige Link in Footer Navigation" angelegt
+ - Breadcrump hinzugefügt
+
+---------------------------------------------------------------------------------
+
+Version 0.2.00
+
+Bei der Installation wird jetzt ein Dashboard angelegt. Das Theme kann jetzt über die Concrete5 Design-Schnitstelle konfiguriert werden.
+
+ - Dashboard Menü
+ - Design-Farben sind über den concrete5 Style-Switcher (LESS) einstellbar
+ - Package ist jetzt immer Abwärtskompatibel
+ - PageTypes:
+    ---- default.php
+    ---- full.php
+    ---- view.php
+    ---- page_not_found.php
+    ---- page_forbidden.php
+    ---- left_sidebar.php
+    ---- right_sidebar.php
+
+---------------------------------------------------------------------------------
+
+Initial Version
+ - controller.php
+ - db.xml
+ - icon.png
+ - Porto Theme
+
+ --------------------------------------------------------------------------------

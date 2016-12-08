@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<schema version="0.3">
+    <table name="PortoPackageMemberListing">
+        <field name="bID" type="I"><key /><unsigned /></field>
+        <field name="picture" type="I">
+            <unsigned />
+        </field>
+
+        <field name="gender" type="C" size="20"></field>
+        <field name="name" type="C" size="255"></field>
+        <field name="department" type="C" size="255"></field>
+        <field name="location" type="C" size="255"></field>
+        <field name="telefon" type="C" size="80"></field>
+        <field name="fax" type="C" size="80"></field>
+        <field name="mobil" type="C" size="80"></field>
+        <field name="email" type="C" size="255"></field>
+        <field name="web" type="C" size="255"></field>
+        <field name="ownfieldskey1" type="C" size="55"></field>
+        <field name="ownfieldsvalue1" type="C" size="255"></field>
+        <field name="ownfieldskey2" type="C" size="55"></field>
+        <field name="ownfieldsvalue2" type="C" size="255"></field>
+        <field name="ownfieldskey3" type="C" size="55"></field>
+        <field name="ownfieldsvalue3" type="C" size="255"></field>
+        <field name="ownfieldskey4" type="C" size="55"></field>
+        <field name="ownfieldsvalue4" type="C" size="255"></field>
+        <field name="ownfieldskey5" type="C" size="55"></field>
+        <field name="ownfieldsvalue5" type="C" size="255"></field>
+        <field name="ownfieldskey6" type="C" size="55"></field>
+        <field name="ownfieldsvalue6" type="C" size="255"></field>
+        <field name="ownfieldskey7" type="C" size="55"></field>
+        <field name="ownfieldsvalue7" type="C" size="255"></field>
+        <field name="ownfieldskey8" type="C" size="55"></field>
+        <field name="ownfieldsvalue8" type="C" size="255"></field>
+        <field name="ownfieldskey9" type="C" size="55"></field>
+        <field name="ownfieldsvalue9" type="C" size="255"></field>
+        <field name="ownfieldskey10" type="C" size="55"></field>
+        <field name="ownfieldsvalue10" type="C" size="255"></field>
+        <field name="ownfieldskey11" type="C" size="55"></field>
+        <field name="ownfieldsvalue11" type="C" size="255"></field>
+        <field name="ownfieldskey12" type="C" size="55"></field>
+        <field name="ownfieldsvalue12" type="C" size="255"></field>
+        <field name="ownfieldskey13" type="C" size="55"></field>
+        <field name="ownfieldsvalue13" type="C" size="255"></field>
+        <field name="ownfieldskey14" type="C" size="55"></field>
+        <field name="ownfieldsvalue14" type="C" size="255"></field>
+        <field name="ownfieldskey15" type="C" size="55"></field>
+        <field name="ownfieldsvalue15" type="C" size="255"></field>
+        <field name="ownfieldskey16" type="C" size="55"></field>
+        <field name="ownfieldsvalue16" type="C" size="255"></field>
+        <field name="ownfieldskey17" type="C" size="55"></field>
+        <field name="ownfieldsvalue17" type="C" size="255"></field>
+        <field name="ownfieldskey18" type="C" size="55"></field>
+        <field name="ownfieldsvalue18" type="C" size="255"></field>
+        <field name="ownfieldskey19" type="C" size="55"></field>
+        <field name="ownfieldsvalue19" type="C" size="255"></field>
+        <field name="ownfieldskey20" type="C" size="55"></field>
+        <field name="ownfieldsvalue20" type="C" size="255"></field>
+	
+	<field name="gID" type="I">
+            <unsigned />
+        </field>
+	<field name="gPictureID" type="C" size="255"></field>
+	<field name="userAttributePicture" type="C" size="255"></field>
+	<field name="gText1" type="C" size="255"></field>
+	<field name="gAttr1" type="C" size="55"></field>
+	<field name="gText2" type="C" size="255"></field>
+	<field name="gAttr2" type="C" size="55"></field>
+	<field name="gText3" type="C" size="255"></field>
+	<field name="gAttr3" type="C" size="55"></field>
+	<field name="gText4" type="C" size="255"></field>
+	<field name="gAttr4" type="C" size="55"></field>
+	<field name="gText5" type="C" size="255"></field>
+	<field name="gAttr5" type="C" size="55"></field>
+	<field name="gText6" type="C" size="255"></field>
+	<field name="gAttr6" type="C" size="55"></field>
+	<field name="gText7" type="C" size="255"></field>
+	<field name="gAttr7" type="C" size="55"></field>
+	<field name="gText8" type="C" size="255"></field>
+	<field name="gAttr8" type="C" size="55"></field>
+	<field name="gText9" type="C" size="255"></field>
+	<field name="gAttr9" type="C" size="55"></field>
+	<field name="gText10" type="C" size="255"></field>
+	<field name="gAttr10" type="C" size="55"></field>
+	<field name="gText11" type="C" size="255"></field>
+	<field name="gAttr11" type="C" size="55"></field>
+	<field name="gText12" type="C" size="255"></field>
+	<field name="gAttr12" type="C" size="55"></field>
+	<field name="gText13" type="C" size="255"></field>
+	<field name="gAttr13" type="C" size="55"></field>
+	<field name="gText14" type="C" size="255"></field>
+	<field name="gAttr14" type="C" size="55"></field>
+	<field name="gText15" type="C" size="255"></field>
+	<field name="gAttr15" type="C" size="55"></field>
+	<field name="gText16" type="C" size="255"></field>
+	<field name="gAttr16" type="C" size="55"></field>
+	<field name="gText17" type="C" size="255"></field>
+	<field name="gAttr17" type="C" size="55"></field>
+	<field name="gText18" type="C" size="255"></field>
+	<field name="gAttr18" type="C" size="55"></field>
+	<field name="gText19" type="C" size="255"></field>
+	<field name="gAttr19" type="C" size="55"></field>
+	<field name="gText20" type="C" size="255"></field>
+	<field name="gAttr20" type="C" size="55"></field>
+	
+	
+        <field name="uID" type="I">
+            <unsigned />
+        </field>
+
+        <field name="createFrom" type="C" size="40"></field>
+        <field name="effect" type="C" size="80"></field>
+        <field name="position" type="C" size="5"></field>
+        <field name="divClassContainer" type="I" size="2"></field>
+
+    </table>
+</schema>
+<!--
+
+db.xml Field Type to MySQL
+C	VARCHAR
+XL	LONGTEXT
+X	TEXT
+C2	VARCHAR
+X2	LONGTEXT
+B	LONGBLOB
+D	DATE
+TS	DATETIME
+T	DATETIME
+I4	INTEGER
+I	INTEGER
+I1	TINYINT
+I2	SMALLINT
+I8	BIGINT
+F	DOUBLE
+N	NUMERIC
+
+
+Field Type Modifiers
+Keywords 	    Description
+AUTOINCREMENT 	For autoincrement number. Emulated with triggers if not available. Sets NOTNULL also.
+KEY 	        Primary key field. Sets NOTNULL also. Compound keys are supported.
+PRIMARY 	    Same as KEY.
+DEF 	        Synonym for DEFAULT for lazy typists.
+DEFAULT 	    The default value. Character strings are auto-quoted unless the string begins and ends with spaces, eg ' SYSDATE '.
+NOTNULL 	    If field is not null.
+DEFDATE 	    Set default value to call function to get today's date.
+DEFTIMESTAMP 	Set default to call function to get today's datetime.
+NOQUOTE 	    Prevents autoquoting of default string values.
+CONSTRAINTS 	Additional constraints defined at the end of the field definition.
+-->

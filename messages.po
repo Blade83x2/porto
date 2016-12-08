@@ -1,0 +1,2395 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PortoPackage\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-10-30 16:24+0100\n"
+"PO-Revision-Date: 2016-11-02 09:05+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language-Team: \n"
+"X-Generator: Poedit 1.8.7.1\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: de_DE\n"
+"X-Poedit-KeywordsList: t\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: controller.php:3 blocks/autonav/templates/porto_breadcrump.php:1
+#: blocks/audio_player/controller.php:11 blocks/audio_player/edit.php:2
+#: blocks/member_listing/controller.php:12 blocks/member_listing/edit.php:2
+#: blocks/contact_us/controller.php:8 blocks/contact_us/edit.php:2
+#: blocks/nivo_slider/controller.php:10 blocks/nivo_slider/edit.php:2
+#: blocks/text_heading/controller.php:9 blocks/text_heading/edit.php:2
+#: blocks/calculate_route/controller.php:7 blocks/calculate_route/edit.php:2
+#: blocks/history/controller.php:9 blocks/history/edit.php:2
+#: blocks/onepage_nav_marker/controller.php:11
+#: blocks/onepage_nav_marker/edit.php:2 blocks/nav_top/controller.php:7
+#: blocks/nav_top/view.php:1 blocks/nav_top/edit.php:2 blocks/nav_top/add.php:2
+#: blocks/nav_top/form.php:2
+#: single_pages/dashboard/porto_design/informationen.php:2
+#: single_pages/dashboard/porto_design/header_footer.php:2
+#: single_pages/dashboard/porto_design/menu_logos.php:2
+#: single_pages/dashboard/porto_design/settings.php:2
+#: single_pages/dashboard/porto_design.php:2
+#: controllers/single_page/dashboard/porto_design/informationen.php:10
+#: controllers/single_page/dashboard/porto_design/header_footer.php:11
+#: controllers/single_page/dashboard/porto_design/menu_logos.php:11
+#: controllers/single_page/dashboard/porto_design/settings.php:12
+#: controllers/single_page/dashboard/porto_design.php:15
+#: jobs/clear_empty_workflow_progress.php:3 themes/onepage/page_theme.php:4
+#: themes/porto/page_theme.php:4 elements/dashboard/install.php:2
+#: elements/dashboard/uninstall.php:2 elements/ipfilter.class.php:2
+#: elements/xtea.class.php:32
+msgid "Access Denied."
+msgstr "Zugriff verboten"
+
+#: controller.php:89
+msgid ""
+"The Porto Package was built with Bootstrap v3.2.0 for concrete 5.7! It "
+"includes 2 Themes, Blocks, Templates and more..."
+msgstr ""
+"Die Porto Erweiterung wurde mit Twitter Bootstrap 3.2.0 erstellt und "
+"beinhaltet 2 Themes, viele Blöcke und Templates"
+
+#: controller.php:90 controller.php:309
+#: single_pages/dashboard/porto_design/menu_logos.php:18
+#: single_pages/dashboard/porto_design.php:19
+msgid "Porto Package"
+msgstr "Porto Erweiterung"
+
+#: controller.php:277
+msgid "Search..."
+msgstr "Suchen..."
+
+#: controller.php:300
+msgid "Blank"
+msgstr ""
+
+#: controller.php:301
+msgid "Full"
+msgstr ""
+
+#: controller.php:302
+msgid "Landing Page"
+msgstr "Willkommens Seite"
+
+#: controller.php:303
+msgid "Left Sidebar"
+msgstr ""
+
+#: controller.php:304
+msgid "Right Sidebar"
+msgstr ""
+
+#: controller.php:305 controller.php:307
+msgid "Blog"
+msgstr ""
+
+#: controller.php:310 blocks/autonav/templates/porto_onepage_navigation.php:102
+#: blocks/autonav/templates/porto_navigation.php:144
+#: themes/porto/account/edit_profile.php:49
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: controller.php:311
+msgid "Header & Footer Design"
+msgstr "Kopf & Fuss Design"
+
+#: controller.php:312
+msgid "Menu & Logos"
+msgstr "Navigation & Logos"
+
+#: controller.php:313
+#: controllers/single_page/dashboard/porto_design/settings.php:133
+#: controllers/single_page/dashboard/porto_design/settings.php:213
+msgid "Information"
+msgstr "Informationen"
+
+#: controller.php:318
+msgid "Porto Blocktypes"
+msgstr "Porto Blocktypen"
+
+#: controller.php:333
+msgid "Porto Menu"
+msgstr ""
+
+#: controller.php:335
+msgid "Font Awesome Icon"
+msgstr ""
+
+#: controller.php:399
+msgid "Porto Meta Tags"
+msgstr ""
+
+#: controller.php:400
+msgid "Revisit after"
+msgstr ""
+
+#: controller.php:405
+msgid "Robots"
+msgstr ""
+
+#: controller.php:410 controller.php:412
+msgid "Audience"
+msgstr ""
+
+#: controller.php:414 controller.php:416
+msgid "Page Topic"
+msgstr ""
+
+#: controller.php:419
+msgid "Megamenu full width"
+msgstr "Megamenu volle Breite"
+
+#: controller.php:420
+msgid "Show link in footer"
+msgstr "Zeige Link in Seitenfuss"
+
+#: controller.php:421 blocks/history/edit.php:92
+msgid "Detail Image"
+msgstr "Detail Bild"
+
+#: controller.php:422 blocks/history/edit.php:92
+msgid "Thumbnail Image"
+msgstr "Thumbnail Bild"
+
+#: controller.php:424
+msgid "Porto User Attribute Set"
+msgstr "Porto Benutzer Attribute"
+
+#: controller.php:428
+msgid "Show profile as Company profile"
+msgstr "Profil als Firmen- Profil zeigen"
+
+#: controller.php:442
+msgid "Company Name"
+msgstr "Firmen Name"
+
+#: controller.php:455
+msgid "Company Logo"
+msgstr "Firmen Logo"
+
+#: controller.php:468
+msgid "Company branch"
+msgstr "Firmen Branche"
+
+#: controller.php:481
+msgid "Company location"
+msgstr "Firmen Standort"
+
+#: controller.php:509
+msgid "Company motto"
+msgstr "Firmen Devise"
+
+#: controller.php:528
+msgid "male"
+msgstr "Männlich"
+
+#: controller.php:529
+msgid "female"
+msgstr "Weiblich"
+
+#: controller.php:531
+msgid "Gender"
+msgstr "Geschlecht"
+
+#: controller.php:548
+msgid "Firstname"
+msgstr "Vorname"
+
+#: controller.php:561
+msgid "Lastname"
+msgstr "Nachname"
+
+#: controller.php:574 blocks/member_listing/edit.php:121
+#: elements/page_controls_footer.php:101 elements/page_controls_footer.php:104
+msgid "Location"
+msgstr "Adresse, Ort"
+
+#: controller.php:589 blocks/member_listing/controller.php:504
+#: blocks/member_listing/controller.php:513
+#: blocks/member_listing/controller.php:518 blocks/member_listing/edit.php:92
+#: blocks/history/controller.php:186 blocks/history/controller.php:191
+#: blocks/history/controller.php:197 blocks/history/edit.php:110
+msgid "Picture"
+msgstr "Bild"
+
+#: controller.php:602
+msgid "Social Links"
+msgstr "Soziale Netzwerke"
+
+#: controller.php:615
+msgid "Zitat"
+msgstr "Zitat"
+
+#: controller.php:643 controller.php:668
+msgid "Can change settings for the Porto Package"
+msgstr "Kann Einstellungen ändern vom Porto Package"
+
+#: controller.php:667
+msgid "Porto Dashboard"
+msgstr "Porto Übersichtsseite"
+
+#: blocks/autonav/templates/porto_onepage_navigation.php:53
+#: blocks/autonav/templates/porto_navigation.php:94
+#: blocks/member_listing/edit.php:322 themes/porto/members/directory.php:47
+msgid "User"
+msgstr "Benutzer"
+
+#: blocks/autonav/templates/porto_onepage_navigation.php:97
+#: blocks/autonav/templates/porto_navigation.php:139
+msgid "Profil"
+msgstr "Profil"
+
+#: blocks/autonav/templates/porto_onepage_navigation.php:100
+#: blocks/autonav/templates/porto_navigation.php:142
+msgid "Users"
+msgstr "Benutzer"
+
+#: blocks/autonav/templates/porto_onepage_navigation.php:103
+#: blocks/autonav/templates/porto_navigation.php:145
+msgid "Messages"
+msgstr "Nachrichten"
+
+#: blocks/autonav/templates/porto_onepage_navigation.php:105
+#: blocks/autonav/templates/porto_navigation.php:147
+msgid "Administration"
+msgstr "Verwaltung"
+
+#: blocks/autonav/templates/porto_onepage_navigation.php:107
+#: blocks/autonav/templates/porto_navigation.php:149
+#: elements/page_controls_footer.php:182 elements/page_controls_footer.php:315
+msgid "Sign Out"
+msgstr "Logout"
+
+#: blocks/autonav/templates/porto_onepage_navigation.php:120
+#: blocks/autonav/templates/porto_onepage_navigation.php:127
+#: blocks/autonav/templates/porto_onepage_navigation.php:145
+#: blocks/autonav/templates/porto_navigation.php:163
+#: blocks/autonav/templates/porto_navigation.php:170
+#: blocks/autonav/templates/porto_navigation.php:188
+msgid "Login"
+msgstr "Login"
+
+#: blocks/autonav/templates/porto_onepage_navigation.php:143
+#: blocks/autonav/templates/porto_onepage_navigation.php:164
+#: blocks/autonav/templates/porto_navigation.php:186
+#: blocks/autonav/templates/porto_navigation.php:207
+#: themes/porto/register.php:92
+msgid "Email Address"
+msgstr "Email Adresse"
+
+#: blocks/autonav/templates/porto_onepage_navigation.php:143
+#: blocks/autonav/templates/porto_navigation.php:186
+#: blocks/member_listing/view.php:225 themes/porto/register.php:87
+#: themes/porto/members/directory.php:44
+msgid "Username"
+msgstr "Benutzername"
+
+#: blocks/autonav/templates/porto_onepage_navigation.php:144
+#: blocks/autonav/templates/porto_navigation.php:187
+#: themes/porto/register.php:96
+msgid "Password"
+msgstr "Passwort"
+
+#: blocks/autonav/templates/porto_onepage_navigation.php:144
+#: blocks/autonav/templates/porto_onepage_navigation.php:162
+#: blocks/autonav/templates/porto_navigation.php:187
+#: blocks/autonav/templates/porto_navigation.php:205
+msgid "Forgot Your Password?"
+msgstr ""
+
+#: blocks/autonav/templates/porto_onepage_navigation.php:145
+#: blocks/autonav/templates/porto_navigation.php:188
+msgid "Stay signed in for two weeks"
+msgstr ""
+
+#: blocks/autonav/templates/porto_onepage_navigation.php:151
+#: blocks/autonav/templates/porto_navigation.php:194
+#, php-format
+msgid "Sign in with %s"
+msgstr ""
+
+#: blocks/autonav/templates/porto_onepage_navigation.php:157
+#: blocks/autonav/templates/porto_navigation.php:200
+#: themes/porto/register.php:147
+msgid "Register"
+msgstr "Registrieren"
+
+#: blocks/autonav/templates/porto_onepage_navigation.php:163
+#: blocks/autonav/templates/porto_navigation.php:206
+msgid ""
+"Enter your email address below. We will send you instructions to reset your "
+"password."
+msgstr ""
+
+#: blocks/autonav/templates/porto_onepage_navigation.php:164
+#: blocks/autonav/templates/porto_navigation.php:207
+#: themes/porto/account/messages/inbox.php:34
+msgid "Back"
+msgstr "Zurück"
+
+#: blocks/autonav/templates/porto_onepage_navigation.php:164
+#: blocks/autonav/templates/porto_navigation.php:207
+msgid "Reset and Email Password"
+msgstr ""
+
+#: blocks/audio_player/controller.php:45
+msgid "MP3 Player"
+msgstr "MP3 Player"
+
+#: blocks/audio_player/controller.php:50
+msgid "Audio Player for MP3 files from Fileset"
+msgstr "Audio Player für MP3 Dateien aus einem Dateialbum abspielen"
+
+#: blocks/audio_player/controller.php:55
+msgid ""
+"Select a Fileset with MP3 Files included for displaying a MP3 Player with "
+"Playlist"
+msgstr "Dateialbum mit MP3 Dateien wählen für Playliste"
+
+#: blocks/audio_player/controller.php:117
+msgid "No MP3 FileSet selected!"
+msgstr "Kein MP3 Dateialbum gewählt!"
+
+#: blocks/audio_player/controller.php:128
+msgid "MP3 FileSet has no Audio Files!"
+msgstr "MP3 Dateialbum enthält keine Audio Dateien!"
+
+#: blocks/audio_player/controller.php:132
+msgid "MP3 FileSet Error!"
+msgstr "Fehler im MP3 Dateialbum"
+
+#: blocks/audio_player/controller.php:137
+msgid "Album Name fail!"
+msgstr "Album Name fehlt!"
+
+#: blocks/audio_player/view.php:53
+msgid "FileSet has no MP3 Files!"
+msgstr "Dateialbum beinhaltet keine MP3 Dateien!"
+
+#: blocks/audio_player/view.php:58
+msgid "Player in edit Mode disabled!"
+msgstr "Der Player wird im Bearbeitungsmodus nicht angezeigt!"
+
+#: blocks/audio_player/view.php:88
+msgid "FileSet has removed!"
+msgstr "Dateialbum wurde gelöscht!"
+
+#: blocks/audio_player/edit.php:23
+msgid "Album Name"
+msgstr "Album Name"
+
+#: blocks/audio_player/edit.php:26
+msgid "Name for Album Name"
+msgstr "Name vom Album"
+
+#: blocks/audio_player/edit.php:31
+msgid "Album description"
+msgstr "Album Beschreibung"
+
+#: blocks/audio_player/edit.php:40
+msgid "Album Image"
+msgstr "Album Bild"
+
+#: blocks/audio_player/edit.php:42
+msgid "Select Album Image"
+msgstr "Album Bild wählen"
+
+#: blocks/audio_player/edit.php:46
+msgid "MP3 File Set"
+msgstr "MP3 Dateialbum"
+
+#: blocks/member_listing/controller.php:52
+msgid "Display Userdata"
+msgstr ""
+
+#: blocks/member_listing/controller.php:57
+msgid "Member Listing"
+msgstr ""
+
+#: blocks/member_listing/controller.php:62
+msgid ""
+"<b>This Block returns a Picture with a Table of data.</b><p>You can create "
+"your own Fields or reading the content from a User group.</p>"
+msgstr ""
+
+#: blocks/member_listing/controller.php:453
+#: blocks/member_listing/controller.php:483
+#: blocks/member_listing/controller.php:488
+#: blocks/member_listing/controller.php:498
+#: blocks/member_listing/controller.php:504
+#: blocks/member_listing/controller.php:513
+#: blocks/member_listing/controller.php:518
+#: blocks/member_listing/controller.php:523
+#: blocks/member_listing/controller.php:529
+#: blocks/member_listing/controller.php:536
+#: blocks/contact_us/controller.php:125 blocks/contact_us/controller.php:129
+#: blocks/contact_us/controller.php:133 blocks/contact_us/controller.php:137
+#: blocks/contact_us/controller.php:141 blocks/contact_us/controller.php:145
+#: blocks/contact_us/controller.php:149 blocks/contact_us/controller.php:153
+#: blocks/contact_us/controller.php:157 blocks/text_heading/controller.php:128
+#: blocks/text_heading/controller.php:133
+#: blocks/text_heading/controller.php:165
+#: blocks/search/templates/porto_search/view.php:22
+#: blocks/calculate_route/controller.php:92
+#: blocks/calculate_route/controller.php:107 blocks/history/controller.php:159
+#: blocks/history/controller.php:168 blocks/history/controller.php:176
+#: blocks/history/controller.php:186 blocks/history/controller.php:191
+#: blocks/history/controller.php:197 blocks/history/controller.php:201
+#: blocks/history/controller.php:209 blocks/onepage_nav_marker/edit.php:30
+#: controllers/single_page/dashboard/porto_design/informationen.php:90
+#: controllers/single_page/dashboard/porto_design/settings.php:253
+msgid "Error"
+msgstr ""
+
+#: blocks/member_listing/controller.php:453
+#: blocks/member_listing/controller.php:483
+#: blocks/member_listing/controller.php:488
+#: blocks/member_listing/controller.php:498
+#: blocks/member_listing/controller.php:504
+#: blocks/member_listing/controller.php:523
+#: blocks/member_listing/controller.php:529
+#: blocks/member_listing/controller.php:536
+#: blocks/contact_us/controller.php:125 blocks/contact_us/controller.php:129
+#: blocks/contact_us/controller.php:133 blocks/contact_us/controller.php:137
+#: blocks/contact_us/controller.php:141 blocks/contact_us/controller.php:145
+#: blocks/contact_us/controller.php:149 blocks/contact_us/controller.php:153
+#: blocks/contact_us/controller.php:157 blocks/text_heading/controller.php:128
+#: blocks/text_heading/controller.php:133
+#: blocks/text_heading/controller.php:165
+#: blocks/calculate_route/controller.php:92
+#: blocks/calculate_route/controller.php:107 blocks/history/controller.php:159
+msgid "in"
+msgstr ""
+
+#: blocks/member_listing/controller.php:453 blocks/member_listing/edit.php:22
+#: blocks/history/edit.php:20
+#: single_pages/dashboard/porto_design/header_footer.php:69
+#: single_pages/dashboard/porto_design/header_footer.php:72
+#: single_pages/dashboard/porto_design/header_footer.php:75
+#: single_pages/dashboard/porto_design/header_footer.php:78
+#: single_pages/dashboard/porto_design/header_footer.php:103
+#: single_pages/dashboard/porto_design/header_footer.php:106
+#: single_pages/dashboard/porto_design/header_footer.php:109
+#: single_pages/dashboard/porto_design/header_footer.php:112
+#: single_pages/dashboard/porto_design/header_footer.php:115
+msgid "Type"
+msgstr ""
+
+#: blocks/member_listing/controller.php:483 blocks/member_listing/edit.php:33
+#: blocks/history/controller.php:159 blocks/history/edit.php:30
+msgid "Loading Effect"
+msgstr ""
+
+#: blocks/member_listing/controller.php:488 blocks/member_listing/edit.php:68
+msgid "Picture Position"
+msgstr ""
+
+#: blocks/member_listing/controller.php:498 blocks/member_listing/edit.php:77
+msgid "Container"
+msgstr ""
+
+#: blocks/member_listing/controller.php:498 blocks/member_listing/edit.php:77
+msgid "Width"
+msgstr ""
+
+#: blocks/member_listing/controller.php:523 blocks/member_listing/view.php:79
+#: blocks/member_listing/view.php:221 blocks/member_listing/edit.php:109
+#: blocks/member_listing/edit.php:294 blocks/pro_contra/edit.php:21
+#: blocks/contact_us/controller.php:129
+msgid "Name"
+msgstr ""
+
+#: blocks/member_listing/controller.php:529 blocks/member_listing/view.php:105
+#: blocks/member_listing/edit.php:145 blocks/contact_us/controller.php:153
+#: single_pages/dashboard/porto_design/informationen.php:56
+#: themes/porto/account/edit_profile.php:54
+#: themes/porto/account/edit_profile_orig.php:18
+msgid "Email"
+msgstr ""
+
+#: blocks/member_listing/controller.php:536 blocks/member_listing/view.php:109
+#: blocks/member_listing/edit.php:151 blocks/contact_us/controller.php:157
+#: single_pages/dashboard/porto_design.php:63 elements/dashboard/install.php:28
+#: elements/dashboard/uninstall.php:28
+msgid "Web"
+msgstr "Internet"
+
+#: blocks/member_listing/controller.php:545
+msgid "No Group selected"
+msgstr ""
+
+#: blocks/member_listing/controller.php:548
+msgid "Group not valid"
+msgstr ""
+
+#: blocks/member_listing/controller.php:555
+msgid "Group not allowed"
+msgstr ""
+
+#: blocks/member_listing/controller.php:559
+msgid "Select Picture to display!"
+msgstr ""
+
+#: blocks/member_listing/controller.php:564
+msgid "Picture not allowed!"
+msgstr ""
+
+#: blocks/member_listing/controller.php:575
+msgid "Duplicate Entry for"
+msgstr ""
+
+#: blocks/member_listing/view.php:83 blocks/member_listing/edit.php:104
+msgid "Firma"
+msgstr ""
+
+#: blocks/member_listing/view.php:88
+msgid "Abteilung"
+msgstr ""
+
+#: blocks/member_listing/view.php:92 blocks/member_listing/edit.php:127
+msgid "Telefon"
+msgstr ""
+
+#: blocks/member_listing/view.php:96 blocks/member_listing/edit.php:139
+msgid "Mobil"
+msgstr ""
+
+#: blocks/member_listing/view.php:100 blocks/member_listing/edit.php:133
+#: blocks/contact_us/controller.php:149
+msgid "Fax"
+msgstr ""
+
+#: blocks/member_listing/view.php:113
+msgid "Standort"
+msgstr ""
+
+#: blocks/member_listing/view.php:248 blocks/nivo_slider/edit.php:101
+#: blocks/nivo_slider/edit.php:113 blocks/nivo_slider/edit.php:125
+#: blocks/nivo_slider/edit.php:137 blocks/nivo_slider/edit.php:149
+#: blocks/nivo_slider/edit.php:160 blocks/text_heading/edit.php:45
+msgid "Yes"
+msgstr ""
+
+#: blocks/member_listing/view.php:248 blocks/nivo_slider/edit.php:100
+#: blocks/nivo_slider/edit.php:112 blocks/nivo_slider/edit.php:120
+#: blocks/nivo_slider/edit.php:124 blocks/nivo_slider/edit.php:136
+#: blocks/nivo_slider/edit.php:148 blocks/nivo_slider/edit.php:161
+#: blocks/text_heading/edit.php:46
+msgid "No"
+msgstr ""
+
+#: blocks/member_listing/view.php:393 blocks/calculate_route/controller.php:96
+msgid "Empty"
+msgstr ""
+
+#: blocks/member_listing/view.php:393
+msgid "Block"
+msgstr ""
+
+#: blocks/member_listing/edit.php:25
+msgid "Single Entry"
+msgstr ""
+
+#: blocks/member_listing/edit.php:28
+msgid "User Group"
+msgstr ""
+
+#: blocks/member_listing/edit.php:36 blocks/nivo_slider/edit.php:55
+#: blocks/text_heading/edit.php:56 blocks/history/edit.php:33
+msgid "None"
+msgstr ""
+
+#: blocks/member_listing/edit.php:37 blocks/nivo_slider/edit.php:56
+#: blocks/text_heading/edit.php:57 blocks/history/edit.php:34
+msgid "Random"
+msgstr ""
+
+#: blocks/member_listing/edit.php:71
+msgid "Left"
+msgstr ""
+
+#: blocks/member_listing/edit.php:72
+msgid "Right"
+msgstr ""
+
+#: blocks/member_listing/edit.php:94 blocks/history/edit.php:112
+msgid "Select Image"
+msgstr ""
+
+#: blocks/member_listing/edit.php:98
+msgid "Salutation"
+msgstr ""
+
+#: blocks/member_listing/edit.php:101
+msgid "Select"
+msgstr ""
+
+#: blocks/member_listing/edit.php:102
+msgid "Herr"
+msgstr ""
+
+#: blocks/member_listing/edit.php:103
+msgid "Frau"
+msgstr ""
+
+#: blocks/member_listing/edit.php:115
+msgid "Department"
+msgstr ""
+
+#: blocks/member_listing/edit.php:157
+msgid "Own Fields"
+msgstr ""
+
+#: blocks/member_listing/edit.php:159
+msgid "Add"
+msgstr ""
+
+#: blocks/member_listing/edit.php:191
+msgid "Display Users from Group"
+msgstr ""
+
+#: blocks/member_listing/edit.php:192
+msgid "Each User from the selected Group returns a Table of data!"
+msgstr ""
+
+#: blocks/member_listing/edit.php:207 blocks/member_listing/edit.php:214
+msgid "Select a User Group to display"
+msgstr ""
+
+#: blocks/member_listing/edit.php:241
+msgid "Picture Source"
+msgstr ""
+
+#: blocks/member_listing/edit.php:242
+msgid ""
+"Let decide you witch Picture should be use. With File/Image you can select "
+"an User Image Attribute."
+msgstr ""
+
+#: blocks/member_listing/edit.php:246
+msgid "Select Picture Source"
+msgstr ""
+
+#: blocks/member_listing/edit.php:247
+msgid "Avatar from User Profile"
+msgstr ""
+
+#: blocks/member_listing/edit.php:248
+msgid "File / Image Attribute from User Profile"
+msgstr ""
+
+#: blocks/member_listing/edit.php:258
+msgid "User Attribute Picture"
+msgstr ""
+
+#: blocks/member_listing/edit.php:259
+msgid "You can create your own Image Attribute Keys under User &gt; Attribute"
+msgstr ""
+
+#: blocks/member_listing/edit.php:273
+#, php-format
+msgid "No File / Image Attribute for the User available! Click on %s"
+msgstr ""
+
+#: blocks/member_listing/edit.php:278
+#, php-format
+msgid "File / Image are disabled for Users! Click on %s and enable them!"
+msgstr ""
+
+#: blocks/member_listing/edit.php:283
+msgid "Type a Name to display and select a User Attribute!"
+msgstr ""
+
+#: blocks/member_listing/edit.php:284
+msgid ""
+"Here you can type in your own Keys. The Values are loading from the User "
+"Attributes."
+msgstr ""
+
+#: blocks/member_listing/edit.php:300
+msgid "User Attribute"
+msgstr ""
+
+#: blocks/member_listing/edit.php:313
+msgid "Warning"
+msgstr ""
+
+#: blocks/member_listing/edit.php:314
+msgid "No User Attributekeys where found! Please create them first!"
+msgstr ""
+
+#: blocks/image/templates/magnific_pop/view.php:23
+msgid "Empty Image Block."
+msgstr ""
+
+#: blocks/pro_contra/controller.php:38
+msgid "Pro/Contra Table"
+msgstr ""
+
+#: blocks/pro_contra/controller.php:43
+msgid "Listing for Pro / Contra"
+msgstr ""
+
+#: blocks/pro_contra/controller.php:48
+msgid "Add a Pro- Contra Table"
+msgstr ""
+
+#: blocks/pro_contra/controller.php:121
+msgid "No entry for Name or / and Picture!"
+msgstr ""
+
+#: blocks/pro_contra/controller.php:125
+msgid "Pro- and Contra Name are empty!"
+msgstr ""
+
+#: blocks/pro_contra/controller.php:129
+msgid "Pro list has no values!"
+msgstr ""
+
+#: blocks/pro_contra/controller.php:133
+msgid "Contra list has no values!"
+msgstr ""
+
+#: blocks/pro_contra/view.php:76 blocks/pro_contra/edit.php:61
+msgid "Origin"
+msgstr ""
+
+#: blocks/pro_contra/view.php:85 blocks/pro_contra/edit.php:67
+msgid "Preparation"
+msgstr ""
+
+#: blocks/pro_contra/view.php:94 blocks/pro_contra/edit.php:73
+msgid "Practical use"
+msgstr ""
+
+#: blocks/pro_contra/view.php:103 blocks/pro_contra/edit.php:79
+msgid "Note"
+msgstr ""
+
+#: blocks/pro_contra/edit.php:24
+msgid "Name for Heading description"
+msgstr ""
+
+#: blocks/pro_contra/edit.php:29
+msgid "Image"
+msgstr ""
+
+#: blocks/pro_contra/edit.php:32
+msgid "Choose Image"
+msgstr ""
+
+#: blocks/pro_contra/edit.php:37
+msgid "Pro Name"
+msgstr ""
+
+#: blocks/pro_contra/edit.php:39
+msgid "Name the pro list"
+msgstr ""
+
+#: blocks/pro_contra/edit.php:43
+msgid "Pro list"
+msgstr ""
+
+#: blocks/pro_contra/edit.php:45
+msgid "Pro arguments (1 pro line)"
+msgstr ""
+
+#: blocks/pro_contra/edit.php:49
+msgid "Contra Name"
+msgstr ""
+
+#: blocks/pro_contra/edit.php:51
+msgid "Name the contra list"
+msgstr ""
+
+#: blocks/pro_contra/edit.php:55
+msgid "Contra list"
+msgstr ""
+
+#: blocks/pro_contra/edit.php:57
+msgid "Contra arguments (1 pro line)"
+msgstr ""
+
+#: blocks/contact_us/controller.php:40
+msgid "Contact Us"
+msgstr ""
+
+#: blocks/contact_us/controller.php:45
+msgid "Sortable Contact information"
+msgstr ""
+
+#: blocks/contact_us/controller.php:50
+msgid ""
+"<b>Add Information about your Person/Business.</b><p>Value sorting with drag "
+"&amp; drop!</p>"
+msgstr ""
+
+#: blocks/contact_us/controller.php:125
+msgid "Variable"
+msgstr ""
+
+#: blocks/contact_us/controller.php:129 blocks/contact_us/controller.php:133
+#: blocks/contact_us/controller.php:137
+msgid "Variable. Allowed: a-zA-Z0-9öäüßÖÄÜ,.-"
+msgstr ""
+
+#: blocks/contact_us/controller.php:133
+msgid "Address"
+msgstr ""
+
+#: blocks/contact_us/controller.php:137
+msgid "Zipcode & Location"
+msgstr ""
+
+#: blocks/contact_us/controller.php:141
+msgid "Phone"
+msgstr ""
+
+#: blocks/contact_us/controller.php:141 blocks/contact_us/controller.php:145
+#: blocks/contact_us/controller.php:149
+msgid "Variable. Allowed: 0-9 -/+"
+msgstr ""
+
+#: blocks/contact_us/controller.php:145
+msgid "Mobile"
+msgstr ""
+
+#: blocks/contact_us/controller.php:170
+msgid "There is no field in use!"
+msgstr ""
+
+#: blocks/contact_us/edit.php:71 blocks/calculate_route/edit.php:20
+msgid "Block heading Text"
+msgstr ""
+
+#: blocks/contact_us/edit.php:92
+msgid "#ID"
+msgstr ""
+
+#: blocks/contact_us/edit.php:93
+msgid "Field Name"
+msgstr ""
+
+#: blocks/contact_us/edit.php:94
+msgid "Field Value"
+msgstr ""
+
+#: blocks/nivo_slider/controller.php:40
+msgid "Nivo Slider"
+msgstr ""
+
+#: blocks/nivo_slider/controller.php:45
+msgid "Slider for Images"
+msgstr ""
+
+#: blocks/nivo_slider/controller.php:50
+msgid "Create a Image Slider from a Fileset"
+msgstr ""
+
+#: blocks/nivo_slider/controller.php:109
+msgid "No Image FileSet selected!"
+msgstr ""
+
+#: blocks/nivo_slider/controller.php:115
+msgid "No Images in FileSet present!"
+msgstr ""
+
+#: blocks/nivo_slider/controller.php:120
+msgid "Effect fails!"
+msgstr ""
+
+#: blocks/nivo_slider/controller.php:123
+msgid "Animate Speed min is 500ms!"
+msgstr ""
+
+#: blocks/nivo_slider/controller.php:126
+msgid "Animate Speed max is 3000ms!"
+msgstr ""
+
+#: blocks/nivo_slider/controller.php:129
+msgid "Animate Interval min is 2000ms!"
+msgstr ""
+
+#: blocks/nivo_slider/controller.php:132
+msgid "Animate Interval max is 20000ms!"
+msgstr ""
+
+#: blocks/nivo_slider/view.php:52
+msgid "FileSet has no Images"
+msgstr ""
+
+#: blocks/nivo_slider/view.php:78
+msgid "prev"
+msgstr ""
+
+#: blocks/nivo_slider/view.php:79
+msgid "next"
+msgstr ""
+
+#: blocks/nivo_slider/edit.php:23
+msgid "Image File Set"
+msgstr ""
+
+#: blocks/nivo_slider/edit.php:51
+msgid "Effect"
+msgstr ""
+
+#: blocks/nivo_slider/edit.php:78
+msgid "Animate Speed"
+msgstr ""
+
+#: blocks/nivo_slider/edit.php:87
+msgid "Animate Interval"
+msgstr ""
+
+#: blocks/nivo_slider/edit.php:96
+msgid "Show directionNav Arrows"
+msgstr ""
+
+#: blocks/nivo_slider/edit.php:108
+msgid "Generate Navigation Thumbs"
+msgstr ""
+
+#: blocks/nivo_slider/edit.php:120
+msgid "Show Bulseeye Arrows"
+msgstr ""
+
+#: blocks/nivo_slider/edit.php:120
+msgid "Needs Navigation Thumbs: "
+msgstr ""
+
+#: blocks/nivo_slider/edit.php:132
+msgid "Pause on Mouse over"
+msgstr ""
+
+#: blocks/nivo_slider/edit.php:144
+msgid "Random Image"
+msgstr ""
+
+#: blocks/nivo_slider/edit.php:156
+msgid "Autostart Slider"
+msgstr ""
+
+#: blocks/text_heading/controller.php:40
+msgid "Create a Text Heading with animations"
+msgstr ""
+
+#: blocks/text_heading/controller.php:45
+msgid "Text Heading"
+msgstr ""
+
+#: blocks/text_heading/controller.php:50
+msgid "<b>Creates a cool Heading-Text with animaitons.</b>"
+msgstr ""
+
+#: blocks/text_heading/controller.php:118
+msgid "Please type in a heading text!"
+msgstr ""
+
+#: blocks/text_heading/controller.php:128 blocks/text_heading/edit.php:29
+msgid "Text size"
+msgstr ""
+
+#: blocks/text_heading/controller.php:133 blocks/text_heading/edit.php:42
+msgid "Text strong"
+msgstr ""
+
+#: blocks/text_heading/controller.php:165 blocks/text_heading/edit.php:51
+msgid "Text Effect"
+msgstr ""
+
+#: blocks/text_heading/edit.php:21
+msgid "Heading Text"
+msgstr ""
+
+#: blocks/text_heading/edit.php:22
+msgid "This Text is allways displays in upercase!"
+msgstr ""
+
+#: blocks/text_heading/edit.php:32
+msgid "H1"
+msgstr ""
+
+#: blocks/text_heading/edit.php:33
+msgid "H2"
+msgstr ""
+
+#: blocks/text_heading/edit.php:34
+msgid "H3"
+msgstr ""
+
+#: blocks/text_heading/edit.php:35
+msgid "H4"
+msgstr ""
+
+#: blocks/text_heading/edit.php:36
+msgid "H5"
+msgstr ""
+
+#: blocks/text_heading/edit.php:37
+msgid "H6"
+msgstr ""
+
+#: blocks/text_heading/edit.php:52
+msgid ""
+"Chose an Effekt for displaying the Text. The animation is disabled in edit "
+"Mode!"
+msgstr ""
+
+#: blocks/search/templates/porto_search/view.php:46
+#: blocks/search/templates/porto_search/view.php:50
+#: single_pages/dashboard/porto_design/settings.php:135
+#: themes/porto/members/directory.php:49 themes/porto/members/directory.php:50
+msgid "Search"
+msgstr ""
+
+#: blocks/search/templates/porto_search/view.php:62
+msgid "Results"
+msgstr ""
+
+#: blocks/search/templates/porto_search/view.php:67
+msgid "Page"
+msgstr ""
+
+#: blocks/search/templates/porto_search/view.php:67
+msgid "of"
+msgstr ""
+
+#: blocks/search/templates/porto_search/view.php:78
+msgid "There were no results found. Please try another keyword or phrase."
+msgstr ""
+
+#: blocks/calculate_route/controller.php:38
+msgid "Calculate a Route"
+msgstr ""
+
+#: blocks/calculate_route/controller.php:43 blocks/calculate_route/edit.php:22
+#: blocks/calculate_route/edit.php:64
+msgid "Calculate Route"
+msgstr ""
+
+#: blocks/calculate_route/controller.php:53
+msgid ""
+"<b>Add a route planner.</b><p>Select a Service Provider and set a target "
+"Address and your Visitors can type in an Address and get a Route to you!</p>"
+msgstr ""
+
+#: blocks/calculate_route/controller.php:92 blocks/calculate_route/view.php:72
+#: blocks/calculate_route/edit.php:34
+msgid "Service Provider"
+msgstr ""
+
+#: blocks/calculate_route/controller.php:96
+msgid "field in"
+msgstr ""
+
+#: blocks/calculate_route/controller.php:96
+#: blocks/calculate_route/controller.php:102 blocks/calculate_route/edit.php:52
+msgid "Target Address"
+msgstr ""
+
+#: blocks/calculate_route/controller.php:102
+msgid "Wrong"
+msgstr ""
+
+#: blocks/calculate_route/controller.php:102
+msgid "Example"
+msgstr ""
+
+#: blocks/calculate_route/controller.php:107 blocks/calculate_route/edit.php:60
+msgid "Button Text"
+msgstr ""
+
+#: blocks/calculate_route/edit.php:26
+msgid "Source Address Placeholder"
+msgstr ""
+
+#: blocks/calculate_route/edit.php:27
+msgid "Placeholder for Input example!"
+msgstr ""
+
+#: blocks/calculate_route/edit.php:35
+msgid "Service Provider that delivers the information about the route!"
+msgstr ""
+
+#: blocks/calculate_route/edit.php:39
+msgid "Select a Provider"
+msgstr ""
+
+#: blocks/calculate_route/edit.php:40
+msgid "Let the User decide"
+msgstr ""
+
+#: blocks/calculate_route/edit.php:53
+msgid "This is the target Address for the route!"
+msgstr ""
+
+#: blocks/calculate_route/edit.php:56
+msgid "Streetname & Number, Zipcode, Location"
+msgstr ""
+
+#: blocks/calculate_route/edit.php:61
+msgid "Text of the Button!"
+msgstr ""
+
+#: blocks/calculate_route/edit.php:69
+msgid "Button Width"
+msgstr ""
+
+#: blocks/calculate_route/edit.php:70
+msgid "This means the Bootstrap col-md-x Classes for the Button width!"
+msgstr ""
+
+#: blocks/history/controller.php:55
+msgid "Display a Picture, a Year and Text"
+msgstr ""
+
+#: blocks/history/controller.php:60
+msgid "History"
+msgstr ""
+
+#: blocks/history/controller.php:65
+msgid ""
+"Add an Element that includes a Picture and a Text. Optional settings: "
+"Loading Effect, Linking to another Page and Year"
+msgstr ""
+
+#: blocks/history/controller.php:168
+msgid "Source Page"
+msgstr ""
+
+#: blocks/history/controller.php:176 blocks/history/edit.php:67
+#: blocks/history/edit.php:102
+msgid "Link to Page"
+msgstr ""
+
+#: blocks/history/controller.php:201 blocks/history/edit.php:117
+msgid "Year"
+msgstr ""
+
+#: blocks/history/controller.php:209 blocks/history/edit.php:135
+msgid "Text"
+msgstr ""
+
+#: blocks/history/view.php:89 blocks/history/view.php:100
+#: blocks/history/view.php:194
+msgid "Picture of"
+msgstr ""
+
+#: blocks/history/view.php:145
+msgid "Subpages have not entire data to display"
+msgstr ""
+
+#: blocks/history/view.php:153
+msgid "Source Page has no Subpages"
+msgstr ""
+
+#: blocks/history/view.php:161
+msgid "Source Page not found"
+msgstr ""
+
+#: blocks/history/view.php:212
+msgid "Image not found"
+msgstr ""
+
+#: blocks/history/edit.php:22
+msgid "Single"
+msgstr ""
+
+#: blocks/history/edit.php:23
+msgid "Create from Page"
+msgstr ""
+
+#: blocks/history/edit.php:78
+msgid ""
+"This Block will try to read following Page Attributes from all Subpages of "
+"the selected Source Page"
+msgstr ""
+
+#: blocks/history/edit.php:83
+msgid "Available"
+msgstr ""
+
+#: blocks/history/edit.php:88
+msgid "Not available"
+msgstr ""
+
+#: blocks/history/edit.php:92 blocks/history/edit.php:93
+msgid "or"
+msgstr ""
+
+#: blocks/history/edit.php:93
+msgid "Description"
+msgstr ""
+
+#: blocks/history/edit.php:93
+msgid "Meta Description"
+msgstr ""
+
+#: blocks/history/edit.php:94
+msgid "Link"
+msgstr ""
+
+#: blocks/history/edit.php:95
+msgid "Created Time"
+msgstr ""
+
+#: blocks/history/edit.php:103
+msgid "This is only visible if a Year is selected!"
+msgstr ""
+
+#: blocks/history/edit.php:120
+msgid "none"
+msgstr ""
+
+#: blocks/onepage_nav_marker/controller.php:43
+msgid "Navigation Mapping for the OnePage Theme"
+msgstr ""
+
+#: blocks/onepage_nav_marker/controller.php:48
+#: blocks/onepage_nav_marker/view.php:29 blocks/onepage_nav_marker/view.php:63
+#: blocks/onepage_nav_marker/view.php:74
+msgid "OnePage Nav Marker"
+msgstr ""
+
+#: blocks/onepage_nav_marker/controller.php:53
+msgid ""
+"<b>Creates OnePage Navigation Links</b><p>1.) Create your Sitestructure with "
+"content in the Sitemap.<br><br>2.) Create a new Page and change the Page "
+"Theme to Porto OnePage on that Page.<br><br>3.) Add any instances from this "
+"Block into the new Page.</p>"
+msgstr ""
+
+#: blocks/onepage_nav_marker/controller.php:158
+msgid "There is a Problem with the new Page"
+msgstr ""
+
+#: blocks/onepage_nav_marker/view.php:47
+msgid "Included Areas"
+msgstr ""
+
+#: blocks/onepage_nav_marker/view.php:51
+msgid "No Included Areas!"
+msgstr ""
+
+#: blocks/onepage_nav_marker/view.php:64
+msgid "is not active"
+msgstr ""
+
+#: blocks/onepage_nav_marker/view.php:75
+msgid "is error"
+msgstr ""
+
+#: blocks/onepage_nav_marker/edit.php:31
+msgid "This Blocktype works only with the <b>Porto OnePage Template</b>!"
+msgstr ""
+
+#: blocks/onepage_nav_marker/edit.php:32
+msgid "The current Theme for this Page is:"
+msgstr ""
+
+#: blocks/onepage_nav_marker/edit.php:38
+msgid ""
+"Import the content from other Pages to this OnePage here. If you click on a "
+"Navigation point, the page scrolls to this position!"
+msgstr ""
+
+#: blocks/onepage_nav_marker/edit.php:42
+msgid "Include Page &amp; Navigation"
+msgstr ""
+
+#: blocks/onepage_nav_marker/edit.php:43
+msgid "Select Page to include the content in this OnePage Theme."
+msgstr ""
+
+#: blocks/onepage_nav_marker/edit.php:110
+msgid "Current included Pages"
+msgstr ""
+
+#: blocks/onepage_nav_marker/edit.php:111
+msgid "List of currently imported Pages"
+msgstr ""
+
+#: blocks/onepage_nav_marker/edit.php:125
+msgid "Included Areas from Page"
+msgstr ""
+
+#: blocks/onepage_nav_marker/edit.php:126
+msgid ""
+"Select your Area to include its content. If you only want to set a link for "
+"the scrolleffect, select nothing!"
+msgstr ""
+
+#: blocks/page_list/templates/porto_blog_large/view.php:29
+#: blocks/page_list/templates/porto_blog_timeline/view.php:26
+#: blocks/page_list/templates/porto_blog_medium/view.php:29
+msgid "Empty Page List Block."
+msgstr ""
+
+#: blocks/page_list/templates/porto_blog_large/view.php:99
+#: blocks/page_list/templates/porto_blog_timeline/view.php:115
+#: blocks/page_list/templates/porto_blog_medium/view.php:101
+msgid "Image in Edit Mode disabled!"
+msgstr ""
+
+#: blocks/page_list/templates/porto_blog_large/view.php:136
+#: blocks/page_list/templates/porto_blog_timeline/view.php:170
+#: blocks/page_list/templates/porto_blog_medium/view.php:141
+msgid "More"
+msgstr ""
+
+#: blocks/nav_top/controller.php:34
+msgid "Display Links and a Phone number"
+msgstr ""
+
+#: blocks/nav_top/controller.php:39
+msgid "Navigation Headerinfo"
+msgstr ""
+
+#: blocks/nav_top/controller.php:60
+msgid "Link 1 Name is empty!"
+msgstr ""
+
+#: blocks/nav_top/controller.php:65
+msgid "Page for Link 1 is not selected!"
+msgstr ""
+
+#: blocks/nav_top/controller.php:74
+msgid "Link 2 Name is empty!"
+msgstr ""
+
+#: blocks/nav_top/controller.php:79
+msgid "Page for Link 2 is not selected!"
+msgstr ""
+
+#: blocks/nav_top/controller.php:88
+msgid "No data given!"
+msgstr ""
+
+#: blocks/nav_top/form.php:22
+msgid "Link 1 Name"
+msgstr ""
+
+#: blocks/nav_top/form.php:26
+msgid "Link 1 Page"
+msgstr ""
+
+#: blocks/nav_top/form.php:31
+msgid "Link 2 Name"
+msgstr ""
+
+#: blocks/nav_top/form.php:35
+msgid "Link 2 Page"
+msgstr ""
+
+#: blocks/nav_top/form.php:40
+msgid "Tel"
+msgstr ""
+
+#: single_pages/dashboard/porto_design/informationen.php:18
+msgid "Porto Package Information"
+msgstr ""
+
+#: single_pages/dashboard/porto_design/informationen.php:19
+msgid "Insert Site Informations"
+msgstr "Allgemeine Daten zu allgemeinen Informationen"
+
+#: single_pages/dashboard/porto_design/informationen.php:28
+#: single_pages/dashboard/porto_design/header_footer.php:28
+#: single_pages/dashboard/porto_design/menu_logos.php:28
+#: single_pages/dashboard/porto_design/menu_logos.php:149
+#: single_pages/dashboard/porto_design/settings.php:28
+#: controllers/single_page/dashboard/porto_design/informationen.php:90
+#: controllers/single_page/dashboard/porto_design/menu_logos.php:151
+#: controllers/single_page/dashboard/porto_design/menu_logos.php:180
+#: controllers/single_page/dashboard/porto_design/menu_logos.php:367
+#: controllers/single_page/dashboard/porto_design/settings.php:133
+#: controllers/single_page/dashboard/porto_design/settings.php:213
+#: controllers/single_page/dashboard/porto_design/settings.php:253
+#: controllers/single_page/dashboard/porto_design.php:294
+#: themes/porto/inc/footer.php:15 themes/porto/inc/footer.php:35
+#: themes/porto/inc/footer.php:51
+msgid "Close"
+msgstr "Schliessen"
+
+#: single_pages/dashboard/porto_design/informationen.php:28
+#: single_pages/dashboard/porto_design/header_footer.php:28
+#: single_pages/dashboard/porto_design/menu_logos.php:28
+#: single_pages/dashboard/porto_design/settings.php:28
+#: controllers/single_page/dashboard/porto_design/menu_logos.php:180
+#: controllers/single_page/dashboard/porto_design/menu_logos.php:367
+msgid "Error!"
+msgstr "Fehler!"
+
+#: single_pages/dashboard/porto_design/informationen.php:28
+#: single_pages/dashboard/porto_design/header_footer.php:28
+#: single_pages/dashboard/porto_design/menu_logos.php:28
+#: single_pages/dashboard/porto_design/settings.php:28
+#: controllers/single_page/dashboard/porto_design/menu_logos.php:179
+msgid "You do not have permission to edit this page!"
+msgstr "Keine ausreichenden Rechte um diese Seite zu bearbeiten!"
+
+#: single_pages/dashboard/porto_design/informationen.php:44
+msgid "General Information"
+msgstr "Allgemeine Informationen"
+
+#: single_pages/dashboard/porto_design/informationen.php:50
+msgid ""
+"Here you can put in several Information about your Site. The header and "
+"footer types will display this. Email- Bots can not read the Email address!"
+msgstr ""
+"Hier können einige Informationen bezüglich der Seite eingegeben werden. Sie "
+"werden in einigen Seitenkopf bzw. Seitenfuss Bereichen angezeigt! Email "
+"Adressen sind gegen Emailbots geschützt!"
+
+#: single_pages/dashboard/porto_design/informationen.php:56
+#: single_pages/dashboard/porto_design/informationen.php:91
+msgid "Empty = Disabled"
+msgstr "Leer = Deaktiviert"
+
+#: single_pages/dashboard/porto_design/informationen.php:65
+msgid "Breadcrump Text"
+msgstr "Brotkrümelpfad Text"
+
+#: single_pages/dashboard/porto_design/informationen.php:79
+msgid "Breadcrump is not available in OnePage Theme!"
+msgstr "Brotkrümelpfad ist im OnePage Theme nicht verfügbar!"
+
+#: single_pages/dashboard/porto_design/informationen.php:83
+msgid "Breadcrump Navigation are disabled in settings!"
+msgstr "Brotkrümelpfad Navigation ist deaktiviert unter Einstellungen"
+
+#: single_pages/dashboard/porto_design/informationen.php:91
+msgid "Ribbon Text"
+msgstr "Ribbon Text (Nur Seitenfuss Typ 1)"
+
+#: single_pages/dashboard/porto_design/informationen.php:100
+msgid "Copyright"
+msgstr ""
+
+#: single_pages/dashboard/porto_design/informationen.php:100
+#, php-format
+msgid "%s placeholder for %d"
+msgstr "%s Platzhalter für %d"
+
+#: single_pages/dashboard/porto_design/informationen.php:110
+#: single_pages/dashboard/porto_design/header_footer.php:129
+#: single_pages/dashboard/porto_design/menu_logos.php:170
+#: single_pages/dashboard/porto_design/settings.php:150
+#: themes/porto/account/edit_profile.php:161
+#: themes/porto/account/edit_profile_orig.php:89
+msgid "Save"
+msgstr "Speichern"
+
+#: single_pages/dashboard/porto_design/header_footer.php:18
+msgid "Porto Package Header and Footer Design"
+msgstr "Porto Package Seitenkopf und Seitenfuß"
+
+#: single_pages/dashboard/porto_design/header_footer.php:19
+msgid "Changes the Header and Footer Type of the Pages"
+msgstr "Ändert denn Seitenkopf und denn Seitenfuss von der Seite!"
+
+#: single_pages/dashboard/porto_design/header_footer.php:46
+msgid "Theme Header Type"
+msgstr "Theme Seitenkopf Typ"
+
+#: single_pages/dashboard/porto_design/header_footer.php:52
+msgid ""
+"Here you can select a header type. Not every header has a search function!"
+msgstr ""
+"Hier kann ein Seitenkopf Typ gewählt werden (Nicht jeder Seitenkopf Typ hat "
+"eine Suchbox integriert)."
+
+#: single_pages/dashboard/porto_design/header_footer.php:60
+#: single_pages/dashboard/porto_design/settings.php:88
+msgid "This function does not work with the OnePage Theme!"
+msgstr "Diese Funktion funktioniert nicht mit dem OnePage Theme!"
+
+#: single_pages/dashboard/porto_design/header_footer.php:91
+msgid "Theme Footer Type"
+msgstr "Theme Seitenfuss Typ"
+
+#: single_pages/dashboard/porto_design/header_footer.php:97
+msgid "Here you can select a footer type."
+msgstr "Hier kann ein Seitenfuss gewählt werden."
+
+#: single_pages/dashboard/porto_design/menu_logos.php:19
+msgid "Upload a Site Logo and / or create an animated Menu loading Effect"
+msgstr "Seitenlogo hochladen und / oder animierte Navigation erstellen"
+
+#: single_pages/dashboard/porto_design/menu_logos.php:45
+msgid "Page Images"
+msgstr "Seitenlogo & Hintergrundbild"
+
+#: single_pages/dashboard/porto_design/menu_logos.php:51
+msgid "Logo (Header)"
+msgstr "Logo (Seitenkopf)"
+
+#: single_pages/dashboard/porto_design/menu_logos.php:53
+#: single_pages/dashboard/porto_design/menu_logos.php:84
+msgid "Prior be sure to transform the Image to the right size!"
+msgstr "Vorher unbedingt sicher stellen, dass das Bild die passende Größe hat!"
+
+#: single_pages/dashboard/porto_design/menu_logos.php:58
+#: single_pages/dashboard/porto_design/menu_logos.php:88
+msgid "Select Logo"
+msgstr "Wähle Logo"
+
+#: single_pages/dashboard/porto_design/menu_logos.php:64
+#: single_pages/dashboard/porto_design/menu_logos.php:119
+msgid "Width:"
+msgstr "Breite:"
+
+#: single_pages/dashboard/porto_design/menu_logos.php:71
+#: single_pages/dashboard/porto_design/menu_logos.php:127
+msgid "Height:"
+msgstr "Höhe:"
+
+#: single_pages/dashboard/porto_design/menu_logos.php:82
+msgid "Logo (Footer)"
+msgstr "Logo (Seitenfuss)"
+
+#: single_pages/dashboard/porto_design/menu_logos.php:94
+msgid "Sticky Menu Logo"
+msgstr ""
+
+#: single_pages/dashboard/porto_design/menu_logos.php:96
+msgid ""
+"Activate the Sticky-Header menu here! The animation works only with a "
+"selected Logo (Header) and Sticky Menu Logo."
+msgstr ""
+"Das Sticky Menu positioniert die Navigationsleiste je nach gewählter "
+"Seitenposition und blendet sie nicht aus."
+
+#: single_pages/dashboard/porto_design/menu_logos.php:97
+msgid ""
+"The function \"always on\" overrides the Logo (Header) and will not "
+"displayed if the User can see the Concrete5 edit taskbar!"
+msgstr ""
+" Immer an bedeutet, dass die Navigation immer am oberen Browser Rand fest "
+"steht wenn keine Concrete5 Edit Bar geladen wird.  Animieren schaltet je "
+"nach Position um. Die Animation benötigt das Logo (Seitenkopf) sowie das "
+"Sticky Menu Logo."
+
+#: single_pages/dashboard/porto_design/menu_logos.php:102
+msgid "off"
+msgstr "aus"
+
+#: single_pages/dashboard/porto_design/menu_logos.php:103
+msgid "always on"
+msgstr "immer an"
+
+#: single_pages/dashboard/porto_design/menu_logos.php:104
+msgid "animate"
+msgstr "animieren"
+
+#: single_pages/dashboard/porto_design/menu_logos.php:111
+msgid "Top:"
+msgstr "Oben:"
+
+#: single_pages/dashboard/porto_design/menu_logos.php:137
+msgid "Sticky Logo"
+msgstr ""
+
+#: single_pages/dashboard/porto_design/menu_logos.php:143
+msgid "Background Image"
+msgstr "Hintergrundbild"
+
+#: single_pages/dashboard/porto_design/menu_logos.php:149
+#: controllers/single_page/dashboard/porto_design/menu_logos.php:151
+#: controllers/single_page/dashboard/porto_design.php:294
+msgid "Attention!"
+msgstr "Achtung!"
+
+#: single_pages/dashboard/porto_design/menu_logos.php:149
+msgid "For activate this Image please disable first the Boxed Mode!"
+msgstr ""
+"Das Hintergrundbild kann nur genutzt werden wenn der \"Kasten Modus\" "
+"deaktiviert ist!"
+
+#: single_pages/dashboard/porto_design/menu_logos.php:156
+msgid "Select Background"
+msgstr "Wähle Hintergrund"
+
+#: single_pages/dashboard/porto_design/menu_logos.php:159
+msgid "Fix Background Image"
+msgstr "Hintergrundbild fixieren"
+
+#: single_pages/dashboard/porto_design/settings.php:18
+msgid "Porto Package Setup"
+msgstr "Porto Package Einstellungen"
+
+#: single_pages/dashboard/porto_design/settings.php:19
+msgid "Theme-Design and loading functions"
+msgstr "Theme-Design, Seitenladefunktionen & Suchbox Optionen"
+
+#: single_pages/dashboard/porto_design/settings.php:46
+msgid "Theme settings"
+msgstr "Theme Optionen"
+
+#: single_pages/dashboard/porto_design/settings.php:52
+msgid "Load Javascript &amp; CSS Files over CDN"
+msgstr "Javascript & CSS Dateien über CDN Server laden"
+
+#: single_pages/dashboard/porto_design/settings.php:55
+msgid "This option accelerated the Server load"
+msgstr "Diese Option beschleunigt die Ladezeit der Seite"
+
+#: single_pages/dashboard/porto_design/settings.php:60
+msgid "Show login in Navigation"
+msgstr "Zeige Loginbox in der Navigation"
+
+#: single_pages/dashboard/porto_design/settings.php:63
+msgid "Displays a login function in the Autonav Porto- Navigation"
+msgstr ""
+"Loginbox & Benutzereinstellungen in die Autonav Porto Navigation einbinden"
+
+#: single_pages/dashboard/porto_design/settings.php:70
+msgid "Activate Boxed Mode"
+msgstr "Aktiviere Kasten Modus"
+
+#: single_pages/dashboard/porto_design/settings.php:73
+msgid "Display the Page as a Boxed Version"
+msgstr "Positioniert den Seiteninhalt in einen Kasten"
+
+#: single_pages/dashboard/porto_design/settings.php:78
+msgid "Enable Breadcrump Navigation"
+msgstr "Aktiviere Brotkrümelnavigation"
+
+#: single_pages/dashboard/porto_design/settings.php:81
+msgid "Home"
+msgstr "Startseite"
+
+#: single_pages/dashboard/porto_design/settings.php:81
+#, php-format
+msgid ""
+"Display the Breadcrump Navigation in every Pagetemplate with the exception "
+"of the \"%s\" Pagetemplate!"
+msgstr ""
+"Zeigt den Bereich \"Sie sind hier:\" in jedem Seitentemplate mit Ausnahme "
+"von dem \"%s\" Seitentemplate!"
+
+#: single_pages/dashboard/porto_design/settings.php:98
+msgid "Enable Scroll to top"
+msgstr "Nach oben rollen aktivieren"
+
+#: single_pages/dashboard/porto_design/settings.php:101
+msgid "Enable a Scroll to top function in the bottom of the page"
+msgstr ""
+"Im unteren rechten Bereich der Seite wird ein \"Nach oben rollen\" Knopf "
+"eingeblendet"
+
+#: single_pages/dashboard/porto_design/settings.php:106
+msgid "Load Footer- Infotext from Meta-Description"
+msgstr "Lade Fusstext aus der Seiten-Meta Beschreibung"
+
+#: single_pages/dashboard/porto_design/settings.php:109
+msgid "Get the Meta Description from the Site and put it to the footer"
+msgstr "Text aus der Seiten-Meta Beschreibung in den Seitenfuss laden"
+
+#: single_pages/dashboard/porto_design/settings.php:117
+msgid "Search settings"
+msgstr "Einstellungen für Seitensuche"
+
+#: single_pages/dashboard/porto_design/settings.php:123
+msgid "Link User defined search querys to target search page"
+msgstr "Benutzerdefinierte Suchanfragen umleiten auf Such-Seite"
+
+#: single_pages/dashboard/porto_design/settings.php:132
+msgid "Searchbox placeholder text"
+msgstr "Platzhalter Text für Suchbox"
+
+#: single_pages/dashboard/porto_design/settings.php:141
+msgid "Error Message by sending an empty query"
+msgstr "Nachricht für Anfrage ohne Suchbegriff"
+
+#: single_pages/dashboard/porto_design/settings.php:144
+msgid "Searchquery is empty!"
+msgstr "Suchanfrage darf nicht leer sein!"
+
+#: single_pages/dashboard/porto_design.php:20
+msgid "Setup for Porto Package"
+msgstr ""
+"Porto Einstellungen für das Seitenverhalten, Seitendesign und Seitenlogo"
+
+#: single_pages/dashboard/porto_design.php:54 elements/dashboard/install.php:19
+#: elements/dashboard/uninstall.php:19
+msgid "Manufacturer"
+msgstr "Hersteller"
+
+#: single_pages/dashboard/porto_design.php:59 elements/dashboard/install.php:24
+#: elements/dashboard/uninstall.php:24
+msgid "Developer"
+msgstr "Entwickler"
+
+#: single_pages/dashboard/porto_design.php:67 elements/dashboard/install.php:32
+#: elements/dashboard/uninstall.php:32
+msgid "Facebook"
+msgstr "Facebook"
+
+#: single_pages/dashboard/porto_design.php:71 elements/dashboard/install.php:36
+#: elements/dashboard/uninstall.php:36
+msgid "Ideas or criticism?"
+msgstr "Ideen oder Kritik?"
+
+#: single_pages/dashboard/porto_design.php:72
+msgid "Tell me!"
+msgstr "Teile es mit!"
+
+#: controllers/single_page/dashboard/porto_design/informationen.php:70
+msgid "Syntax error in Email Address!"
+msgstr "Syntax Fehler in der Email Adresse!"
+
+#: controllers/single_page/dashboard/porto_design/menu_logos.php:75
+#: controllers/single_page/dashboard/porto_design.php:250
+msgid "The stored Logo (Header) is incorrect! The link will be deleted!"
+msgstr ""
+
+#: controllers/single_page/dashboard/porto_design/menu_logos.php:83
+#: controllers/single_page/dashboard/porto_design.php:257
+msgid "The stored Logo (Header) does not exists! The link will be deleted!"
+msgstr ""
+
+#: controllers/single_page/dashboard/porto_design/menu_logos.php:96
+#: controllers/single_page/dashboard/porto_design.php:277
+msgid "The stored Logo (Footer) is incorrect! The link will be deleted!"
+msgstr ""
+
+#: controllers/single_page/dashboard/porto_design/menu_logos.php:104
+#: controllers/single_page/dashboard/porto_design.php:284
+msgid "The stored Logo (Footer) does not exists! The link will be deleted!"
+msgstr ""
+
+#: controllers/single_page/dashboard/porto_design/menu_logos.php:117
+msgid "The stored Sticky Menu Logo is incorrect! The link will be deleted!"
+msgstr ""
+
+#: controllers/single_page/dashboard/porto_design/menu_logos.php:125
+msgid "The stored Sticky Menu Logo does not exists! The link will be deleted!"
+msgstr ""
+
+#: controllers/single_page/dashboard/porto_design/menu_logos.php:138
+msgid "The stored Background Image is incorrect! The link will be deleted!"
+msgstr ""
+
+#: controllers/single_page/dashboard/porto_design/menu_logos.php:146
+msgid "The stored Background Image does not exists! The link will be deleted!"
+msgstr ""
+
+#: controllers/single_page/dashboard/porto_design/menu_logos.php:206
+#: controllers/single_page/dashboard/porto_design/menu_logos.php:228
+msgid "The Logo (Header) is incorrect!"
+msgstr ""
+
+#: controllers/single_page/dashboard/porto_design/menu_logos.php:252
+#: controllers/single_page/dashboard/porto_design/menu_logos.php:264
+msgid "The Logo (Footer) is incorrect!"
+msgstr ""
+
+#: controllers/single_page/dashboard/porto_design/menu_logos.php:284
+#: controllers/single_page/dashboard/porto_design/menu_logos.php:311
+msgid "The Sticky Menu Logo is incorrect!"
+msgstr ""
+
+#: controllers/single_page/dashboard/porto_design/menu_logos.php:347
+#: controllers/single_page/dashboard/porto_design/menu_logos.php:355
+msgid "The Background Image is incorrect!"
+msgstr ""
+
+#: controllers/single_page/dashboard/porto_design/settings.php:65
+#: controllers/single_page/dashboard/porto_design.php:174
+#, php-format
+msgid ""
+"Footer- Infotext can not autofilled by Meta- Description of \"%s\" page "
+"because it is not defined!"
+msgstr ""
+
+#: controllers/single_page/dashboard/porto_design/settings.php:72
+#: controllers/single_page/dashboard/porto_design/settings.php:197
+#: controllers/single_page/dashboard/porto_design.php:183
+msgid "There is no target page for the search function defined!"
+msgstr ""
+
+#: controllers/single_page/dashboard/porto_design/settings.php:78
+#: controllers/single_page/dashboard/porto_design/settings.php:159
+#: controllers/single_page/dashboard/porto_design.php:233
+msgid "The target page for the search function is incorrect!"
+msgstr ""
+
+#: controllers/single_page/dashboard/porto_design/settings.php:84
+#: controllers/single_page/dashboard/porto_design/settings.php:165
+#: controllers/single_page/dashboard/porto_design.php:217
+msgid "The target page for the search page must be a internal page!"
+msgstr ""
+
+#: controllers/single_page/dashboard/porto_design/settings.php:106
+#: controllers/single_page/dashboard/porto_design/settings.php:187
+#: controllers/single_page/dashboard/porto_design.php:210
+msgid "Can not find a Search- Block on the selected search page!"
+msgstr ""
+
+#: controllers/single_page/dashboard/porto_design/settings.php:122
+#: controllers/single_page/dashboard/porto_design/settings.php:201
+#: controllers/single_page/dashboard/porto_design.php:222
+msgid "There is no textbox placeholder defined for the search function!"
+msgstr ""
+
+#: controllers/single_page/dashboard/porto_design/settings.php:126
+#: controllers/single_page/dashboard/porto_design/settings.php:205
+#: controllers/single_page/dashboard/porto_design.php:227
+msgid "There is no Error Message defined for empty search querys!"
+msgstr ""
+
+#: controllers/single_page/dashboard/porto_design.php:68
+#: controllers/single_page/dashboard/porto_design.php:81
+#: controllers/single_page/dashboard/porto_design.php:94
+#: controllers/single_page/dashboard/porto_design.php:107
+msgid "is missing in the configuration File! Example:"
+msgstr ""
+
+#: controllers/single_page/dashboard/porto_design.php:75
+#: controllers/single_page/dashboard/porto_design.php:88
+#: controllers/single_page/dashboard/porto_design.php:101
+#: controllers/single_page/dashboard/porto_design.php:114
+#, php-format
+msgid "is currently set to %s"
+msgstr ""
+
+#: controllers/single_page/dashboard/porto_design.php:75
+#: controllers/single_page/dashboard/porto_design.php:88
+#: controllers/single_page/dashboard/porto_design.php:101
+#: controllers/single_page/dashboard/porto_design.php:114
+msgid "Change the line to"
+msgstr ""
+
+#: controllers/single_page/dashboard/porto_design.php:121
+msgid "The Theme paths array key is missing in your configuration File!"
+msgstr ""
+
+#: controllers/single_page/dashboard/porto_design.php:121
+msgid "Create"
+msgstr ""
+
+#: controllers/single_page/dashboard/porto_design.php:121
+msgid "in the return array!"
+msgstr ""
+
+#: controllers/single_page/dashboard/porto_design.php:127
+msgid "is not present! Please create the File!"
+msgstr ""
+
+#: controllers/single_page/dashboard/porto_design.php:137
+#, php-format
+msgid ""
+"Currently there are no Porto Theme active. Go to %s and enable one of the "
+"Porto Themes!"
+msgstr ""
+
+#: controllers/single_page/dashboard/porto_design.php:147
+#: controllers/single_page/dashboard/porto_design.php:156
+#, php-format
+msgid "The System- Page %s does not have any content! You can create it now!"
+msgstr ""
+
+#: controllers/single_page/dashboard/porto_design.php:164
+#, php-format
+msgid ""
+"Currently there is no Theme active. Go to %s and enable one of the Porto "
+"Themes!"
+msgstr ""
+
+#: controllers/single_page/dashboard/porto_design.php:263
+msgid "Select a Logo (Header) for your page!"
+msgstr ""
+
+#: controllers/single_page/dashboard/porto_design.php:290
+msgid "Select a Logo (Footer) for your page!"
+msgstr ""
+
+#: jobs/clear_empty_workflow_progress.php:32
+msgid "Clear Empty Workflow Progress"
+msgstr ""
+
+#: jobs/clear_empty_workflow_progress.php:37
+msgid "Deletes empty \"Compare Versions\" alert."
+msgstr ""
+
+#: themes/onepage/default.php:220 themes/porto/inc/footer.php:123
+msgid "All"
+msgstr ""
+
+#: themes/onepage/page_theme.php:43
+msgid "Porto OnePage Template"
+msgstr ""
+
+#: themes/onepage/page_theme.php:54
+msgid "The Porto Bootstrap 3 OnePage Template"
+msgstr ""
+
+#: themes/porto/login.php:76 themes/porto/login.php:107
+#: themes/porto/account/edit_profile.php:101
+#: elements/page_controls_footer.php:107 elements/page_controls_footer.php:109
+msgid "Attributes"
+msgstr ""
+
+#: themes/porto/login.php:141
+msgid "Submit"
+msgstr ""
+
+#: themes/porto/page_theme.php:43
+msgid "Porto Template"
+msgstr ""
+
+#: themes/porto/page_theme.php:54
+msgid "The Porto Bootstrap 3 Template"
+msgstr ""
+
+#: themes/porto/page_not_found.php:27
+msgid "404 - Page Not Found"
+msgstr ""
+
+#: themes/porto/register.php:58 themes/porto/register.php:65
+#: themes/porto/register.php:71
+msgid "Return to Home"
+msgstr ""
+
+#: themes/porto/register.php:82
+msgid "Your Details"
+msgstr ""
+
+#: themes/porto/register.php:100
+msgid "Confirm Password"
+msgstr ""
+
+#: themes/porto/register.php:113
+msgid "Options"
+msgstr ""
+
+#: themes/porto/members/directory.php:60
+msgid "No users found."
+msgstr ""
+
+#: themes/porto/members/profile.php:73
+#, php-format
+msgid "Joined on %s"
+msgstr ""
+
+#: themes/porto/members/profile.php:75
+msgid "Community Points"
+msgstr ""
+
+#: themes/porto/members/profile.php:112
+#, php-format
+msgid "Awarded %s"
+msgstr ""
+
+#: themes/porto/members/profile.php:127
+msgid "Edit"
+msgstr ""
+
+#: themes/porto/members/profile.php:131
+#: themes/porto/account/messages/inbox.php:246
+msgid "Send Message"
+msgstr ""
+
+#: themes/porto/page_forbidden.php:27
+msgid "403 - You are not allowed to access this page"
+msgstr ""
+
+#: themes/porto/account/edit_profile.php:63
+#: themes/porto/account/edit_profile_orig.php:23
+msgid "Time Zone"
+msgstr ""
+
+#: themes/porto/account/edit_profile.php:72
+#: themes/porto/account/edit_profile_orig.php:32
+msgid "Language"
+msgstr ""
+
+#: themes/porto/account/edit_profile.php:82
+#: themes/porto/account/edit_profile_orig.php:71
+msgid "Change Password"
+msgstr ""
+
+#: themes/porto/account/edit_profile.php:84
+#: themes/porto/account/edit_profile_orig.php:73
+msgid "New Password"
+msgstr ""
+
+#: themes/porto/account/edit_profile.php:87
+#: themes/porto/account/edit_profile_orig.php:75
+msgid "Leave blank to keep current password."
+msgstr ""
+
+#: themes/porto/account/edit_profile.php:91
+#: themes/porto/account/edit_profile_orig.php:79
+msgid "Confirm New Password"
+msgstr ""
+
+#: themes/porto/account/edit_profile.php:140
+#: themes/porto/account/edit_profile_orig.php:59
+msgid "Authentication Types"
+msgstr ""
+
+#: themes/porto/account/edit_profile.php:162 themes/porto/account/avatar.php:94
+#: themes/porto/account/messages/inbox.php:97
+#: themes/porto/account/edit_profile_orig.php:88
+msgid "Back to Account"
+msgstr ""
+
+#: themes/porto/account/avatar.php:48
+msgid ""
+"You need the Adobe Flash plugin installed on your computer to upload and "
+"crop your user profile picture."
+msgstr ""
+
+#: themes/porto/account/avatar.php:100
+msgid "Remove your user avatar"
+msgstr ""
+
+#: themes/porto/account/view.php:63
+msgid "View Public Profile"
+msgstr ""
+
+#: themes/porto/account/view.php:66
+msgid "View your public user profile and the information you are sharing."
+msgstr ""
+
+#: themes/porto/account/messages/inbox.php:26
+#: themes/porto/account/messages/inbox.php:99
+#: themes/porto/account/messages/inbox.php:261
+msgid "Inbox"
+msgstr ""
+
+#: themes/porto/account/messages/inbox.php:27
+#: themes/porto/account/messages/inbox.php:100
+msgid "Sent"
+msgstr ""
+
+#: themes/porto/account/messages/inbox.php:38
+msgid "Action"
+msgstr ""
+
+#: themes/porto/account/messages/inbox.php:49
+msgid "Reply"
+msgstr ""
+
+#: themes/porto/account/messages/inbox.php:54
+msgid "Delete this message?"
+msgstr ""
+
+#: themes/porto/account/messages/inbox.php:54
+#: elements/page_controls_footer.php:148 elements/page_controls_footer.php:150
+msgid "Delete"
+msgstr ""
+
+#: themes/porto/account/messages/inbox.php:109
+#: themes/porto/account/messages/inbox.php:233
+msgid "To"
+msgstr ""
+
+#: themes/porto/account/messages/inbox.php:113
+msgid "From"
+msgstr ""
+
+#: themes/porto/account/messages/inbox.php:119
+#: themes/porto/account/messages/inbox.php:238
+msgid "Subject"
+msgstr ""
+
+#: themes/porto/account/messages/inbox.php:122
+msgid "Sent At"
+msgstr ""
+
+#: themes/porto/account/messages/inbox.php:125
+msgid "Status"
+msgstr ""
+
+#: themes/porto/account/messages/inbox.php:176
+msgid "No messages found."
+msgstr ""
+
+#: themes/porto/account/messages/inbox.php:194
+msgid "Reply Sent."
+msgstr ""
+
+#: themes/porto/account/messages/inbox.php:195
+msgid "Back to Message"
+msgstr ""
+
+#: themes/porto/account/messages/inbox.php:201
+msgid "Message Sent."
+msgstr ""
+
+#: themes/porto/account/messages/inbox.php:202
+msgid "Back to Profile"
+msgstr ""
+
+#: themes/porto/account/messages/inbox.php:207
+msgid "Woops!"
+msgstr ""
+
+#: themes/porto/account/messages/inbox.php:208
+msgid ""
+"You've sent more messages than we can handle just now, that last one didn't "
+"go out.\n"
+"                            We've notified an administrator to check into "
+"this.\n"
+"                            Please wait a few minutes before sending a new "
+"message."
+msgstr ""
+
+#: themes/porto/account/messages/inbox.php:224
+#, php-format
+msgid "Re: %s"
+msgstr ""
+
+#: themes/porto/account/messages/inbox.php:243
+msgid "Message"
+msgstr ""
+
+#: themes/porto/account/messages/inbox.php:247
+msgid "Cancel"
+msgstr ""
+
+#: themes/porto/account/messages/inbox.php:267
+#: themes/porto/account/messages/inbox.php:283
+#, php-format
+msgid "<strong>%s</strong>, sent by %s on %s"
+msgstr ""
+
+#: themes/porto/account/messages/inbox.php:277
+msgid "Sent Messages"
+msgstr ""
+
+#: themes/porto/account/edit_profile_orig.php:10
+msgid "Edit Profile"
+msgstr ""
+
+#: themes/porto/account/edit_profile_orig.php:16
+msgid "Basic Information"
+msgstr ""
+
+#: elements/page_controls_footer.php:58 elements/page_controls_footer.php:65
+msgid "Save Changes"
+msgstr ""
+
+#: elements/page_controls_footer.php:72
+msgid "Edit this Page"
+msgstr ""
+
+#: elements/page_controls_footer.php:75
+msgid "Page Properties"
+msgstr ""
+
+#: elements/page_controls_footer.php:81 elements/page_controls_footer.php:83
+msgid "Composer"
+msgstr ""
+
+#: elements/page_controls_footer.php:92 elements/page_controls_footer.php:94
+msgid "SEO"
+msgstr ""
+
+#: elements/page_controls_footer.php:115 elements/page_controls_footer.php:117
+msgid "Caching"
+msgstr ""
+
+#: elements/page_controls_footer.php:123 elements/page_controls_footer.php:126
+msgid "Permissions"
+msgstr ""
+
+#: elements/page_controls_footer.php:132 elements/page_controls_footer.php:134
+msgid "Design"
+msgstr ""
+
+#: elements/page_controls_footer.php:140 elements/page_controls_footer.php:142
+msgid "Versions"
+msgstr ""
+
+#: elements/page_controls_footer.php:157
+msgid "Dashboard"
+msgstr ""
+
+#: elements/page_controls_footer.php:161
+msgid "Sitemap"
+msgstr ""
+
+#: elements/page_controls_footer.php:163
+msgid "Files"
+msgstr ""
+
+#: elements/page_controls_footer.php:165
+msgid "Members"
+msgstr ""
+
+#: elements/page_controls_footer.php:167
+msgid "Reports"
+msgstr ""
+
+#: elements/page_controls_footer.php:169
+msgid "Pages & Themes"
+msgstr ""
+
+#: elements/page_controls_footer.php:171
+msgid "Workflow"
+msgstr ""
+
+#: elements/page_controls_footer.php:173
+msgid "Stacks & Blocks"
+msgstr ""
+
+#: elements/page_controls_footer.php:175
+msgid "Extend concrete5"
+msgstr ""
+
+#: elements/page_controls_footer.php:177
+msgid "System & Settings"
+msgstr ""
+
+#: elements/page_controls_footer.php:208
+msgid "Exit Edit Mode"
+msgstr ""
+
+#: elements/page_controls_footer.php:219
+msgid "Edit This Page"
+msgstr ""
+
+#: elements/page_controls_footer.php:239
+msgid "Composer, Page Design, Location, Attributes and Settings"
+msgstr ""
+
+#: elements/page_controls_footer.php:241
+msgid "Page Design, Location, Attributes and Settings"
+msgstr ""
+
+#: elements/page_controls_footer.php:261 elements/page_controls_footer.php:269
+msgid "Add Content to The Page"
+msgstr ""
+
+#: elements/page_controls_footer.php:295
+#, php-format
+msgid "Powered by <a href=\"%s\" target=\"_blank\">Blade83</a>."
+msgstr ""
+
+#: elements/page_controls_footer.php:305
+msgid "Dashboard – Change Site-wide Settings"
+msgstr ""
+
+#: elements/page_controls_footer.php:324
+msgid "Add Pages and Navigate Your Site"
+msgstr ""
+
+#: elements/page_controls_footer.php:338
+msgid "Navigate this page in other languages"
+msgstr ""
+
+#: elements/page_controls_footer.php:376
+msgid "Editing Unavailable."
+msgstr ""
+
+#: elements/page_controls_footer.php:377
+#, php-format
+msgid "%s is currently editing this page."
+msgstr ""
+
+#: elements/page_controls_footer.php:388
+msgid "View/Edit Original"
+msgstr ""
+
+#: elements/page_controls_footer.php:391 elements/page_controls_footer.php:392
+msgid "Remove Alias"
+msgstr ""
+
+#: elements/page_controls_footer.php:397
+msgid "Page Alias."
+msgstr ""
+
+#: elements/page_controls_footer.php:398
+msgid "This page is an alias of one that actually appears elsewhere."
+msgstr ""
+
+#: elements/page_controls_footer.php:458
+msgid "Hide"
+msgstr ""
+
+#: elements/page_controls_footer.php:472
+msgid "Page Draft."
+msgstr ""
+
+#: elements/page_controls_footer.php:473
+msgid "This is an un-published draft."
+msgstr ""
+
+#: elements/page_controls_footer.php:496
+msgid "Submit to Workflow"
+msgstr ""
+
+#: elements/page_controls_footer.php:500
+msgid "Approve Version"
+msgstr ""
+
+#: elements/page_controls_footer.php:509
+msgid "Page is Pending Approval."
+msgstr ""
+
+#: elements/page_controls_footer.php:510
+msgid "This page is newer than what appears to visitors on your live site."
+msgstr ""
+
+#: elements/dashboard/install.php:9
+msgid "Porto Package installer"
+msgstr ""
+
+#: elements/dashboard/install.php:10
+msgid "Enable or disable the features for the install routine of this Package"
+msgstr ""
+
+#: elements/dashboard/install.php:37 elements/dashboard/uninstall.php:37
+msgid "Send a message"
+msgstr ""
+
+#: elements/dashboard/install.php:44
+msgid "Package install options"
+msgstr ""
+
+#: elements/dashboard/install.php:49
+msgid "Enable Loging for installation"
+msgstr ""
+
+#: elements/dashboard/install.php:55
+msgid "Create Filesets"
+msgstr ""
+
+#: elements/dashboard/install.php:61
+msgid "Create Cron Jobs"
+msgstr ""
+
+#: elements/dashboard/install.php:67
+msgid "Create Blocks"
+msgstr ""
+
+#: elements/dashboard/uninstall.php:9
+msgid "Porto Package uninstaller"
+msgstr ""
+
+#: elements/dashboard/uninstall.php:10
+msgid ""
+"Enable or disable the features for the uninstall routine of this Package"
+msgstr ""
+
+#: elements/dashboard/uninstall.php:44
+msgid "Package uninstall options"
+msgstr ""
+
+#: elements/dashboard/uninstall.php:49
+msgid "Remove Filesets"
+msgstr ""

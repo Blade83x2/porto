@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<schema version="0.3">
+	<table name="PortoPackage">
+		<field name="cID" type="I">
+			<key />
+			<unsigned />
+			<autoincrement />
+			<notnull />
+		</field>
+		<field name="load_from_cdn" type="I" size="1" />
+		<field name="load_footerinfotext_from_metadescription" type="I" size="1" />
+		<field name="second_stickymenu_gfx" type="I">
+		    <unsigned />
+		</field>
+		<field name="second_stickymenu_gfx_x" type="I" size="3">
+		    <unsigned />
+		</field>
+		<field name="second_stickymenu_gfx_y" type="I" size="3">
+		    <unsigned />
+		</field>
+		<field name="second_stickymenu_gfx_top" type="I" size="3" />
+		<field name="page_logo_x" type="I" size="3">
+		    <unsigned />
+		</field>
+		<field name="page_logo_y" type="I" size="3">
+		    <unsigned />
+		</field>
+        <field name="header_type" type="I" size="2" />
+        <field name="footer_type" type="I" size="2" />
+        <field name="show_login" type="I" size="1" />
+        <field name="boxed_design" type="I" size="1" />
+        <field name="background_image" type="I" size="4" />
+        <field name="background_fix" type="I" size="1" />
+        <field name="searchpage_id" type="I" size="4" />
+        <field name="searchpage_text" type="C" size="80" />
+        <field name="searchpage_empty_query" type="X" />
+        <field name="page_logo" type="I" />
+        <field name="page_logo_mini" type="I" />
+        <field name="footer_copyright" type="C" size="255" />
+        <field name="footer_ribbon" type="C" size="255" />
+        <field name="email" type="C" size="120" />
+		<field name="stickymenu_active" type="I" size="1">
+		    <unsigned />
+		</field>
+		<field name="scrolltotop_active" type="I" size="1" />
+		<field name="breadcrump_banner_active" type="I" size="1" />
+        <field name="breadcrump_banner_text" type="C" size="255" />
+	</table>
+</schema>
+<!--
+
+db.xml Field Type to MySQL
+C	VARCHAR
+XL	LONGTEXT
+X	TEXT
+C2	VARCHAR
+X2	LONGTEXT
+B	LONGBLOB
+D	DATE
+TS	DATETIME
+T	DATETIME
+I4	INTEGER
+I	INTEGER
+I1	TINYINT
+I2	SMALLINT
+I8	BIGINT
+F	DOUBLE
+N	NUMERIC
+
+
+Field Type Modifiers
+Keywords 	    Description
+AUTOINCREMENT 	For autoincrement number. Emulated with triggers if not available. Sets NOTNULL also.
+KEY 	        Primary key field. Sets NOTNULL also. Compound keys are supported.
+PRIMARY 	    Same as KEY.
+DEF 	        Synonym for DEFAULT for lazy typists.
+DEFAULT 	    The default value. Character strings are auto-quoted unless the string begins and ends with spaces, eg ' SYSDATE '.
+NOTNULL 	    If field is not null.
+DEFDATE 	    Set default value to call function to get today's date.
+DEFTIMESTAMP 	Set default to call function to get today's datetime.
+NOQUOTE 	    Prevents autoquoting of default string values.
+CONSTRAINTS 	Additional constraints defined at the end of the field definition.
+-->
