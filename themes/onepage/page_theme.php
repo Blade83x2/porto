@@ -11,7 +11,7 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
 **  - - - - - - - - - - - - - - - - - - - - - - - +
 =>  Web ......... http://cplusplus-development.de |
 =>  Mail ........................ mail@blade83.de |
-=>  (c) ............... 2005-2015 Johannes Krämer |
+=>  (c) ............... 2005-2016 Johannes Krämer |
 **  - - - - - - - - - - - - - - - - - - - - - - - +
 **
 =>  Project:  Porto

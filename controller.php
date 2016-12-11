@@ -49,6 +49,7 @@ use
     \Concrete\Core\Asset\AssetList;
 
 
+
 /**       ____  _           _       ___ _____
 *>       | __ )| | __ _  __| | ___ ( _ )___ /
 *>       |  _ \| |/ _` |/ _` |/ _ \/ _ \ |_ \
@@ -76,7 +77,7 @@ class Controller extends Package
 {
 	protected
         $pkgHandle                      = 'porto',
-	    $pkgVersion                     = '0.6.397',
+	    $pkgVersion                     = '0.6.400',
         $appVersionRequired             = '5.7.5.2',
         $pkgAutoloaderMapCoreExtensions = false;
 
@@ -91,6 +92,7 @@ class Controller extends Package
 
     public function on_start()
     {
+
         Config::set('concrete.white_label.logo', BASE_URL.'/packages/porto/concrete5_dashboard_icon.png');
         Config::set('concrete.white_label.name', Config::get('concrete.site'));
         Config::set('concrete.email.default.address', 'noreply@' . $_SERVER['SERVER_NAME']);
@@ -229,6 +231,12 @@ class Controller extends Package
             }
 	    }
 
+        # Datei Erweiterungen löschen
+        $this->delAllowedFileExtensionIfExists('apk');
+        $this->delAllowedFileExtensionIfExists('ipa');
+        $this->delAllowedFileExtensionIfExists('mp3');
+
+
         # Gruppen von GroupSet lösen
         $this->delUserGroupFromUserGroupSet(
             GroupSet::getByName('Porto UA Set'),
@@ -254,18 +262,16 @@ class Controller extends Package
 
     /**
      * @param $pkg
-     *
+     * @return void
      */
     protected function configure($pkg)
     {
-
         $r = \Request::getInstance();
         if ($r->request->get('portoInstallEnableLogForInstallation'))
         {
             Log::addEntry("Controller Init", 'Debug');
         }
-    
-    
+
         # Datenbank prüfen
         $this->db = Database::getActiveConnection();
         if (!$res = $this->db->getRow("SELECT cID FROM PortoPackage WHERE cID=1"))
@@ -275,6 +281,12 @@ class Controller extends Package
                  ."VALUES (                     ?,   ?,                        ?,                      ?,                 ?,                  ?,             ?,                                        ?,                     ?,                       ?,                       ?,           ?,           ?,           ?,           ?,          ?,            ?,                ?,              ?,             ?,               ?,                      ?,         ?,              ?,                                      ?,             ?)";
             $this->db->ExecuteQuery($sql,array (1,   1,                        '',                     0,                 1,                  1,             1,                                        0,                     0,                       0,                       0,           0,           1,           3,           1,          0,            0,                0,              0,             t('Search...'),  '',                     0,         0,              '© Copyright %Y. All Rights Reserved.', '',            (is_object($ui)?$ui->getUserEmail():'')));
         }
+
+        # Datei Erweiterungen hinzufügen
+        $this->addAllowedFileExtensionIfNotInList('apk');
+        $this->addAllowedFileExtensionIfNotInList('ipa');
+        $this->addAllowedFileExtensionIfNotInList('mp3');
+
         # Sicherheitscode
         if (is_object($config = \Core::make('config/database')))
         {
@@ -690,7 +702,7 @@ class Controller extends Package
      * Löschen der Porto Tabellen
      *
      * @return void
-     * @param void
+     * @param $tableName string
      *
      * --------------------------------------------------------------
     */
@@ -740,7 +752,7 @@ class Controller extends Package
      * Legt ein Block vom Package an
      *
      * @return void
-     * @param $handle string
+     * @param $handle string Handle von Blocktype
      * @param $pkg object Concrete\Package\Porto
      *
      * --------------------------------------------------------------
@@ -874,7 +886,7 @@ class Controller extends Package
      *
      * @return FileSet
      * @param $name string
-     * @param $public_private_starred string
+     * @param $public_private_starred string (public|private|starred)
      *
      * --------------------------------------------------------------
     */
@@ -1002,62 +1014,52 @@ class Controller extends Package
 
     /** --------------------------------------------------------------
      *
-     * Fügt neue Datei-Erweiterungen zu denn erlaubten hinzu.
+     * Fügt neue Datei-Erweiterungen zu denn erlaubten hinzu falls noch nicht vorhanden.
      *
-     * @param $extension string
+     * @param $extension string Dateierweiterung
      * @return void
      *
      * --------------------------------------------------------------
     */
-    /*
-    
-    
-    concrete.upload.extensions
-    
-    
-    
     protected function addAllowedFileExtensionIfNotInList($extension)
     {
         $helper_file = Core::make('helper/concrete/file');
-        echo $file_types = $helper_file->unserializeUploadFileExtensions($this->getConfig()->get('UPLOAD_FILE_EXTENSIONS_ALLOWED'));
-
+        $file_types = $helper_file->unserializeUploadFileExtensions(
+            Config::get('concrete.upload.extensions')
+        );
         if (!in_array($extension, $file_types))
         {
             array_push($file_types, $extension);
+            Config::save('concrete.upload.extensions', $helper_file->serializeUploadFileExtensions($file_types));
         }
-       # Config::save('UPLOAD_FILE_EXTENSIONS_ALLOWED', $helper_file->serializeUploadFileExtensions($file_types));
-    }*/
+    }
     
     
     /** --------------------------------------------------------------
      *
-     * Löscht eine Datei-Erweiterung
+     * Löscht eine Datei-Erweiterung von denn erlaubten falls vorhanden
      *
-     * @param $extension string
+     * @param $extension string Dateierweiterung
      * @return void
      *
      * --------------------------------------------------------------
     */
-    /*
     protected function delAllowedFileExtensionIfExists($extension)
     {
         $helper_file = Core::make('helper/concrete/file');
-        $file_types = $helper_file->unserializeUploadFileExtensions(Config::get('UPLOAD_FILE_EXTENSIONS_ALLOWED'));
+        $file_types = $helper_file->unserializeUploadFileExtensions(
+            Config::get('concrete.upload.extensions')
+        );
         if (in_array($extension, $file_types))
         {
-            unset ($file_types[array_search($extension, $file_types)]);
+            while (($key = array_search($extension, $file_types)) !== NULL)
+            {
+                unset($file_types[$key]);
+                break;
+            }
+            Config::save('concrete.upload.extensions', $helper_file->serializeUploadFileExtensions($file_types));
         }
-        Config::save('UPLOAD_FILE_EXTENSIONS_ALLOWED', $helper_file->serializeUploadFileExtensions($file_types));
     }
-    */
-
-
-
-
-
-
-
-
 
 
     /**--------------------------------------------------------------
@@ -1343,7 +1345,7 @@ class Controller extends Package
             {
                 /* $this->setUserAttributeKeyIfNotExistsOrUpdate('text', $pkg, array(
                     'akHandle'              => 'firstname',
-                    'akName'                => t('Vorname'),
+                    'akName'                => t('Firstname'),
                     'akIsSearchable'        => true,          // Feld verfügbar in der Benutzersuche der Verwaltung
                     'akIsSearchableIndexed' => true,          // Inhalt in die Benutzersuche aufnehmen
                     'uakMemberListDisplay'  => false,          // In Benutzerliste anzeigen

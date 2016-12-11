@@ -9,7 +9,7 @@ defined('C5_EXECUTE') or die("Access Denied.");
 **  - - - - - - - - - - - - - - - - - - - - - - - +
 =>  Web ......... http://cplusplus-development.de |
 =>  Mail ........................ mail@blade83.de |
-=>  (c) ............... 2005-2015 Johannes Krämer |
+=>  (c) ............... 2005-2016 Johannes Krämer |
 **  - - - - - - - - - - - - - - - - - - - - - - - +
 **
 =>  Project:  Porto
@@ -24,11 +24,11 @@ $a = new \Concrete\Core\Area\Area('Slider');
 $a->display($c);
 ?>
 <div class="container">
-<?php
-$a = new \Concrete\Core\Area\Area('Main');
-$a->setAreaGridMaximumColumns(12);
-$a->display($c);
-?>
+    <?php
+    $a = new \Concrete\Core\Area\Area('Main');
+    $a->setAreaGridMaximumColumns(12);
+    $a->display($c);
+    ?>
 </div>
 <?php $this->inc('inc/footerTypes/'.$portoSetup['footer_type'].'.php', array('portoSetup' => $portoSetup))?>
 <?php $this->inc('inc/footer.php', array('portoSetup' => $portoSetup))?>

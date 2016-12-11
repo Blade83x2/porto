@@ -1,3 +1,4 @@
+
 Porto Package für Concrete5 >= 5.7 entwickelt von Johannes Krämer.
 
 ---------------------------------------------------------------------------------
@@ -32,6 +33,8 @@ Version 0.6.35
 
 In dieser Version wurde die Deutsche Sprache komplett integriert! Alle Seiten mussten sich der W3C Validierung unterziehen und es wurden einige Bugs entfernt.
 
+ - ADD-> Benötigte Datei Erweiterungen werden bei der Installation hinzugefügt
+ - BUGFIX-> Block MP3 Player zeigt jetzt Titellänge an
  - Add-> Porto Package Deutsches Sprachpaket für Block MP3 Audio Player
  - Add-> Porto Package Deutsches Sprachpaket für Dashboard
  - BUGFIX-> MP3 Audio Player Fehler beseitigt wenn das Album kein Bild hatte
@@ -62,7 +65,7 @@ In dieser Version wurde die Deutsche Sprache komplett integriert! Alle Seiten mu
  - Add-> Hilfe Einträge im Dashboard
  - BUGFIX-> OnePage NavMaker funktioniert jetzt korrekt
 
- 
+
 ---------------------------------------------------------------------------------
 
 Version 0.5.25

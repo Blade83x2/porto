@@ -9,7 +9,7 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
 **  - - - - - - - - - - - - - - - - - - - - - - - +
 =>  Web ......... http://cplusplus-development.de |
 =>  Mail ........................ mail@blade83.de |
-=>  (c) ............... 2005-2015 Johannes Krämer |
+=>  (c) ............... 2005-2016 Johannes Krämer |
 **  - - - - - - - - - - - - - - - - - - - - - - - +
 **
 =>  Project:  Porto
@@ -52,9 +52,6 @@ if($current->getThemeHandle() != 'onepage')
             }
             ?>
             <option value="<?php echo HOME_CID?>"<?php if (intval($pID)==HOME_CID) { echo ' selected="selected"'; } echo $disabled;?>><?php echo t($home->getCollectionName())?></option>
-
-
-
             <?php
             $list = new PageList();
             $list->filterByParentID(HOME_CID);

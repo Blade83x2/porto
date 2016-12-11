@@ -11,7 +11,7 @@ use Concrete\Core\File\Type\Type as FileType;
 **  - - - - - - - - - - - - - - - - - - - - - - - +
 =>  Web ......... http://cplusplus-development.de |
 =>  Mail ........................ mail@blade83.de |
-=>  (c) ............... 2005-2015 Johannes Krämer |
+=>  (c) ............... 2005-2016 Johannes Krämer |
 **  - - - - - - - - - - - - - - - - - - - - - - - +
 **
 =>  Project:  Porto
