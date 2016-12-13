@@ -15,10 +15,8 @@
 =>  Coder:    $ Blade83
 */
 $nh = Core::make('helper/navigation');
-
 $db = Database::getActiveConnection();
 $portoSetup = $db->getRow('SELECT * FROM PortoPackage WHERE cID=?', array(1));
-
 echo '<nav class="nav-main mega-menu"><ul class="nav nav-pills nav-main" id="mainMenu">';
 foreach ($controller->getNavItems() as $ni)
 {
@@ -33,7 +31,10 @@ foreach ($controller->getNavItems() as $ni)
     $ni->classes = implode(" ", $classes);
     echo '<li'.((strlen($ni->classes)>0)?' class="'.$ni->classes.'"':'').'>';
     $href = '#id'.$ni->cID;
-    echo '<a data-hash href="'.$href.'">'.t($ni->name).(($ni->hasSubmenu && $ni->level==1)?' <i class="fa fa-angle-down"></i>':'').'</a>';
+    $niObj = $ni->cObj;
+    $icon = ($niObj->getAttribute('porto_navigation_fa_icon') && $niObj->getAttribute('porto_navigation_fa_icon')!='')?'<i class="fa fa-'.$niObj->getAttribute('porto_navigation_fa_icon').'"></i>':'';
+    unset($niObj);
+    echo '<a data-hash href="'.$href.'">'.$icon.t($ni->name).(($ni->hasSubmenu && $ni->level==1)?' <i class="fa fa-angle-down"></i>':'').'</a>';
     if ($ni->hasSubmenu)    
     {
         echo '<ul class="dropdown-menu">';
@@ -55,7 +56,7 @@ if ($portoSetup['show_login'])
         echo '<li>';
         echo '<div class="mega-menu-content">';
         echo '<div class="row">';
-        echo '<div class="col-md-7">';
+        echo '<div class="col-md-6">';
         echo '<div class="user-avatar">';
         if(is_object($u)) $ui=\Concrete\Core\User\UserInfo::getByID($u->getUserID());
         $ih = Core::make('helper/image');
@@ -63,7 +64,7 @@ if ($portoSetup['show_login'])
         echo '<div class="img-thumbnail">';
         if (is_object($ui) && $ui->hasAvatar() == true)
         {
-            echo '<img src="'.(is_object($av)?$av->getImagePath($ui, false):'').'" alt="'.(is_object($u)?$u->getUserName():'').'" />';
+            echo '<img src="'.(is_object($av)?$av->getImagePath($ui, false):'').'" alt="'.(is_object($u)?$u->getUserName():'').'" title="'.(is_object($u)?$u->getUserName():'').'" />';
         }
         else
         {
@@ -72,13 +73,13 @@ if ($portoSetup['show_login'])
                 switch($ui->getAttribute('gender'))
                 {
                     case 'male':
-                        echo '<img src="'.$view->getThemePath().'/img/avatar_male.png" alt="'.(is_object($u)?$u->getUserName():'').'" />';
+                        echo '<img src="'.$view->getThemePath().'/img/avatar_male.png" alt="'.(is_object($u)?$u->getUserName():'').'" title="'.(is_object($u)?$u->getUserName():'').'" />';
                         break;
                     case 'female':
-                        echo '<img src="'.$view->getThemePath().'/img/avatar_female.png" alt="'.(is_object($u)?$u->getUserName():'').'" />';
+                        echo '<img src="'.$view->getThemePath().'/img/avatar_female.png" alt="'.(is_object($u)?$u->getUserName():'').'" title="'.(is_object($u)?$u->getUserName():'').'" />';
                         break;
                     default:
-                        echo '<img src="'.$view->getThemePath().'/img/avatar_none.jpg" alt="'.(is_object($u)?$u->getUserName():'').'" />';
+                        echo '<img src="'.$view->getThemePath().'/img/avatar_none.jpg" alt="'.(is_object($u)?$u->getUserName():'').'" title="'.(is_object($u)?$u->getUserName():'').'" />';
                         break;
                 }
             }
@@ -91,20 +92,20 @@ if ($portoSetup['show_login'])
         echo '</p>';
         echo '</div>';
         echo '</div>';
-        echo '<div class="col-md-5">';
+        echo '<div class="col-md-6">';
         echo '<ul style="list-style:none;">';
         if (Config::get('concrete.user.profiles_enabled')) {
-            echo '<li><a href="'.URL::to('/members', 'profile').'" class="portoMenuLinkTextColor"><i class="fa fa-twitch"></i> '.t('Profil').'</a></li>';
+            echo '<li class="text-right"><a href="'.URL::to('/members', 'profile').'" class="portoMenuLinkTextColor">'.t('Profil').'&nbsp;<i class="fa fa-twitch"></i></a></li>';
         }
         if (Config::get('concrete.user.profiles_enabled')) {
-            echo '<li><a href="'.URL::to('/members', 'directory').'" class="portoMenuLinkTextColor"><i class="fa fa-users"></i> '.t('Users').'</a></li>';
+            echo '<li class="text-right"><a href="'.URL::to('/members', 'directory').'" class="portoMenuLinkTextColor">'.t('Users').'&nbsp;<i class="fa fa-users"></i></a></li>';
         }
-        echo '<li><a href="'.URL::to('/account').'" class="portoMenuLinkTextColor"><i class="fa fa-cog"></i> '.t('Settings').'</a></li>';
-        echo '<li><a href="'.URL::to('/account/messages/', 'inbox').'"  class="portoMenuLinkTextColor"><i class="fa fa-comment"></i> '.t('Messages').'</a></li>';
+        echo '<li class="text-right"><a href="'.URL::to('/account').'" class="portoMenuLinkTextColor">'.t('Settings').'&nbsp;<i class="fa fa-cog"></i></a></li>';
+        echo '<li class="text-right"><a href="'.URL::to('/account/messages/', 'inbox').'"  class="portoMenuLinkTextColor">'.t('Messages').'&nbsp;<i class="fa fa-comment"></i></a></li>';
         if (is_object($pk=PermissionKey::getByHandle('porto_dashboard')) && $pk->can()) {
-            echo '<li><a href="'.URL::to('/dashboard/porto_design').'" class="portoMenuLinkTextColor" target="_blank"><i class="fa fa-dashboard"></i> '.t('Administration').'</a></li>';
+            echo '<li class="text-right"><a href="'.URL::to('/dashboard/porto_design').'" class="portoMenuLinkTextColor" target="_blank">'.t('Administration').'&nbsp;<i class="fa fa-dashboard"></i></a></li>';
         }
-        echo '<li><a href="'.URL::to('/login', 'logout', Core::make('helper/validation/token')->generate('logout')).'" class="portoMenuLinkTextColor"><i class="fa fa-sign-out"></i> '.t("Sign Out").'</a></li>';
+        echo '<li class="text-right"><a href="'.URL::to('/login', 'logout', Core::make('helper/validation/token')->generate('logout')).'" class="portoMenuLinkTextColor">'.t("Sign Out").'&nbsp;<i class="fa fa-sign-out"></i></a></li>';
         echo '</ul>';
         echo '</div>';
         echo '</div>';
@@ -124,7 +125,7 @@ if ($portoSetup['show_login'])
                 echo '<div class="row">';
                 echo '<div class="col-md-12">';
                 echo '<div class="signin-form">';
-                echo '<div style="float:left;margin-right:3px"><h4>'.t('Login').'</h4></div>';
+                echo '<div style="float:left;margin-right:3px"><h4 class="portoMenuLinkTextColor">'.t('Login').'</h4></div>';
                 $activeAuths = AuthenticationType::getList(true, true);
                 $loadAuthScript = true;
                 foreach ($activeAuths as $auth) {
@@ -140,7 +141,9 @@ if ($portoSetup['show_login'])
                 echo '<div class="row" id="login_form_concrete">';
                 echo '<div class="col-md-12">';
                 echo '<form action="'.View::url('/login', 'authenticate', 'concrete').'" method="post">';
-                echo '<div class="row"><div class="form-group"><div class="col-sm-12"><input type="text" name="uName" value="" placeholder="'.((Config::get('concrete.user.registration.email_registration'))?t('Email Address'):t('Username')).'" class="form-control input-sm" required></div></div></div>';
+                #$p = Page::getCurrentPage();
+                #echo '<input type="hidden" name="rcID" id="rcID" value="'.$p->cID.'">';
+                echo '<div class="row"><div class="form-group"><div class="col-sm-12"><input type="text" name="uName" placeholder="'.((Config::get('concrete.user.registration.email_registration'))?t('Email Address'):t('Username')).'" class="form-control input-sm" required></div></div></div>';
                 echo '<div class="row"><div class="form-group"><div class="col-md-12"><input type="password" name="uPassword" placeholder="'.t('Password').'" class="form-control input-sm" required><div style="cursor: pointer;" class="pull-right portoMenuLinkTextColor" id="headerRecover">'.t('Forgot Your Password?').'</div></div></div></div>';
                 echo '<div class="row"><div class="col-md-9"><span class="remember-box checkbox"><label for="uMaintainLogin"><input type="checkbox" id="uMaintainLogin" name="uMaintainLogin" value="1">'.t('Stay signed in for two weeks').'</label></span></div><div class="col-md-3">'.(Core::make('helper/validation/token')->output('login_concrete', true)).'<input type="submit" value="'.t('Login').'" class="btn btn-primary pull-right push-bottom"></div></div>';
                 echo '</form>';
@@ -215,10 +218,3 @@ if ($loadSearchSript==true && $portoSetup['searchpage_empty_query']!='') {
     echo '</script> ';
 }
 ?>
-
-
-
-
-
-
-

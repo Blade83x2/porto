@@ -24,15 +24,17 @@ $ih = Core::make('helper/image');
     <div class="row">
         <div class="col-md-12">
             <div class="blog-posts">
-                <?php if ( $c->isEditMode() && $controller->isBlockEmpty()) { ?>
+                <?php if ( $c->isEditMode() && $controller->isBlockEmpty())
+                { ?>
                     <div class="ccm-edit-mode-disabled-item">
                         <?php echo t('Empty Page List Block.')?>
                     </div>
-                <?php
+                    <?php
                 }
                 else
                 {
-                    if(count($pages)>0){
+                    if(count($pages)>0)
+                    {
                         foreach($pages as $page)
                         {
                             $title = $th->entities($page->getCollectionName());
@@ -63,7 +65,7 @@ $ih = Core::make('helper/image');
                                                             {
                                                                 if($picture = \Concrete\Core\File\File::getByID($block->instance->fID))
                                                                 {
-								                                    $picture = $ih->getThumbnail($picture, 336, 336, false);
+                                                                    $picture = $ih->getThumbnail($picture, 336, 336, false);
                                                                     echo '<img class="img-responsive img-thumbnail" src="'.$picture->src.'" alt="">';
                                                                     break;
                                                                 }
@@ -84,8 +86,8 @@ $ih = Core::make('helper/image');
                                                                 echo '<div class="owl-carousel" data-plugin-options=\'{"items":1}\'>';
                                                                 foreach($imageFilePaths as $key => $image)
                                                                 {
-								                                    $picture = \Concrete\Core\File\File::getByID($image['fID']);
-								                                    $picture = $ih->getThumbnail($picture, 336, 336, false);
+                                                                    $picture = \Concrete\Core\File\File::getByID($image['fID']);
+                                                                    $picture = $ih->getThumbnail($picture, 336, 336, false);
                                                                     echo '<div><div class="img-thumbnail">';
                                                                     echo '<img class="img-responsive" src="'.$picture->src.'" alt="">';
                                                                     echo '</div></div>';
@@ -118,8 +120,10 @@ $ih = Core::make('helper/image');
                                             <span><i class="fa fa-user"></i>
                                                 <?php
                                                 if (Config::get('concrete.user.profiles_enabled')) {
-                                                    $ui = \Concrete\Core\User\UserInfo::getByUserName($original_author);
-                                                    echo '<a href="'.URL::to('/members/profile/view/').'/'.$ui->getUserID().'">';
+                                                    if(is_object($ui = \Concrete\Core\User\UserInfo::getByUserName($original_author)))
+                                                    {
+                                                        echo '<a href="'.URL::to('/members/profile/view/').'/'.$ui->getUserID().'">';
+                                                    }
                                                 }
                                                 echo $original_author;
                                                 if (Config::get('concrete.user.profiles_enabled')) {
@@ -137,7 +141,6 @@ $ih = Core::make('helper/image');
                                                 echo '</span>';
                                             }
                                             ?>
-                                            <!--<span><i class="fa fa-comments"></i> <a href="#">12 Comments</a></span>-->
                                             <a href="<?php echo $url; ?>" target="<?php echo $target; ?>" class="btn btn-xs btn-primary pull-right"><?php echo t('More')?>...</a>
                                         </div>
                                     </div>

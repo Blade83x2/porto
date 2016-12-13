@@ -99,9 +99,9 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
     <div class="col-md-6 col-md-offset-2">
         <select class="form-control pointer" id="gender" name="gender">
             <option value="none"<?php if ($gender=='none') { echo ' selected="selected"';}?>><?php echo t('Select')?></option>
-            <option value="Herr"<?php if ($gender=='Herr') { echo ' selected="selected"';}?>><?php echo t('Herr')?></option>
-            <option value="Frau"<?php if ($gender=='Frau') { echo ' selected="selected"';}?>><?php echo t('Frau')?></option>
-            <option value="Firma"<?php if ($gender=='Firma') { echo ' selected="selected"';}?>><?php echo t('Firma')?></option>
+            <option value="male"<?php if ($gender=='male') { echo ' selected="selected"';}?>><?php echo t('male')?></option>
+            <option value="female"<?php if ($gender=='female') { echo ' selected="selected"';}?>><?php echo t('female')?></option>
+            <option value="company"<?php if ($gender=='company') { echo ' selected="selected"';}?>><?php echo t('company')?></option>
         </select>
     </div>
 </div>

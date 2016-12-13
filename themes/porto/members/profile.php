@@ -41,25 +41,28 @@ $dh = Core::make('helper/date'); /* @var $dh \Concrete\Core\Localization\Service
      <div style="float:right">
 	    
 		<?php
-		$ui = \Concrete\Core\User\UserInfo::getByID($profile->getUserID());
-		if(!$ui->hasAvatar()){
-		    switch($ui->getAttribute('gender')){
-			case 'male':
-			    echo '<img class="img-responsive img-thumbnail" src="'.$view->getThemePath().'/img/avatar_male.png" alt="'.(is_object($u)?$u->getUserName():'').'" />';
-			    break;
-			case 'female':
-			    echo '<img class="img-responsive img-thumbnail" src="'.$view->getThemePath().'/img/avatar_female.png" alt="'.(is_object($u)?$u->getUserName():'').'" />';
-			    break;
-			default:
-			    echo '<img class="img-responsive img-thumbnail" src="'.$view->getThemePath().'/img/avatar_none.jpg" alt="'.(is_object($u)?$u->getUserName():'').'" />';
-			    break;
-		    }
-		}
-		else {
-		      echo '<div class="img-thumbnail">';
-		      print \Core::make('helper/concrete/avatar')->outputUserAvatar($profile);
-		      echo '</div>';
-		}
+        if(is_object($profile)){
+		if(is_object($ui = \Concrete\Core\User\UserInfo::getByID($profile->getUserID()))){
+            if(!$ui->hasAvatar()){
+                switch($ui->getAttribute('gender')){
+                case 'male':
+                    echo '<img class="img-responsive img-thumbnail" src="'.$view->getThemePath().'/img/avatar_male.png" alt="'.(is_object($u)?$u->getUserName():'').'" />';
+                    break;
+                case 'female':
+                    echo '<img class="img-responsive img-thumbnail" src="'.$view->getThemePath().'/img/avatar_female.png" alt="'.(is_object($u)?$u->getUserName():'').'" />';
+                    break;
+                default:
+                    echo '<img class="img-responsive img-thumbnail" src="'.$view->getThemePath().'/img/avatar_none.jpg" alt="'.(is_object($u)?$u->getUserName():'').'" />';
+                    break;
+                }
+            }
+            else {
+                  echo '<div class="img-thumbnail">';
+                  print \Core::make('helper/concrete/avatar')->outputUserAvatar($profile);
+                  echo '</div>';
+            }
+        }
+        }
 		?>
 	    </div> 
 	    <div style="clear:both"></div>
@@ -81,22 +84,25 @@ $dh = Core::make('helper/date'); /* @var $dh \Concrete\Core\Localization\Service
     <?php
     $uaks = UserAttributeKey::getPublicProfileList();
     foreach($uaks as $ua) {
-	$value = $profile->getAttribute($ua, 'displaySanitized', 'display');
-	if($value)
-	{
-	    echo '<div class="row">';
-	    ?>
-	    <div class="col-md-5">
-		<strong><?php echo t($ua->getKeyName())?></strong>
-	    </div>
-	    <div class="col-md-5">
-		<?php
-		print $value;
-		?>
-	    </div>
-	    <?php
-	    echo "</div>";
-	}
+        if(is_object($profile))
+        {
+            $value = $profile->getAttribute($ua, 'displaySanitized', 'display');
+            if($value)
+            {
+                echo '<div class="row">';
+                ?>
+                <div class="col-md-5">
+                <strong><?php echo t($ua->getKeyName())?></strong>
+                </div>
+                <div class="col-md-5">
+                <?php
+                print $value;
+                ?>
+                </div>
+                <?php
+                echo "</div>";
+            }
+        }
     }
     ?>
     <div class="row">

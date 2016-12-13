@@ -881,7 +881,7 @@ body.sticky-menu-active #header.center nav ul.nav-main > li > a, body.sticky-men
 }
 
 #header nav.mega-menu ul.nav-main .mega-menu-signin.logged .user-avatar strong {
-	color: #111;
+	/*color: #111;*/
 	display: block;
 	padding-top: 7px;
 }
@@ -909,7 +909,7 @@ body.sticky-menu-active #header.center nav ul.nav-main > li > a, body.sticky-men
 
 body #header nav.mega-menu .mega-menu-signin ul.dropdown-menu li a, body #header nav.mega-menu .mega-menu-signin ul.dropdown-menu:hover li:hover li:hover a {
 	background-color: transparent !important;
-	color: #333;
+	/*color: #333;*/
 	padding: 0;
 	margin: 0;
 }
@@ -941,7 +941,7 @@ body #header nav.mega-menu .mega-menu-signin ul.dropdown-menu li a, body #header
 	}
 
 	#header nav.mega-menu ul.nav-main .mega-menu-signin.logged .user-avatar strong, #header nav.mega-menu ul.nav-main .mega-menu-signin.logged .user-avatar span {
-		color: #FFF !important;
+		/*color: #FFF;*/
 	}
 
 	#header nav.mega-menu ul.nav-main .mega-menu-signin.logged .list-account-options {
@@ -2240,7 +2240,7 @@ html.dark #header nav.mega-menu ul.nav-main li.mega-menu-item .form-control {
 html.dark #header nav.mega-menu ul.nav-main .mega-menu-signin a,
 html.dark #header nav.mega-menu ul.nav-main .mega-menu-signin a:hover,
 html.dark #header nav.mega-menu ul.nav-main .mega-menu-signin.logged .user-avatar strong {
-	color: #FFF;
+	/*color: #FFF;*/
 }
 
 html.dark #header nav.mega-menu .mega-menu-signin ul.dropdown-menu:hover li:hover li:hover a {
@@ -2734,12 +2734,22 @@ html.boxed body.sticky-menu-active #header {
 
 
 @media (max-width: 991px) {
-    .portoMenuLinkTextColor {
-        color: #fff !important;
+    li.position_rechts, ul.position_rechts {
+        display: none;
     }
+    li.position_links, ul.position_links {
+        display: block;
+        text-align:left;
+    }
+
 }
 @media (min-width: 992px) {
-     .portoMenuLinkTextColor {
-        color: #000 !important;
+    li.position_rechts, ul.position_rechts {
+        display: block;
+        text-align:right;
     }
+    li.position_links, ul.position_links {
+        display: none;
+    }
+
 }

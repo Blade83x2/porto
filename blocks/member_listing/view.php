@@ -80,16 +80,16 @@ switch($createFrom)
         }
         else
         {
-            $table .= '<thead><tr><th class="col-sm-3">'.t('Firma').'</th><th>'.$name.'</th></tr></thead>';
+            $table .= '<thead><tr><th class="col-sm-3">'.t('Company').'</th><th>'.$name.'</th></tr></thead>';
         }
         $table .= '<tbody>';
         if(!empty($department))
         {
-            $table .= '<tr><td>'.t('Abteilung').':</td><td><i class="fa fa-chevron-circle-right"></i> '.$department.'</td></tr>';
+            $table .= '<tr><td>'.t('Department').':</td><td><i class="fa fa-chevron-circle-right"></i> '.$department.'</td></tr>';
         }
         if(!empty($telefon))
         {
-            $table .= '<tr><td>'.t('Telefon').':</td><td><i class="fa fa-phone"></i> '.$telefon.'</td></tr>';
+            $table .= '<tr><td>'.t('Tel').':</td><td><i class="fa fa-phone"></i> '.$telefon.'</td></tr>';
         }
         if(!empty($mobil))
         {
@@ -110,7 +110,7 @@ switch($createFrom)
         }
         if(!empty($location))
         {
-            $table .= '<tr><td>'.t('Standort').':</td><td><i class="fa fa-map-marker"></i> '.$location.'</td></tr>';
+            $table .= '<tr><td>'.t('Location').':</td><td><i class="fa fa-map-marker"></i> '.$location.'</td></tr>';
         }
         for($s=0;$s<21;$s++)
         {

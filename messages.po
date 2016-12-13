@@ -8,17 +8,18 @@ msgstr ""
 "Project-Id-Version: PortoPackage\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-10-30 16:24+0100\n"
-"PO-Revision-Date: 2016-11-02 09:05+0100\n"
+"PO-Revision-Date: 2016-12-13 21:05+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language-Team: \n"
+"Language-Team: Johannes Krämer <info@cplusplus-development.de>\n"
 "X-Generator: Poedit 1.8.7.1\n"
-"Last-Translator: \n"
+"Last-Translator: Johannes Krämer <translate@cplusplus-development.de>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: de_DE\n"
 "X-Poedit-KeywordsList: t\n"
 "X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: controller.php:3 blocks/autonav/templates/porto_breadcrump.php:1
@@ -51,12 +52,8 @@ msgid "Access Denied."
 msgstr "Zugriff verboten"
 
 #: controller.php:89
-msgid ""
-"The Porto Package was built with Bootstrap v3.2.0 for concrete 5.7! It "
-"includes 2 Themes, Blocks, Templates and more..."
-msgstr ""
-"Die Porto Erweiterung wurde mit Twitter Bootstrap 3.2.0 erstellt und "
-"beinhaltet 2 Themes, viele Blöcke und Templates"
+msgid "The Porto Package was built with Bootstrap v3.2.0 for concrete 5.7! It includes 2 Themes, Blocks, Templates and more..."
+msgstr "Die Porto Erweiterung wurde mit Twitter Bootstrap 3.2.0 erstellt und beinhaltet 2 Themes, viele Blöcke und Templates"
 
 #: controller.php:90 controller.php:309
 #: single_pages/dashboard/porto_design/menu_logos.php:18
@@ -70,27 +67,27 @@ msgstr "Suchen..."
 
 #: controller.php:300
 msgid "Blank"
-msgstr ""
+msgstr "Leere Seite"
 
 #: controller.php:301
 msgid "Full"
-msgstr ""
+msgstr "Komplett"
 
 #: controller.php:302
 msgid "Landing Page"
-msgstr "Willkommens Seite"
+msgstr "Lande Seite"
 
 #: controller.php:303
 msgid "Left Sidebar"
-msgstr ""
+msgstr "Linke Seitenleiste"
 
 #: controller.php:304
 msgid "Right Sidebar"
-msgstr ""
+msgstr "Rechte Seitenleiste"
 
 #: controller.php:305 controller.php:307
 msgid "Blog"
-msgstr ""
+msgstr "Blog"
 
 #: controller.php:310 blocks/autonav/templates/porto_onepage_navigation.php:102
 #: blocks/autonav/templates/porto_navigation.php:144
@@ -118,31 +115,31 @@ msgstr "Porto Blocktypen"
 
 #: controller.php:333
 msgid "Porto Menu"
-msgstr ""
+msgstr "Porto Menu"
 
 #: controller.php:335
 msgid "Font Awesome Icon"
-msgstr ""
+msgstr "Font Awesome Icon"
 
 #: controller.php:399
 msgid "Porto Meta Tags"
-msgstr ""
+msgstr "Porto Meta Tags"
 
 #: controller.php:400
 msgid "Revisit after"
-msgstr ""
+msgstr "Wiederbesuchen in"
 
 #: controller.php:405
 msgid "Robots"
-msgstr ""
+msgstr "Robots"
 
 #: controller.php:410 controller.php:412
 msgid "Audience"
-msgstr ""
+msgstr "Zielgruppe"
 
 #: controller.php:414 controller.php:416
 msgid "Page Topic"
-msgstr ""
+msgstr "Seiten Thema"
 
 #: controller.php:419
 msgid "Megamenu full width"
@@ -226,7 +223,7 @@ msgid "Social Links"
 msgstr "Soziale Netzwerke"
 
 #: controller.php:615
-msgid "Zitat"
+msgid "Blockquote"
 msgstr "Zitat"
 
 #: controller.php:643 controller.php:668
@@ -304,18 +301,18 @@ msgstr "Passwort"
 #: blocks/autonav/templates/porto_navigation.php:187
 #: blocks/autonav/templates/porto_navigation.php:205
 msgid "Forgot Your Password?"
-msgstr ""
+msgstr "Zugangsdaten vergessen?"
 
 #: blocks/autonav/templates/porto_onepage_navigation.php:145
 #: blocks/autonav/templates/porto_navigation.php:188
 msgid "Stay signed in for two weeks"
-msgstr ""
+msgstr "Für 2 Wochen angemeldet bleiben"
 
 #: blocks/autonav/templates/porto_onepage_navigation.php:151
 #: blocks/autonav/templates/porto_navigation.php:194
 #, php-format
 msgid "Sign in with %s"
-msgstr ""
+msgstr "Angemeldet mit %s"
 
 #: blocks/autonav/templates/porto_onepage_navigation.php:157
 #: blocks/autonav/templates/porto_navigation.php:200
@@ -325,10 +322,8 @@ msgstr "Registrieren"
 
 #: blocks/autonav/templates/porto_onepage_navigation.php:163
 #: blocks/autonav/templates/porto_navigation.php:206
-msgid ""
-"Enter your email address below. We will send you instructions to reset your "
-"password."
-msgstr ""
+msgid "Enter your email address below. We will send you instructions to reset your password."
+msgstr "Bitte Ihre Emailadresse eingeben. Es wird eine Mail mit Anweisungen gesendet."
 
 #: blocks/autonav/templates/porto_onepage_navigation.php:164
 #: blocks/autonav/templates/porto_navigation.php:207
@@ -339,7 +334,7 @@ msgstr "Zurück"
 #: blocks/autonav/templates/porto_onepage_navigation.php:164
 #: blocks/autonav/templates/porto_navigation.php:207
 msgid "Reset and Email Password"
-msgstr ""
+msgstr "Reset und Passwort mailen"
 
 #: blocks/audio_player/controller.php:45
 msgid "MP3 Player"
@@ -350,9 +345,7 @@ msgid "Audio Player for MP3 files from Fileset"
 msgstr "Audio Player für MP3 Dateien aus einem Dateialbum abspielen"
 
 #: blocks/audio_player/controller.php:55
-msgid ""
-"Select a Fileset with MP3 Files included for displaying a MP3 Player with "
-"Playlist"
+msgid "Select a Fileset with MP3 Files included for displaying a MP3 Player with Playlist"
 msgstr "Dateialbum mit MP3 Dateien wählen für Playliste"
 
 #: blocks/audio_player/controller.php:117
@@ -409,17 +402,15 @@ msgstr "MP3 Dateialbum"
 
 #: blocks/member_listing/controller.php:52
 msgid "Display Userdata"
-msgstr ""
+msgstr "Zeige Benutzerdaten"
 
 #: blocks/member_listing/controller.php:57
 msgid "Member Listing"
-msgstr ""
+msgstr "Mitglieder Liste"
 
 #: blocks/member_listing/controller.php:62
-msgid ""
-"<b>This Block returns a Picture with a Table of data.</b><p>You can create "
-"your own Fields or reading the content from a User group.</p>"
-msgstr ""
+msgid "<b>This Block returns a Picture with a Table of data.</b><p>You can create your own Fields or reading the content from a User group.</p>"
+msgstr "<b>Dieser Block listet ein Bild mit einer Datentabelle.</b><p>Sie können eigene Felder definieren oder Attribute aus einer Gruppe auslesen.</p>"
 
 #: blocks/member_listing/controller.php:453
 #: blocks/member_listing/controller.php:483
@@ -448,7 +439,7 @@ msgstr ""
 #: controllers/single_page/dashboard/porto_design/informationen.php:90
 #: controllers/single_page/dashboard/porto_design/settings.php:253
 msgid "Error"
-msgstr ""
+msgstr "Fehler"
 
 #: blocks/member_listing/controller.php:453
 #: blocks/member_listing/controller.php:483
@@ -468,7 +459,7 @@ msgstr ""
 #: blocks/calculate_route/controller.php:92
 #: blocks/calculate_route/controller.php:107 blocks/history/controller.php:159
 msgid "in"
-msgstr ""
+msgstr "in"
 
 #: blocks/member_listing/controller.php:453 blocks/member_listing/edit.php:22
 #: blocks/history/edit.php:20
@@ -482,31 +473,31 @@ msgstr ""
 #: single_pages/dashboard/porto_design/header_footer.php:112
 #: single_pages/dashboard/porto_design/header_footer.php:115
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 #: blocks/member_listing/controller.php:483 blocks/member_listing/edit.php:33
 #: blocks/history/controller.php:159 blocks/history/edit.php:30
 msgid "Loading Effect"
-msgstr ""
+msgstr "Animations Effekte"
 
 #: blocks/member_listing/controller.php:488 blocks/member_listing/edit.php:68
 msgid "Picture Position"
-msgstr ""
+msgstr "Bild Position"
 
 #: blocks/member_listing/controller.php:498 blocks/member_listing/edit.php:77
 msgid "Container"
-msgstr ""
+msgstr "Container"
 
 #: blocks/member_listing/controller.php:498 blocks/member_listing/edit.php:77
 msgid "Width"
-msgstr ""
+msgstr "Breite"
 
 #: blocks/member_listing/controller.php:523 blocks/member_listing/view.php:79
 #: blocks/member_listing/view.php:221 blocks/member_listing/edit.php:109
 #: blocks/member_listing/edit.php:294 blocks/pro_contra/edit.php:21
 #: blocks/contact_us/controller.php:129
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
 #: blocks/member_listing/controller.php:529 blocks/member_listing/view.php:105
 #: blocks/member_listing/edit.php:145 blocks/contact_us/controller.php:153
@@ -514,7 +505,7 @@ msgstr ""
 #: themes/porto/account/edit_profile.php:54
 #: themes/porto/account/edit_profile_orig.php:18
 msgid "Email"
-msgstr ""
+msgstr "E-Mail"
 
 #: blocks/member_listing/controller.php:536 blocks/member_listing/view.php:109
 #: blocks/member_listing/edit.php:151 blocks/contact_us/controller.php:157
@@ -525,59 +516,56 @@ msgstr "Internet"
 
 #: blocks/member_listing/controller.php:545
 msgid "No Group selected"
-msgstr ""
+msgstr "Keine Gruppe gewählt"
 
 #: blocks/member_listing/controller.php:548
 msgid "Group not valid"
-msgstr ""
+msgstr "Gruppe ungültig"
 
 #: blocks/member_listing/controller.php:555
 msgid "Group not allowed"
-msgstr ""
+msgstr "Gruppe nicht erlaubt"
 
 #: blocks/member_listing/controller.php:559
 msgid "Select Picture to display!"
-msgstr ""
+msgstr "Bild zum Anzeigen wählen"
 
 #: blocks/member_listing/controller.php:564
 msgid "Picture not allowed!"
-msgstr ""
+msgstr "Bild  nicht Erlaubt"
 
 #: blocks/member_listing/controller.php:575
 msgid "Duplicate Entry for"
-msgstr ""
+msgstr "Doppelter Eintrag für"
 
 #: blocks/member_listing/view.php:83 blocks/member_listing/edit.php:104
-msgid "Firma"
-msgstr ""
+msgid "Company"
+msgstr "Firma"
 
+# Abteilung von deutsch in englisch übersetzten
 #: blocks/member_listing/view.php:88
-msgid "Abteilung"
-msgstr ""
+msgid "Department"
+msgstr "Abteilung"
 
 #: blocks/member_listing/view.php:92 blocks/member_listing/edit.php:127
-msgid "Telefon"
-msgstr ""
+msgid "Tel"
+msgstr "Telefon"
 
 #: blocks/member_listing/view.php:96 blocks/member_listing/edit.php:139
 msgid "Mobil"
-msgstr ""
+msgstr "Molil"
 
 #: blocks/member_listing/view.php:100 blocks/member_listing/edit.php:133
 #: blocks/contact_us/controller.php:149
 msgid "Fax"
-msgstr ""
-
-#: blocks/member_listing/view.php:113
-msgid "Standort"
-msgstr ""
+msgstr "Telefax"
 
 #: blocks/member_listing/view.php:248 blocks/nivo_slider/edit.php:101
 #: blocks/nivo_slider/edit.php:113 blocks/nivo_slider/edit.php:125
 #: blocks/nivo_slider/edit.php:137 blocks/nivo_slider/edit.php:149
 #: blocks/nivo_slider/edit.php:160 blocks/text_heading/edit.php:45
 msgid "Yes"
-msgstr ""
+msgstr "Ja"
 
 #: blocks/member_listing/view.php:248 blocks/nivo_slider/edit.php:100
 #: blocks/nivo_slider/edit.php:112 blocks/nivo_slider/edit.php:120
@@ -585,103 +573,89 @@ msgstr ""
 #: blocks/nivo_slider/edit.php:148 blocks/nivo_slider/edit.php:161
 #: blocks/text_heading/edit.php:46
 msgid "No"
-msgstr ""
+msgstr "Nein"
 
 #: blocks/member_listing/view.php:393 blocks/calculate_route/controller.php:96
 msgid "Empty"
-msgstr ""
+msgstr "Leerer"
 
 #: blocks/member_listing/view.php:393
 msgid "Block"
-msgstr ""
+msgstr "Block"
 
 #: blocks/member_listing/edit.php:25
 msgid "Single Entry"
-msgstr ""
+msgstr "Einzelner Eintrag"
 
 #: blocks/member_listing/edit.php:28
 msgid "User Group"
-msgstr ""
+msgstr "Benutzergruppe"
 
 #: blocks/member_listing/edit.php:36 blocks/nivo_slider/edit.php:55
 #: blocks/text_heading/edit.php:56 blocks/history/edit.php:33
 msgid "None"
-msgstr ""
+msgstr "Keine"
 
 #: blocks/member_listing/edit.php:37 blocks/nivo_slider/edit.php:56
 #: blocks/text_heading/edit.php:57 blocks/history/edit.php:34
 msgid "Random"
-msgstr ""
+msgstr "Zufällig"
 
 #: blocks/member_listing/edit.php:71
 msgid "Left"
-msgstr ""
+msgstr "Links"
 
 #: blocks/member_listing/edit.php:72
 msgid "Right"
-msgstr ""
+msgstr "Rechts"
 
 #: blocks/member_listing/edit.php:94 blocks/history/edit.php:112
 msgid "Select Image"
-msgstr ""
+msgstr "Bild wählen"
 
 #: blocks/member_listing/edit.php:98
 msgid "Salutation"
-msgstr ""
+msgstr "Anrede"
 
 #: blocks/member_listing/edit.php:101
 msgid "Select"
-msgstr ""
-
-#: blocks/member_listing/edit.php:102
-msgid "Herr"
-msgstr ""
-
-#: blocks/member_listing/edit.php:103
-msgid "Frau"
-msgstr ""
-
-#: blocks/member_listing/edit.php:115
-msgid "Department"
-msgstr ""
+msgstr "Wähle"
 
 #: blocks/member_listing/edit.php:157
 msgid "Own Fields"
-msgstr ""
+msgstr "Eigene Felder"
 
 #: blocks/member_listing/edit.php:159
 msgid "Add"
-msgstr ""
+msgstr "Hinzufügen"
 
 #: blocks/member_listing/edit.php:191
 msgid "Display Users from Group"
-msgstr ""
+msgstr "Zeige Benutzer aus Gruppe"
 
 #: blocks/member_listing/edit.php:192
 msgid "Each User from the selected Group returns a Table of data!"
-msgstr ""
+msgstr "Jeder Benutzer aus der Gruppe wird in einer Tabelle angezeigt"
 
 #: blocks/member_listing/edit.php:207 blocks/member_listing/edit.php:214
 msgid "Select a User Group to display"
-msgstr ""
+msgstr "Benutzergruppe zum anzeigen wählen"
 
 #: blocks/member_listing/edit.php:241
 msgid "Picture Source"
-msgstr ""
+msgstr "Bild Quelle"
 
 #: blocks/member_listing/edit.php:242
-msgid ""
-"Let decide you witch Picture should be use. With File/Image you can select "
-"an User Image Attribute."
+msgid "Let decide you witch Picture should be use. With File/Image you can select an User Image Attribute."
 msgstr ""
 
 #: blocks/member_listing/edit.php:246
 msgid "Select Picture Source"
-msgstr ""
+msgstr "Bitte Bild Quelle wählen"
 
 #: blocks/member_listing/edit.php:247
 msgid "Avatar from User Profile"
-msgstr ""
+msgstr "Avatar vom Benutzerprofil"
 
 #: blocks/member_listing/edit.php:248
 msgid "File / Image Attribute from User Profile"
@@ -689,11 +663,11 @@ msgstr ""
 
 #: blocks/member_listing/edit.php:258
 msgid "User Attribute Picture"
-msgstr ""
+msgstr "Benutzer Attribute Bild"
 
 #: blocks/member_listing/edit.php:259
 msgid "You can create your own Image Attribute Keys under User &gt; Attribute"
-msgstr ""
+msgstr "Erstelle dein eigenes Bild Attribut Schlüssel Keys unter Benutzer & Attribute"
 
 #: blocks/member_listing/edit.php:273
 #, php-format
@@ -707,21 +681,19 @@ msgstr ""
 
 #: blocks/member_listing/edit.php:283
 msgid "Type a Name to display and select a User Attribute!"
-msgstr ""
+msgstr "Anzeigename vergeben und Benutzer Attribut wählen!"
 
 #: blocks/member_listing/edit.php:284
-msgid ""
-"Here you can type in your own Keys. The Values are loading from the User "
-"Attributes."
+msgid "Here you can type in your own Keys. The Values are loading from the User Attributes."
 msgstr ""
 
 #: blocks/member_listing/edit.php:300
 msgid "User Attribute"
-msgstr ""
+msgstr "Benutzer Attribute"
 
 #: blocks/member_listing/edit.php:313
 msgid "Warning"
-msgstr ""
+msgstr "Warnung"
 
 #: blocks/member_listing/edit.php:314
 msgid "No User Attributekeys where found! Please create them first!"
@@ -828,27 +800,25 @@ msgid "Sortable Contact information"
 msgstr ""
 
 #: blocks/contact_us/controller.php:50
-msgid ""
-"<b>Add Information about your Person/Business.</b><p>Value sorting with drag "
-"&amp; drop!</p>"
-msgstr ""
+msgid "<b>Add Information about your Person/Business.</b><p>Value sorting with drag &amp; drop!</p>"
+msgstr "<b>Füge Information hinzu über deine Person/Business.</b><p>Sortieren mit drag & drop!</p>"
 
 #: blocks/contact_us/controller.php:125
 msgid "Variable"
-msgstr ""
+msgstr "Variable"
 
 #: blocks/contact_us/controller.php:129 blocks/contact_us/controller.php:133
 #: blocks/contact_us/controller.php:137
 msgid "Variable. Allowed: a-zA-Z0-9öäüßÖÄÜ,.-"
-msgstr ""
+msgstr "Variable. Erlaubt: a-zA-Z0-9öäüßÖÄÜ,.-"
 
 #: blocks/contact_us/controller.php:133
 msgid "Address"
-msgstr ""
+msgstr "Adresse"
 
 #: blocks/contact_us/controller.php:137
 msgid "Zipcode & Location"
-msgstr ""
+msgstr "Postleitzahl & Ort"
 
 #: blocks/contact_us/controller.php:141
 msgid "Phone"
@@ -857,7 +827,7 @@ msgstr ""
 #: blocks/contact_us/controller.php:141 blocks/contact_us/controller.php:145
 #: blocks/contact_us/controller.php:149
 msgid "Variable. Allowed: 0-9 -/+"
-msgstr ""
+msgstr "Variable. Erlaubt: 0-9 -/+"
 
 #: blocks/contact_us/controller.php:145
 msgid "Mobile"
@@ -873,7 +843,7 @@ msgstr ""
 
 #: blocks/contact_us/edit.php:92
 msgid "#ID"
-msgstr ""
+msgstr "ID"
 
 #: blocks/contact_us/edit.php:93
 msgid "Field Name"
@@ -989,7 +959,7 @@ msgstr ""
 
 #: blocks/text_heading/controller.php:50
 msgid "<b>Creates a cool Heading-Text with animaitons.</b>"
-msgstr ""
+msgstr "<b>Erzeugt einen coolen Seitenkopf-Text mit Animationen.</b>"
 
 #: blocks/text_heading/controller.php:118
 msgid "Please type in a heading text!"
@@ -1013,7 +983,7 @@ msgstr ""
 
 #: blocks/text_heading/edit.php:22
 msgid "This Text is allways displays in upercase!"
-msgstr ""
+msgstr "Dieser Text wird immer in Großbuchstaben gezeigt!"
 
 #: blocks/text_heading/edit.php:32
 msgid "H1"
@@ -1040,9 +1010,7 @@ msgid "H6"
 msgstr ""
 
 #: blocks/text_heading/edit.php:52
-msgid ""
-"Chose an Effekt for displaying the Text. The animation is disabled in edit "
-"Mode!"
+msgid "Chose an Effekt for displaying the Text. The animation is disabled in edit Mode!"
 msgstr ""
 
 #: blocks/search/templates/porto_search/view.php:46
@@ -1078,10 +1046,8 @@ msgid "Calculate Route"
 msgstr ""
 
 #: blocks/calculate_route/controller.php:53
-msgid ""
-"<b>Add a route planner.</b><p>Select a Service Provider and set a target "
-"Address and your Visitors can type in an Address and get a Route to you!</p>"
-msgstr ""
+msgid "<b>Add a route planner.</b><p>Select a Service Provider and set a target Address and your Visitors can type in an Address and get a Route to you!</p>"
+msgstr "<b>Routenplanner hinzufügen.</b><p>Wähle einen Service Provider und bestimme eine Ziel Adresse. Besucher können ihre eigene Adresse eingeben und sehen einen Routenplanner zur Ziel Adresse!</p>"
 
 #: blocks/calculate_route/controller.php:92 blocks/calculate_route/view.php:72
 #: blocks/calculate_route/edit.php:34
@@ -1099,7 +1065,7 @@ msgstr ""
 
 #: blocks/calculate_route/controller.php:102
 msgid "Wrong"
-msgstr ""
+msgstr "Falsche"
 
 #: blocks/calculate_route/controller.php:102
 msgid "Example"
@@ -1131,7 +1097,7 @@ msgstr ""
 
 #: blocks/calculate_route/edit.php:53
 msgid "This is the target Address for the route!"
-msgstr ""
+msgstr "Dies ist die Ziel Adresse von der Route!"
 
 #: blocks/calculate_route/edit.php:56
 msgid "Streetname & Number, Zipcode, Location"
@@ -1147,7 +1113,7 @@ msgstr ""
 
 #: blocks/calculate_route/edit.php:70
 msgid "This means the Bootstrap col-md-x Classes for the Button width!"
-msgstr ""
+msgstr "Bootstrap col-md-x Klassen für die Schaltflächen breite!"
 
 #: blocks/history/controller.php:55
 msgid "Display a Picture, a Year and Text"
@@ -1158,9 +1124,7 @@ msgid "History"
 msgstr ""
 
 #: blocks/history/controller.php:65
-msgid ""
-"Add an Element that includes a Picture and a Text. Optional settings: "
-"Loading Effect, Linking to another Page and Year"
+msgid "Add an Element that includes a Picture and a Text. Optional settings: Loading Effect, Linking to another Page and Year"
 msgstr ""
 
 #: blocks/history/controller.php:168
@@ -1174,7 +1138,7 @@ msgstr ""
 
 #: blocks/history/controller.php:201 blocks/history/edit.php:117
 msgid "Year"
-msgstr ""
+msgstr "Jahr"
 
 #: blocks/history/controller.php:209 blocks/history/edit.php:135
 msgid "Text"
@@ -1210,9 +1174,7 @@ msgid "Create from Page"
 msgstr ""
 
 #: blocks/history/edit.php:78
-msgid ""
-"This Block will try to read following Page Attributes from all Subpages of "
-"the selected Source Page"
+msgid "This Block will try to read following Page Attributes from all Subpages of the selected Source Page"
 msgstr ""
 
 #: blocks/history/edit.php:83
@@ -1245,7 +1207,7 @@ msgstr ""
 
 #: blocks/history/edit.php:103
 msgid "This is only visible if a Year is selected!"
-msgstr ""
+msgstr "Nur sichtbar wenn ein Jahr gewählt wurde!"
 
 #: blocks/history/edit.php:120
 msgid "none"
@@ -1262,12 +1224,8 @@ msgid "OnePage Nav Marker"
 msgstr ""
 
 #: blocks/onepage_nav_marker/controller.php:53
-msgid ""
-"<b>Creates OnePage Navigation Links</b><p>1.) Create your Sitestructure with "
-"content in the Sitemap.<br><br>2.) Create a new Page and change the Page "
-"Theme to Porto OnePage on that Page.<br><br>3.) Add any instances from this "
-"Block into the new Page.</p>"
-msgstr ""
+msgid "<b>Creates OnePage Navigation Links</b><p>1.) Create your Sitestructure with content in the Sitemap.<br><br>2.) Create a new Page and change the Page Theme to Porto OnePage on that Page.<br><br>3.) Add any instances from this Block into the new Page.</p>"
+msgstr "<b>Erzeuge OnePage Navigation Links</b><p>1.) Erstelle die Seitenstruktur in der Sitemap.<br><br>2.) Erstelle eine neue Seite und setze das Seiten Theme auf Porto OnePage.<br><br>3.) Füge einige Instanzen von diesem Block in der neuen Seite ein.</p>"
 
 #: blocks/onepage_nav_marker/controller.php:158
 msgid "There is a Problem with the new Page"
@@ -1291,16 +1249,14 @@ msgstr ""
 
 #: blocks/onepage_nav_marker/edit.php:31
 msgid "This Blocktype works only with the <b>Porto OnePage Template</b>!"
-msgstr ""
+msgstr "Dieser Blocktyp arbeitet nur mit dem <b>Porto OnePage Template</b>!"
 
 #: blocks/onepage_nav_marker/edit.php:32
 msgid "The current Theme for this Page is:"
 msgstr ""
 
 #: blocks/onepage_nav_marker/edit.php:38
-msgid ""
-"Import the content from other Pages to this OnePage here. If you click on a "
-"Navigation point, the page scrolls to this position!"
+msgid "Import the content from other Pages to this OnePage here. If you click on a Navigation point, the page scrolls to this position!"
 msgstr ""
 
 #: blocks/onepage_nav_marker/edit.php:42
@@ -1324,9 +1280,7 @@ msgid "Included Areas from Page"
 msgstr ""
 
 #: blocks/onepage_nav_marker/edit.php:126
-msgid ""
-"Select your Area to include its content. If you only want to set a link for "
-"the scrolleffect, select nothing!"
+msgid "Select your Area to include its content. If you only want to set a link for the scrolleffect, select nothing!"
 msgstr ""
 
 #: blocks/page_list/templates/porto_blog_large/view.php:29
@@ -1391,10 +1345,6 @@ msgstr ""
 msgid "Link 2 Page"
 msgstr ""
 
-#: blocks/nav_top/form.php:40
-msgid "Tel"
-msgstr ""
-
 #: single_pages/dashboard/porto_design/informationen.php:18
 msgid "Porto Package Information"
 msgstr ""
@@ -1443,13 +1393,8 @@ msgid "General Information"
 msgstr "Allgemeine Informationen"
 
 #: single_pages/dashboard/porto_design/informationen.php:50
-msgid ""
-"Here you can put in several Information about your Site. The header and "
-"footer types will display this. Email- Bots can not read the Email address!"
-msgstr ""
-"Hier können einige Informationen bezüglich der Seite eingegeben werden. Sie "
-"werden in einigen Seitenkopf bzw. Seitenfuss Bereichen angezeigt! Email "
-"Adressen sind gegen Emailbots geschützt!"
+msgid "Here you can put in several Information about your Site. The header and footer types will display this. Email- Bots can not read the Email address!"
+msgstr "Hier können einige Informationen bezüglich der Seite eingegeben werden. Sie werden in einigen Seitenkopf bzw. Seitenfuss Bereichen angezeigt! Email Adressen sind gegen Emailbots geschützt!"
 
 #: single_pages/dashboard/porto_design/informationen.php:56
 #: single_pages/dashboard/porto_design/informationen.php:91
@@ -1503,11 +1448,8 @@ msgid "Theme Header Type"
 msgstr "Theme Seitenkopf Typ"
 
 #: single_pages/dashboard/porto_design/header_footer.php:52
-msgid ""
-"Here you can select a header type. Not every header has a search function!"
-msgstr ""
-"Hier kann ein Seitenkopf Typ gewählt werden (Nicht jeder Seitenkopf Typ hat "
-"eine Suchbox integriert)."
+msgid "Here you can select a header type. Not every header has a search function!"
+msgstr "Hier kann ein Seitenkopf Typ gewählt werden (Nicht jeder Seitenkopf Typ hat eine Suchbox integriert)."
 
 #: single_pages/dashboard/porto_design/header_footer.php:60
 #: single_pages/dashboard/porto_design/settings.php:88
@@ -1524,7 +1466,7 @@ msgstr "Hier kann ein Seitenfuss gewählt werden."
 
 #: single_pages/dashboard/porto_design/menu_logos.php:19
 msgid "Upload a Site Logo and / or create an animated Menu loading Effect"
-msgstr "Seitenlogo hochladen und / oder animierte Navigation erstellen"
+msgstr "Seitenlogo hochladen und / oder erstelle animierte Navigationen"
 
 #: single_pages/dashboard/porto_design/menu_logos.php:45
 msgid "Page Images"
@@ -1563,22 +1505,12 @@ msgid "Sticky Menu Logo"
 msgstr ""
 
 #: single_pages/dashboard/porto_design/menu_logos.php:96
-msgid ""
-"Activate the Sticky-Header menu here! The animation works only with a "
-"selected Logo (Header) and Sticky Menu Logo."
-msgstr ""
-"Das Sticky Menu positioniert die Navigationsleiste je nach gewählter "
-"Seitenposition und blendet sie nicht aus."
+msgid "Activate the Sticky-Header menu here! The animation works only with a selected Logo (Header) and Sticky Menu Logo."
+msgstr "Das Sticky Menu positioniert die Navigationsleiste je nach gewählter Seitenposition und blendet sie nicht aus."
 
 #: single_pages/dashboard/porto_design/menu_logos.php:97
-msgid ""
-"The function \"always on\" overrides the Logo (Header) and will not "
-"displayed if the User can see the Concrete5 edit taskbar!"
-msgstr ""
-" Immer an bedeutet, dass die Navigation immer am oberen Browser Rand fest "
-"steht wenn keine Concrete5 Edit Bar geladen wird.  Animieren schaltet je "
-"nach Position um. Die Animation benötigt das Logo (Seitenkopf) sowie das "
-"Sticky Menu Logo."
+msgid "The function \"always on\" overrides the Logo (Header) and will not displayed if the User can see the Concrete5 edit taskbar!"
+msgstr " Immer an bedeutet, dass die Navigation immer am oberen Browser Rand fest steht wenn keine Concrete5 Edit Bar geladen wird.  Animieren schaltet je nach Position um. Die Animation benötigt das Logo (Seitenkopf) sowie das Sticky Menu Logo."
 
 #: single_pages/dashboard/porto_design/menu_logos.php:102
 msgid "off"
@@ -1612,9 +1544,7 @@ msgstr "Achtung!"
 
 #: single_pages/dashboard/porto_design/menu_logos.php:149
 msgid "For activate this Image please disable first the Boxed Mode!"
-msgstr ""
-"Das Hintergrundbild kann nur genutzt werden wenn der \"Kasten Modus\" "
-"deaktiviert ist!"
+msgstr "Das Hintergrundbild kann nur genutzt werden wenn der \"Kasten Modus\" deaktiviert ist!"
 
 #: single_pages/dashboard/porto_design/menu_logos.php:156
 msgid "Select Background"
@@ -1650,8 +1580,7 @@ msgstr "Zeige Loginbox in der Navigation"
 
 #: single_pages/dashboard/porto_design/settings.php:63
 msgid "Displays a login function in the Autonav Porto- Navigation"
-msgstr ""
-"Loginbox & Benutzereinstellungen in die Autonav Porto Navigation einbinden"
+msgstr "Loginbox & Benutzereinstellungen in die Autonav Porto Navigation einbinden"
 
 #: single_pages/dashboard/porto_design/settings.php:70
 msgid "Activate Boxed Mode"
@@ -1671,12 +1600,8 @@ msgstr "Startseite"
 
 #: single_pages/dashboard/porto_design/settings.php:81
 #, php-format
-msgid ""
-"Display the Breadcrump Navigation in every Pagetemplate with the exception "
-"of the \"%s\" Pagetemplate!"
-msgstr ""
-"Zeigt den Bereich \"Sie sind hier:\" in jedem Seitentemplate mit Ausnahme "
-"von dem \"%s\" Seitentemplate!"
+msgid "Display the Breadcrump Navigation in every Pagetemplate with the exception of the \"%s\" Pagetemplate!"
+msgstr "Zeigt den Bereich \"Sie sind hier:\" in jedem Seitentemplate mit Ausnahme von dem \"%s\" Seitentemplate!"
 
 #: single_pages/dashboard/porto_design/settings.php:98
 msgid "Enable Scroll to top"
@@ -1684,9 +1609,7 @@ msgstr "Nach oben rollen aktivieren"
 
 #: single_pages/dashboard/porto_design/settings.php:101
 msgid "Enable a Scroll to top function in the bottom of the page"
-msgstr ""
-"Im unteren rechten Bereich der Seite wird ein \"Nach oben rollen\" Knopf "
-"eingeblendet"
+msgstr "Im unteren rechten Bereich der Seite wird ein \"Nach oben rollen\" Knopf eingeblendet"
 
 #: single_pages/dashboard/porto_design/settings.php:106
 msgid "Load Footer- Infotext from Meta-Description"
@@ -1718,8 +1641,7 @@ msgstr "Suchanfrage darf nicht leer sein!"
 
 #: single_pages/dashboard/porto_design.php:20
 msgid "Setup for Porto Package"
-msgstr ""
-"Porto Einstellungen für das Seitenverhalten, Seitendesign und Seitenlogo"
+msgstr "Porto Einstellungen für das Seitenverhalten, Seitendesign und Seitenlogo"
 
 #: single_pages/dashboard/porto_design.php:54 elements/dashboard/install.php:19
 #: elements/dashboard/uninstall.php:19
@@ -1808,9 +1730,7 @@ msgstr ""
 #: controllers/single_page/dashboard/porto_design/settings.php:65
 #: controllers/single_page/dashboard/porto_design.php:174
 #, php-format
-msgid ""
-"Footer- Infotext can not autofilled by Meta- Description of \"%s\" page "
-"because it is not defined!"
+msgid "Footer- Infotext can not autofilled by Meta- Description of \"%s\" page because it is not defined!"
 msgstr ""
 
 #: controllers/single_page/dashboard/porto_design/settings.php:72
@@ -1889,9 +1809,7 @@ msgstr ""
 
 #: controllers/single_page/dashboard/porto_design.php:137
 #, php-format
-msgid ""
-"Currently there are no Porto Theme active. Go to %s and enable one of the "
-"Porto Themes!"
+msgid "Currently there are no Porto Theme active. Go to %s and enable one of the Porto Themes!"
 msgstr ""
 
 #: controllers/single_page/dashboard/porto_design.php:147
@@ -1902,9 +1820,7 @@ msgstr ""
 
 #: controllers/single_page/dashboard/porto_design.php:164
 #, php-format
-msgid ""
-"Currently there is no Theme active. Go to %s and enable one of the Porto "
-"Themes!"
+msgid "Currently there is no Theme active. Go to %s and enable one of the Porto Themes!"
 msgstr ""
 
 #: controllers/single_page/dashboard/porto_design.php:263
@@ -1925,7 +1841,7 @@ msgstr ""
 
 #: themes/onepage/default.php:220 themes/porto/inc/footer.php:123
 msgid "All"
-msgstr ""
+msgstr "Alle"
 
 #: themes/onepage/page_theme.php:43
 msgid "Porto OnePage Template"
@@ -1939,7 +1855,7 @@ msgstr ""
 #: themes/porto/account/edit_profile.php:101
 #: elements/page_controls_footer.php:107 elements/page_controls_footer.php:109
 msgid "Attributes"
-msgstr ""
+msgstr "Attribute"
 
 #: themes/porto/login.php:141
 msgid "Submit"
@@ -1955,7 +1871,7 @@ msgstr ""
 
 #: themes/porto/page_not_found.php:27
 msgid "404 - Page Not Found"
-msgstr ""
+msgstr "404 - Seite nicht gefunden"
 
 #: themes/porto/register.php:58 themes/porto/register.php:65
 #: themes/porto/register.php:71
@@ -1964,7 +1880,7 @@ msgstr ""
 
 #: themes/porto/register.php:82
 msgid "Your Details"
-msgstr ""
+msgstr "Details"
 
 #: themes/porto/register.php:100
 msgid "Confirm Password"
@@ -1990,7 +1906,7 @@ msgstr ""
 #: themes/porto/members/profile.php:112
 #, php-format
 msgid "Awarded %s"
-msgstr ""
+msgstr "Awarded %s"
 
 #: themes/porto/members/profile.php:127
 msgid "Edit"
@@ -2003,12 +1919,12 @@ msgstr ""
 
 #: themes/porto/page_forbidden.php:27
 msgid "403 - You are not allowed to access this page"
-msgstr ""
+msgstr "403 - Du hast keine Rechte um diese Seite in denn Griff zu bekommen"
 
 #: themes/porto/account/edit_profile.php:63
 #: themes/porto/account/edit_profile_orig.php:23
 msgid "Time Zone"
-msgstr ""
+msgstr "Zeit Zone"
 
 #: themes/porto/account/edit_profile.php:72
 #: themes/porto/account/edit_profile_orig.php:32
@@ -2047,10 +1963,8 @@ msgid "Back to Account"
 msgstr ""
 
 #: themes/porto/account/avatar.php:48
-msgid ""
-"You need the Adobe Flash plugin installed on your computer to upload and "
-"crop your user profile picture."
-msgstr ""
+msgid "You need the Adobe Flash plugin installed on your computer to upload and crop your user profile picture."
+msgstr "Adobe Flash Plugin muss installiert sein, damit ihr Benutzerprofil wieder angezeigt sein!"
 
 #: themes/porto/account/avatar.php:100
 msgid "Remove your user avatar"
@@ -2058,11 +1972,11 @@ msgstr ""
 
 #: themes/porto/account/view.php:63
 msgid "View Public Profile"
-msgstr ""
+msgstr "Zeige öffentliches Profil"
 
 #: themes/porto/account/view.php:66
 msgid "View your public user profile and the information you are sharing."
-msgstr ""
+msgstr "Betrachte dein öffentliches Benutzerprofil und denn Informationen die geteilt wurden."
 
 #: themes/porto/account/messages/inbox.php:26
 #: themes/porto/account/messages/inbox.php:99
@@ -2077,7 +1991,7 @@ msgstr ""
 
 #: themes/porto/account/messages/inbox.php:38
 msgid "Action"
-msgstr ""
+msgstr "Aktion"
 
 #: themes/porto/account/messages/inbox.php:49
 msgid "Reply"
@@ -2095,7 +2009,7 @@ msgstr ""
 #: themes/porto/account/messages/inbox.php:109
 #: themes/porto/account/messages/inbox.php:233
 msgid "To"
-msgstr ""
+msgstr "Zu"
 
 #: themes/porto/account/messages/inbox.php:113
 msgid "From"
@@ -2136,17 +2050,13 @@ msgstr ""
 
 #: themes/porto/account/messages/inbox.php:207
 msgid "Woops!"
-msgstr ""
+msgstr "Hoppla!"
 
 #: themes/porto/account/messages/inbox.php:208
-msgid ""
-"You've sent more messages than we can handle just now, that last one didn't "
-"go out.\n"
-"                            We've notified an administrator to check into "
-"this.\n"
-"                            Please wait a few minutes before sending a new "
-"message."
-msgstr ""
+msgid "You've sent more messages than we can handle just now, that last one didn't go out.\n"
+"                            We've notified an administrator to check into this.\n"
+"                            Please wait a few minutes before sending a new message."
+msgstr "Es wurden mehrere Nachrichten gestapelt, als bei dem Server E-Mails versendet wurden."
 
 #: themes/porto/account/messages/inbox.php:224
 #, php-format
@@ -2165,7 +2075,7 @@ msgstr ""
 #: themes/porto/account/messages/inbox.php:283
 #, php-format
 msgid "<strong>%s</strong>, sent by %s on %s"
-msgstr ""
+msgstr "<strong>%s</strong>, sent by %s on %s"
 
 #: themes/porto/account/messages/inbox.php:277
 msgid "Sent Messages"
@@ -2213,7 +2123,7 @@ msgstr ""
 
 #: elements/page_controls_footer.php:140 elements/page_controls_footer.php:142
 msgid "Versions"
-msgstr ""
+msgstr "Version"
 
 #: elements/page_controls_footer.php:157
 msgid "Dashboard"
@@ -2241,7 +2151,7 @@ msgstr ""
 
 #: elements/page_controls_footer.php:171
 msgid "Workflow"
-msgstr ""
+msgstr "Arbeitsablauf"
 
 #: elements/page_controls_footer.php:173
 msgid "Stacks & Blocks"
@@ -2286,7 +2196,7 @@ msgstr ""
 
 #: elements/page_controls_footer.php:324
 msgid "Add Pages and Navigate Your Site"
-msgstr ""
+msgstr "Pages und Navigation"
 
 #: elements/page_controls_footer.php:338
 msgid "Navigate this page in other languages"
@@ -2299,11 +2209,11 @@ msgstr ""
 #: elements/page_controls_footer.php:377
 #, php-format
 msgid "%s is currently editing this page."
-msgstr ""
+msgstr "%s bearbeitet gerade diese Seite."
 
 #: elements/page_controls_footer.php:388
 msgid "View/Edit Original"
-msgstr ""
+msgstr "Original anzeigen / editieren"
 
 #: elements/page_controls_footer.php:391 elements/page_controls_footer.php:392
 msgid "Remove Alias"
@@ -2315,7 +2225,7 @@ msgstr ""
 
 #: elements/page_controls_footer.php:398
 msgid "This page is an alias of one that actually appears elsewhere."
-msgstr ""
+msgstr "Diese Seite ist ein Alias von einer die wirklich woanders erscheint."
 
 #: elements/page_controls_footer.php:458
 msgid "Hide"
@@ -2327,7 +2237,7 @@ msgstr ""
 
 #: elements/page_controls_footer.php:473
 msgid "This is an un-published draft."
-msgstr ""
+msgstr "Dies ist ein unveröffentlicher Entwurf."
 
 #: elements/page_controls_footer.php:496
 msgid "Submit to Workflow"
@@ -2343,7 +2253,7 @@ msgstr ""
 
 #: elements/page_controls_footer.php:510
 msgid "This page is newer than what appears to visitors on your live site."
-msgstr ""
+msgstr "Diese Seite ist neurer als die, die dem Besucher auf der live Seite angezeigt wird."
 
 #: elements/dashboard/install.php:9
 msgid "Porto Package installer"
@@ -2382,8 +2292,7 @@ msgid "Porto Package uninstaller"
 msgstr ""
 
 #: elements/dashboard/uninstall.php:10
-msgid ""
-"Enable or disable the features for the uninstall routine of this Package"
+msgid "Enable or disable the features for the uninstall routine of this Package"
 msgstr ""
 
 #: elements/dashboard/uninstall.php:44
@@ -2393,3 +2302,4 @@ msgstr ""
 #: elements/dashboard/uninstall.php:49
 msgid "Remove Filesets"
 msgstr ""
+

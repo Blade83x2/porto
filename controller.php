@@ -276,6 +276,7 @@ class Controller extends Package
         $this->db = Database::getActiveConnection();
         if (!$res = $this->db->getRow("SELECT cID FROM PortoPackage WHERE cID=1"))
         {
+            //TODO hier könnnen BUGS entstehen!!!! ÄNDERN !
             $ui = UserInfo::getByID(USER_SUPER_ID);
             $sql= "INSERT INTO PortoPackage    (cID, breadcrump_banner_active, breadcrump_banner_text, stickymenu_active, scrolltotop_active, load_from_cdn, load_footerinfotext_from_metadescription, second_stickymenu_gfx, second_stickymenu_gfx_x, second_stickymenu_gfx_y, page_logo_x, page_logo_y, header_type, footer_type, show_login, boxed_design, background_image, background_fix, searchpage_id, searchpage_text, searchpage_empty_query, page_logo, page_logo_mini, footer_copyright,                       footer_ribbon, email)"
                  ."VALUES (                     ?,   ?,                        ?,                      ?,                 ?,                  ?,             ?,                                        ?,                     ?,                       ?,                       ?,           ?,           ?,           ?,           ?,          ?,            ?,                ?,              ?,             ?,               ?,                      ?,         ?,              ?,                                      ?,             ?)";
@@ -298,11 +299,13 @@ class Controller extends Package
                 $config->save('porto.datamodel', serialize($obj));
             }
         }
+
         # Jobs
         if ($r->request->get('portoInstallCronJobs') || $this->isUpdate = TRUE)
         {
             $this->addCronJobIfNotExists($pkg, 'clear_empty_workflow_progress');
         }
+
         # PageTheme
 	    $this->setThemeIfNotExists('porto', $pkg);
 	    $this->setThemeIfNotExists('onepage', $pkg);
@@ -314,8 +317,10 @@ class Controller extends Package
         $this->setPageTemplateIfNotExists('left_sidebar', t('Left Sidebar'), $pkg);
         $this->setPageTemplateIfNotExists('right_sidebar', t('Right Sidebar'), $pkg);
         $this->setPageTemplateIfNotExists('blog', t('Blog'), $pkg);
+
         # Pagetypes (z.B. für Composer o.ä.)
         $this->installPageType('blog', t('Blog'), $pkg);
+
         # Dashboard
         $this->setDashboardIfNotExists('porto_design/', t('Porto Package'), $pkg);
         $this->setDashboardIfNotExists('porto_design/settings', t('Settings'), $pkg);
@@ -623,7 +628,7 @@ class Controller extends Package
         ));
         $this->setUserAttributeKeyIfNotExistsOrUpdate('textarea', $pkg, array(
             'akHandle'              		=> 'zitat',
-            'akName'                		=> t('Zitat'),
+            'akName'                		=> t('Blockquote'),
             'akIsSearchable'        		=> true,        // Feld verfügbar in der Benutzersuche der Verwaltung
             'akIsSearchableIndexed' 		=> true,        // Inhalt in die Benutzersuche aufnehmen
             'uakMemberListDisplay'  		=> false,        // In Benutzerliste anzeigen
@@ -1378,7 +1383,7 @@ class Controller extends Package
                     
                 /*$this->setUserAttributeKeyIfNotExistsOrUpdate('textarea', $pkg, array(
                     'akHandle'              		=> 'zitat',
-                    'akName'                		=> t('Zitat'),
+                    'akName'                		=> t('Blockquote'),
                     'akIsSearchable'        		=> true,        // Feld verfügbar in der Benutzersuche der Verwaltung
                     'akIsSearchableIndexed' 		=> true,        // Inhalt in die Benutzersuche aufnehmen
                     'uakMemberListDisplay'  		=> false,        // In Benutzerliste anzeigen

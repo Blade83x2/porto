@@ -25,7 +25,6 @@ if ($portoSetup['breadcrump_banner_active']==1) { ?>
             <?php if(is_object($c) && $c->cID != HOME_CID) { ?>
                 <div class="row">
                     <div class="col-md-12">
-
                         <?php
                         $bt = BlockType::getByHandle('autonav');
                         $bt->controller->displayPages = 'top_level';
