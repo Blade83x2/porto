@@ -28,15 +28,12 @@ use
     \Core,
     \Package,
     \Job,
-    Config,
-    URL,
+    \Config,
     \Concrete\Core\View,
-    \Concrete\Core\Support\Facade\Route,
-    \Concrete\Core\Support\Facade\Database,
     \Request,
     
     \Concrete\Core\Permission\Key\Key as PermissionKey,
-    PermissionAccess,
+    \PermissionAccess,
     \Concrete\Core\Permission\Access\Entity\GroupEntity,
 
     \Concrete\Core\Page\Page,
@@ -55,27 +52,30 @@ use
     \Concrete\Core\Attribute\Key\CollectionKey as CollectionAttributeKey,
 
     \Concrete\Attribute\Select\Option,
-    UserAttributeKey,
+    \UserAttributeKey,
 
     \Concrete\Core\User\User,
     \Concrete\Core\User\UserInfo,
-    Group,
-    GroupSet,
+    \Group,
+    \GroupSet,
 
     \Concrete\Core\File\Set\Set as FileSet,
     \Concrete\Core\File\FileList,
     \Concrete\Core\File\Importer as FileImporter,
-    \File,
 
     \Concrete\Core\Asset\Asset,
     \Concrete\Core\Asset\AssetList;
 
-
+/**
+ * Class Controller
+ * @package Concrete\Package\Porto
+*/
 class Controller extends Package
 {
-	protected
+
+    protected
         $pkgHandle                      = 'porto',
-	    $pkgVersion                     = '0.7.15',
+	    $pkgVersion                     = '0.7.16',
         $appVersionRequired             = '5.7.5.2',
         $pkgAutoloaderMapCoreExtensions = false;
 
@@ -83,14 +83,30 @@ class Controller extends Package
         $db                             = NULL,
         $isUpdate                       = false;
 
+    /**
+     * @param void
+     * @return string
+    */
+    public function getPackageDescription()
+    {
+        return t("The Porto Package was built with Bootstrap v3.2.0 for concrete 5.7! It includes 2 Themes, Blocks, Templates and more...");
+    }
 
-    public function getPackageDescription() { return t("The Porto Package was built with Bootstrap v3.2.0 for concrete 5.7! It includes 2 Themes, Blocks, Templates and more...");    }
-    public function getPackageName()        { return t("Porto Package");  }
+    /**
+     * @param void
+     * @return string
+    */
+    public function getPackageName()
+    {
+        return t("Porto Package");
+    }
 
-
+    /**
+     * @param void
+     * @return void
+    */
     public function on_start()
     {
-
         Config::set('concrete.white_label.logo', BASE_URL.'/packages/porto/concrete5_dashboard_icon.png');
         Config::set('concrete.white_label.name', Config::get('concrete.site'));
         Config::set('concrete.email.default.address', 'noreply@' . $_SERVER['SERVER_NAME']);

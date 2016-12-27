@@ -97,7 +97,7 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
             <option value="none"<?php if ($gender=='none') { echo ' selected="selected"';}?>><?php echo t('Select')?></option>
             <option value="male"<?php if ($gender=='male') { echo ' selected="selected"';}?>><?php echo t('male')?></option>
             <option value="female"<?php if ($gender=='female') { echo ' selected="selected"';}?>><?php echo t('female')?></option>
-            <option value="company"<?php if ($gender=='company') { echo ' selected="selected"';}?>><?php echo t('company')?></option>
+            <option value="company"<?php if ($gender=='company') { echo ' selected="selected"';}?>><?php echo t('Company')?></option>
         </select>
     </div>
 </div>

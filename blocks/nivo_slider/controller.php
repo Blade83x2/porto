@@ -29,7 +29,7 @@ class Controller extends BlockController
 	    $btTable                                  = 'PortoPackageNivoSlider',
         $btDefaultSet                             = 'porto',
 	    $btInterfaceWidth                         = "680",
-	    $btInterfaceHeight                        = "460",
+	    $btInterfaceHeight                        = "500",
         $btCacheBlockRecord                       = false,
         $btCacheBlockOutput                       = false,
         $btCacheBlockOutputOnPost                 = false,
