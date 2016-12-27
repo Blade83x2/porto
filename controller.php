@@ -1,6 +1,28 @@
 <?php
 namespace Concrete\Package\Porto;
 defined('C5_EXECUTE') or die(_("Access Denied."));
+/**       ____  _           _       ___ _____
+ *>       | __ )| | __ _  __| | ___ ( _ )___ /
+ *>       |  _ \| |/ _` |/ _` |/ _ \/ _ \ |_ \
+ *>       | |_) | | (_| | (_| |  __/ (_) |__) |
+ *>       |____/|_|\__,_|\__,_|\___|\___/____/
+ *>
+ **  - - - - - - - - - - - - - - - - - - - - - - - +
+=>  Web ......... http://cplusplus-development.de |
+=>  Mail ........................ mail@blade83.de |
+=>  (c) ............... 2005-2016 Johannes Krämer |
+ **  - - - - - - - - - - - - - - - - - - - - - - - +
+ **
+=>  Project:  Porto
+=>  Filename: controller.php
+=>  Filetime: 00:08 - 16.12.14
+=>  Coder:    $ Blade83
+ */
+
+/**
+ * @author Johannes Krämer
+ * @copyright Copyright (c) 2016, Johannes Krämer
+ */
 use
     \Log,
     \Core,
@@ -49,35 +71,11 @@ use
     \Concrete\Core\Asset\AssetList;
 
 
-
-/**       ____  _           _       ___ _____
-*>       | __ )| | __ _  __| | ___ ( _ )___ /
-*>       |  _ \| |/ _` |/ _` |/ _ \/ _ \ |_ \
-*>       | |_) | | (_| | (_| |  __/ (_) |__) |
-*>       |____/|_|\__,_|\__,_|\___|\___/____/
-*>
-**  - - - - - - - - - - - - - - - - - - - - - - - +
-=>  Web ......... http://cplusplus-development.de |
-=>  Mail ........................ mail@blade83.de |
-=>  (c) ............... 2005-2016 Johannes Krämer |
-**  - - - - - - - - - - - - - - - - - - - - - - - +
-**
-=>  Project:  Porto
-=>  Filename: controller.php
-=>  Filetime: 00:08 - 16.12.14
-=>  Coder:    $ Blade83
-*/
-
-/**
- * @author Johannes Krämer
- * @copyright Copyright (c) 2016, Johannes Krämer
-*/
-
 class Controller extends Package
 {
 	protected
         $pkgHandle                      = 'porto',
-	    $pkgVersion                     = '0.6.400',
+	    $pkgVersion                     = '0.7.15',
         $appVersionRequired             = '5.7.5.2',
         $pkgAutoloaderMapCoreExtensions = false;
 
@@ -115,7 +113,7 @@ class Controller extends Package
         #$r->requireAsset('core/legacy');
 
         $al = AssetList::getInstance();
-        $this->db = Database::getActiveConnection();
+        $this->db = \Database::connection();
         $cdn = $this->db->getRow("SELECT load_from_cdn FROM PortoPackage WHERE cID=?", array(1));
         # http://documentation.concrete5.org/developers/appendix/asset-list
         if($cdn['load_from_cdn'])
@@ -204,7 +202,7 @@ class Controller extends Package
 
     public function upgrade()
     {
-        $this->isUpdate == TRUE;
+        $this->isUpdate = TRUE;
         $pkg = $this;
         parent::upgrade();
         $this->configure($pkg);
@@ -231,12 +229,6 @@ class Controller extends Package
             }
 	    }
 
-        # Datei Erweiterungen löschen
-        $this->delAllowedFileExtensionIfExists('apk');
-        $this->delAllowedFileExtensionIfExists('ipa');
-        $this->delAllowedFileExtensionIfExists('mp3');
-
-
         # Gruppen von GroupSet lösen
         $this->delUserGroupFromUserGroupSet(
             GroupSet::getByName('Porto UA Set'),
@@ -246,9 +238,16 @@ class Controller extends Package
             GroupSet::getByName('Porto UA Set'),
             Group::getByName('Porto Admins')
         );
+
         # Gruppen entfernen
         $this->deleteUserGroupSetIfExists('Porto UA Set');
         $this->deleteUserGroupIfExists('Porto Admins');
+
+        # Datei Erweiterungen löschen
+        $this->delAllowedFileExtensionIfExists('apk');
+        $this->delAllowedFileExtensionIfExists('ipa');
+        $this->delAllowedFileExtensionIfExists('mp3');
+
         # konfiguration entfernen
         if (is_object($config = \Core::make('config/database')))
         {
@@ -273,7 +272,7 @@ class Controller extends Package
         }
 
         # Datenbank prüfen
-        $this->db = Database::getActiveConnection();
+        $this->db = \Database::connection();
         if (!$res = $this->db->getRow("SELECT cID FROM PortoPackage WHERE cID=1"))
         {
             //TODO hier könnnen BUGS entstehen!!!! ÄNDERN !
@@ -281,6 +280,34 @@ class Controller extends Package
             $sql= "INSERT INTO PortoPackage    (cID, breadcrump_banner_active, breadcrump_banner_text, stickymenu_active, scrolltotop_active, load_from_cdn, load_footerinfotext_from_metadescription, second_stickymenu_gfx, second_stickymenu_gfx_x, second_stickymenu_gfx_y, page_logo_x, page_logo_y, header_type, footer_type, show_login, boxed_design, background_image, background_fix, searchpage_id, searchpage_text, searchpage_empty_query, page_logo, page_logo_mini, footer_copyright,                       footer_ribbon, email)"
                  ."VALUES (                     ?,   ?,                        ?,                      ?,                 ?,                  ?,             ?,                                        ?,                     ?,                       ?,                       ?,           ?,           ?,           ?,           ?,          ?,            ?,                ?,              ?,             ?,               ?,                      ?,         ?,              ?,                                      ?,             ?)";
             $this->db->ExecuteQuery($sql,array (1,   1,                        '',                     0,                 1,                  1,             1,                                        0,                     0,                       0,                       0,           0,           1,           3,           1,          0,            0,                0,              0,             t('Search...'),  '',                     0,         0,              '© Copyright %Y. All Rights Reserved.', '',            (is_object($ui)?$ui->getUserEmail():'')));
+
+        /*
+         *
+         *
+         *             // now we add a pending version to the collectionversions table
+            $v2 = array(
+                $newCID,
+                1,
+                $pTemplateID,
+                $data['name'],
+                $data['handle'],
+                $data['cDescription'],
+                $cDatePublic,
+                $cDate,
+                VERSION_INITIAL_COMMENT,
+                $data['uID'],
+                $cvIsApproved,
+                $cvIsNew,
+                $pThemeID,
+            );
+            $q2 = 'insert into CollectionVersions (cID, cvID, pTemplateID, cvName, cvHandle, cvDescription, cvDatePublic, cvDateCreated, cvComments, cvAuthorUID, cvIsApproved, cvIsNew, pThemeID) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+            $r2 = $db->prepare($q2);
+            $res2 = $db->execute($r2, $v2);
+         */
+
+
+
+
         }
 
         # Datei Erweiterungen hinzufügen
@@ -536,8 +563,6 @@ class Controller extends Package
             'asID'                  		=> $AttribSetIDUser // zugehöriges userattribute set
         ));
 
-
-
         $this->setUserAttributeKeyIfNotExistsOrUpdate('select', $pkg, array(
             'akHandle'              => 'gender',
             'akSelectValues'        => array(
@@ -557,8 +582,6 @@ class Controller extends Package
             'akSelectAllowMultipleValues'=> false,    // Mehrfachselektion erlauben
             'asID'                  => $AttribSetIDUser  // zugehöriges userattribute set
         ));
-
-
         $this->setUserAttributeKeyIfNotExistsOrUpdate('text', $pkg, array(
             'akHandle'              => 'firstname',
             'akName'                => t('Firstname'),
@@ -641,6 +664,7 @@ class Controller extends Package
             'akTextareaDisplayModeCustomOptions'=> '',   	// Optionen wenn rich_text_custom rewaehlt wird
             'asID'                  		=> $AttribSetIDUser // zugehöriges userattribute set
         ));
+
         # FileSets
         if (($fileSet=$this->addFileSetIfNotExistsAndGet('Porto Theme Backgrounds', 'public')) instanceof FileSet)
         {
@@ -714,7 +738,7 @@ class Controller extends Package
     protected function deletePackageTables($tableName)
     {
 
-        $db = Database::getActiveConnection();
+        $db = \Database::connection();
         $tables = $db->executeQuery("SHOW TABLES LIKE '%".$tableName."%'");
         $allTables = array();
         foreach($tables as $key => $val)
@@ -1522,7 +1546,7 @@ class Controller extends Package
                     'akHandle'              => 'company',
                     'akSelectValues'        => array(
                     t('Privatperson'),
-                    t('Firma')
+                    t('Company')
                     ),
                     'akName'                	=> t('Privatperson / Firma'),
                     'akIsSearchable'        	=> true,
@@ -1756,7 +1780,6 @@ class Controller extends Package
     */
     protected function deleteUserAttributeKey($handle)
     {
-
         if(is_object($attr = UserAttributeKey::getByHandle($handle)))
         {
             $attr->delete();

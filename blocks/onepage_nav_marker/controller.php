@@ -2,7 +2,6 @@
 namespace Concrete\Package\Porto\Block\OnepageNavMarker;
 use
     Concrete\Core\Page\Page,
-
     Core,
     PageList,
     \Concrete\Core\Support\Facade\Database,
@@ -31,10 +30,11 @@ class Controller extends BlockController
         $btDefaultSet                             = 'porto',
 	    $btInterfaceWidth                         = "700",
 	    $btInterfaceHeight                        = "250",
-        $btCacheBlockRecord                       = false,
-        $btCacheBlockOutput                       = false,
-        $btCacheBlockOutputOnPost                 = false,
-        $btCacheBlockOutputForRegisteredUsers     = false;
+        $btCacheBlockRecord                       = true, // Should be safe in most cases, this will lighten the load on your database.
+        $btCacheBlockOutput                       = false, // Basically, when this option is set, the block will always load whatever was entered after the last "save". This is also generally safe to use. However, in situations where you are relying on visitor contribution or other dynamic content, the cached output will be wrong.
+        $btCacheBlockOutputOnPost                 = false, // This option will cache a block, even when the page it is on is recieving a post request. So you would want this disabled for something that needs input to change, but you can set this to true for something that does not.
+        $btCacheBlockOutputForRegisteredUsers     = false; // Unregistered users will never have complicated permissions that might influence what they can or can not see, so some things are cacheable for them, but not registered users. If your block has nothing to do with permissions, this can be true.
+
         
 
 
@@ -62,6 +62,12 @@ class Controller extends BlockController
         );
     }
 
+    public function registerViewAssets($outputContent = '')
+    {
+        ## Require our formigoSlider javascript
+        #$this->requireAsset('javascript','formigoSlider');
+    }
+
     public function getSearchableContent()
     {
         return $this->bID. ' '. $this->onPageID;
@@ -77,7 +83,7 @@ class Controller extends BlockController
     public function getUsedIDs()
     {
 
-        $db = Database::getActiveConnection();
+        $db = \Database::connection();
         $current = Page::getCurrentPage();
         $all = $db->fetchAll("SELECT
                               PortoPackageOnePageNavMarker.pID AS pID
@@ -85,7 +91,6 @@ class Controller extends BlockController
                             ON (PortoPackageOnePageNavMarker.bID = Blocks.bID)
                             WHERE PortoPackageOnePageNavMarker.onPageID = ?
                             AND Blocks.bIsActive = 0", array($current->getCollectionID()));
-
         return $all;
     }
 

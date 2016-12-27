@@ -35,14 +35,9 @@ class PortoDesign extends DashboardPageController
     private
         $db = NULL;
 
-    #public function __construct() {
-#	$this->redirect("/dashboard/porto_design/settings");
- #   }    
-        
-        
     public function on_start()
     {
-        $this->db = Database::getActiveConnection();
+        $this->db = Database::connection();
     }
 
     public function view()
@@ -52,7 +47,6 @@ class PortoDesign extends DashboardPageController
         $res = $this->db->getRow("SELECT * FROM PortoPackage WHERE cID=?", array(1));
         if ($res)
         {
-
             $app_config_path = DIR_CONFIG_SITE . '/app.php';
             if (file_exists($app_config_path))
             {
@@ -233,11 +227,7 @@ class PortoDesign extends DashboardPageController
                     $infoText .= '<p>'.t('The target page for the search function is incorrect!').'</p>';
                 }
             }
-            
-            
-            
-            
-            
+
             if ($res['page_logo'] != 0)
             {
                 $file = File::getById((int)$res['page_logo']);
@@ -262,9 +252,7 @@ class PortoDesign extends DashboardPageController
 		        $infoCnt++;
 		        $infoText .= '<p>'.t('Select a Logo (Header) for your page!').'</p>';
             }
-            
-            
-            
+
             if ($res['page_logo_mini'] != 0)
             {
                 $file = File::getById((int)$res['page_logo_mini']);

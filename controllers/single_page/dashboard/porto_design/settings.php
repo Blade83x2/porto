@@ -33,7 +33,8 @@ class Settings extends DashboardPageController
 
     public function on_start()
     {
-	    $this->db = Database::getActiveConnection();
+
+	    $this->db                               = Database::connection();
         $this->set('form',                      Core::make('helper/form'));
         $this->set('al',                        Core::make('helper/concrete/asset_library'));
         $this->set('pageselect',                Core::make('helper/form/page_selector'));

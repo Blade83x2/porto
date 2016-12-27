@@ -26,7 +26,6 @@ use
 
 class ClearEmptyWorkflowProgress extends Job
 {
-
     public function getJobName()
     {
         return t("Clear Empty Workflow Progress");
@@ -42,10 +41,12 @@ class ClearEmptyWorkflowProgress extends Job
         // retrieve all pending page workflow progresses
         $list = PageProgress::getPendingWorkflowProgressList();
         $r = $list->get();
-        foreach ($r as $w) {
+        foreach ($r as $w)
+        {
             $wp = $w->getWorkflowProgressObject();
             $wo = $wp->getWorkflowObject();
-            if ($wo instanceof EmptyWorkflow) {
+            if ($wo instanceof EmptyWorkflow)
+            {
                 $wp->delete();
             }
         }

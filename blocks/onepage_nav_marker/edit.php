@@ -39,10 +39,8 @@ if($current->getThemeHandle() != 'onepage')
 </p>
 
 <div class="form-group form-group-md">
-    <label for="pID" class="col-md-4 control-label"><?php echo t('Include Page &amp; Navigation')?>
-        <i class="launch-tooltip fa fa-question-circle" title="<?php echo t('Select Page to include the content in this OnePage Theme.')?>"></i>
-    </label>
-    <div class="col-md-6 col-md-offset-2">
+    <label for="pID" class="col-md-5 control-label"><?php echo t('Include Page &amp; Navigation')?> <i class="launch-tooltip fa fa-question-circle" title="<?php echo t('Select Page to include the content in this OnePage Theme.')?>"></i></label>
+    <div class="col-md-6 col-md-offset-1">
         <select class="form-control pointer" id="pID" name="pID" style="color: #006699">
             <?php
             $disabled = "";
@@ -100,45 +98,22 @@ if($current->getThemeHandle() != 'onepage')
         </select>
     </div>
 </div>
-
-
-<!--
 <div class="form-group form-group-md">
-    <label class="col-md-4 control-label"><?php echo t('Current included Pages')?>
-        <i class="launch-tooltip fa fa-question-circle" title="<?php echo t('List of currently imported Pages')?>"></i>
-    </label>
-    <div class="col-md-6 col-md-offset-2">
-        <?php
-        foreach($IDsInUse as $included)
-        {
-            $p = \Concrete\Core\Page\Page::getByID(intval($included));
-            echo '<span class="label label-info">'.t($p->getCollectionName()).'</span> ';
-        }
-        ?>
-    </div>
-</div>
--->
-<div class="form-group form-group-md">
-    <label class="col-md-4 control-label"><?php echo t('Included Areas from Page')?>
+    <label class="col-md-5 control-label"><?php echo t('Included Areas from Page')?>
         <i class="launch-tooltip fa fa-question-circle" title="<?php echo t('Select your Area to include its content. If you only want to set a link for the scrolleffect, select nothing!')?>"></i>
     </label>
-    <div class="col-md-6 col-md-offset-2">
+    <div class="col-md-5 col-md-offset-1">
         <?php
             $db = Database::connection();
             $r = $db->executeQuery("SELECT DISTINCT arID, arHandle FROM Areas WHERE arParentID=0 AND arIsGlobal=0 AND cID=?", array($pID));
-
             while ($row = $r->FetchRow())
             {
                 echo "<label><input type='checkbox' name='arID".$row['arID']."' id='arID".$row['arID']."' value='1' ".((${"arID".$row['arID']}==1)?'checked="checked"':'')."/>&nbsp;". trim($row['arHandle'])."</label>&nbsp;&nbsp;";
             }
             $r->Free();
-
-
-
         ?>
     </div>
 </div>
-<?php
-$p = Page::getCurrentPage();
-?>
+<?php if (is_object($p = Page::getCurrentPage())) { ?>
 <input type="hidden" name="onPageID" id="onPageID" value="<?php echo $p->getCollectionID()?>">
+<?php } ?>

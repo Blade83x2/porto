@@ -57,6 +57,12 @@ class Controller extends BlockController
         );
     }
 
+    public function registerViewAssets($outputContent = '')
+    {
+        ## Require our formigoSlider javascript
+        #$this->requireAsset('javascript','formigoSlider');
+    }
+
     public function getSearchableContent()
     {
         $content = array();
@@ -133,11 +139,8 @@ class Controller extends BlockController
             $e->add(t('Contra list has no values!'));
         }
 
-
-
+        // TODO
         # image filtern bei select file
-
-
 
         return $e;
     }

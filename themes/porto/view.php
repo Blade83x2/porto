@@ -15,16 +15,14 @@ defined('C5_EXECUTE') or die("Access Denied.");
 =>  Project:  Porto
 =>  Coder:    $ Blade83
 */
-$db = Database::getActiveConnection();
+$db = Database::getDefaultConnection();
 $portoSetup = $db->getRow('SELECT * FROM PortoPackage WHERE cID=?', array(1));
 $this->inc('inc/header.php', array('portoSetup' => $portoSetup));
 if($error) { ?>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <?php
-                View::element('system_errors', array('error' => $error), 'porto');
-                ?>
+                <?php View::element('system_errors', array('error' => $error), 'porto'); ?>
             </div>
         </div>
     </div>

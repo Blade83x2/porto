@@ -173,6 +173,11 @@ if (isset($cp) && $canViewToolbar && (!$dh->inDashboard())) {
                                     'Stacks & Blocks'); ?></a></li>
                         <li class="last-li"><a href="<?php echo URL::to('/dashboard/extend') ?>"><?php echo t(
                                     'Extend concrete5'); ?></a></li>
+
+
+
+
+
                         <li class="last-li"><a href="<?php echo URL::to('/dashboard/system') ?>"><?php echo t(
                                     'System & Settings'); ?></a></li>
                     </ul>

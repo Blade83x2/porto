@@ -31,10 +31,11 @@ class Controller extends BlockController
         $btDefaultSet                             = 'porto',
 	    $btInterfaceWidth                         = "850",
 	    $btInterfaceHeight                        = "615",
-        $btCacheBlockRecord                       = false,
-        $btCacheBlockOutput                       = false,
-        $btCacheBlockOutputOnPost                 = false,
-        $btCacheBlockOutputForRegisteredUsers     = true;
+        $btCacheBlockRecord                       = true, // Should be safe in most cases, this will lighten the load on your database.
+        $btCacheBlockOutput                       = true, // Basically, when this option is set, the block will always load whatever was entered after the last "save". This is also generally safe to use. However, in situations where you are relying on visitor contribution or other dynamic content, the cached output will be wrong.
+        $btCacheBlockOutputOnPost                 = true, // This option will cache a block, even when the page it is on is recieving a post request. So you would want this disabled for something that needs input to change, but you can set this to true for something that does not.
+        $btCacheBlockOutputForRegisteredUsers     = true; // Unregistered users will never have complicated permissions that might influence what they can or can not see, so some things are cacheable for them, but not registered users. If your block has nothing to do with permissions, this can be true.
+
 
     public
         $al,
@@ -64,6 +65,12 @@ class Controller extends BlockController
            // 'next_btn' => t('Next'),
         );
         // in javascriptcode alert( ccm_t('prev_btn') );
+    }
+
+    public function registerViewAssets($outputContent = '')
+    {
+        ## Require our formigoSlider javascript
+        #$this->requireAsset('javascript','formigoSlider');
     }
 
     public function getSearchableContent()

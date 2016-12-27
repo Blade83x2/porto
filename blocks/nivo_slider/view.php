@@ -1,7 +1,7 @@
 <?php defined('C5_EXECUTE') or die("Access Denied.");
 use Concrete\Core\File\Type\Type as FileType,
-    \Concrete\Core\File\Set,
-    \Page;
+    \Concrete\Core\File\Set;
+
 /*>       ____  _           _       ___ _____
 *>       | __ )| | __ _  __| | ___ ( _ )___ /
 *>       |  _ \| |/ _` |/ _` |/ _ \/ _ \ |_ \

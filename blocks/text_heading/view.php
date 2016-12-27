@@ -14,15 +14,10 @@
 =>  Project:  Porto
 =>  Coder:    $ Blade83
 */
-
-
 $c = Page::getCurrentPage();
 if ($c->isEditMode()) {
     $texteffect = 'none';
-
 }
-
-
 
 if($texteffect=='none')
 {

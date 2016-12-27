@@ -16,8 +16,7 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
 =>  Coder:    $ Blade83
 */
 echo Core::make('helper/concrete/dashboard')->getDashboardPaneHeaderWrapper(t('Porto Package Header and Footer Design'));
-Core::make('help')->display(t('Changes the Header and Footer Type of the Pages'));
-?>
+Core::make('help')->display(t('Changes the Header and Footer Type of the Pages')); ?>
 <div class="ccm-dashboard-inner">
     <form method="post" action="<?php echo $this->action('save')?>">
         <div class="row">

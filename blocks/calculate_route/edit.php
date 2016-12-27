@@ -64,26 +64,3 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
         <input type="text" class="form-control" id="buttonText" name="buttonText" value="<?php if(isset($buttonText)){ echo $buttonText; } ?>" placeholder="<?php echo t("Calculate Route")?>" />
     </div>
 </div>
-<!--
-<div class="form-group form-group-md">
-    <label for="buttonWidth" class="col-md-3 control-label"><?php echo t('Button Width')?>
-        <i class="launch-tooltip fa fa-question-circle" title="<?php echo t('This means the Bootstrap col-md-x Classes for the Button width!')?>"></i>
-    </label>
-    
-    <div class="col-md-8 col-md-offset-1">
-        <select class="form-control" id="buttonWidth" name="buttonWidth">
-            <option value="3"<?php if ($buttonWidth=='3') { echo ' selected="selected"';}?>>3</option>
-            <option value="4"<?php if ($buttonWidth=='4') { echo ' selected="selected"';}?>>4</option>
-            <option value="5"<?php if ($buttonWidth=='5') { echo ' selected="selected"';}?>>5</option>
-            <option value="6"<?php if ($buttonWidth=='6') { echo ' selected="selected"';}?>>6</option>
-            <option value="7"<?php if ($buttonWidth=='7') { echo ' selected="selected"';}?>>7</option>
-            <option value="8"<?php if ($buttonWidth=='8') { echo ' selected="selected"';}?>>8</option>
-            <option value="9"<?php if ($buttonWidth=='9') { echo ' selected="selected"';}?>>9</option>
-            <option value="10"<?php if ($buttonWidth=='10') { echo ' selected="selected"';}?>>10</option>
-            <option value="11"<?php if ($buttonWidth=='11') { echo ' selected="selected"';}?>>11</option>
-            <option value="12"<?php if ($buttonWidth=='12') { echo ' selected="selected"';}?>>12</option>
-        </select>
-    </div>
-    
-</div>
--->

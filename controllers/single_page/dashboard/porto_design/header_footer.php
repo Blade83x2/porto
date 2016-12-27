@@ -32,7 +32,7 @@ class HeaderFooter extends DashboardPageController
 
     public function on_start()
     {
-        $this->db = Database::getActiveConnection();
+        $this->db = Database::connection();
     }
 
     public function view()

@@ -35,7 +35,7 @@ class MenuLogos extends DashboardPageController
     {
         $this->set('form',                      Core::make('helper/form'));
         $this->set('al',                        Core::make('helper/concrete/asset_library'));
-        $this->db                               = Database::getActiveConnection();
+        $this->db                               = Database::connection();
     }
 
     public function view()
@@ -190,6 +190,7 @@ class MenuLogos extends DashboardPageController
 
         if (Request::isPost() && Request::post('submit') && $vf->test())
         {
+            // TODO
             ############################################################################################### bei animierem funktioniert top nicht mehr
             $res = $this->db->getRow("SELECT * FROM PortoPackage WHERE cID=?", array(1));
             $page_logo_x                    = $res['page_logo_x'];
@@ -235,11 +236,6 @@ class MenuLogos extends DashboardPageController
                 $page_logo_y = 0;
             }
 
-
-
-
-
-
             if((int)Request::post('page_logo_mini')!=0)
             {
                 $file = File::getById((int)Request::post('page_logo_mini'));
@@ -265,9 +261,6 @@ class MenuLogos extends DashboardPageController
                     $this->set('page_logo_mini', false);
                 }
             }
-
-
-
 
             $second_stickymenu_gfx_x        = $res['second_stickymenu_gfx_x'];
             $second_stickymenu_gfx_y        = $res['second_stickymenu_gfx_y'];

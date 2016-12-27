@@ -1,10 +1,11 @@
 <?php
 namespace Concrete\Package\Porto\Elements;
-use PageTemplate;
+
 use
     Concrete\Core\Page\Page,
     Controller,
     Redirect;
+
 
 defined('C5_EXECUTE') or die("Access Denied.");
 /*>       ____  _           _       ___ _____
@@ -24,48 +25,63 @@ defined('C5_EXECUTE') or die("Access Denied.");
 */
 
 
+# $effects = View::element($file, $args, $_pkgHandle);
 
 
-
-class Classname extends Controller
+class Effects
 {
-    public function method()
+
+    public  function Effects($args)
     {
         #$a = $this->get('a');
         #echo 'route test fuer ajax anfragen'.$a;
 
-        $page = \Concrete\Core\Page\Page::getByID(1);
-        echo '<pre>';
-        print_r($page);
-        echo '</pre>';
 
-
-        # nach der installation
-        $pt = PageTemplate::getByID($page->getPageTemplateID());
-        echo '<pre>';
-        print_r($pt);
-        echo '</pre>';
-
-
-
-
-
-        echo '<pre>';
-        print_r($page->getCollectionThemeObject());
-        echo '</pre>';
-
-
-
-
-
-
-
-# $page = Page::getByID(HOME_CID);
-       # Redirect::page($page)->send();
+        return $this;
 
 
     }
+
+
+    public function checkHeaderDescriptionH1($input){
+        return  $this;
+    }
+
 }
+
+
+class effectloader
+{
+    private static $class = null;
+
+
+
+    public static function getInstance()
+    {
+        if (null === self::$class)
+        {
+            self::$class = new self();
+        }
+
+        return self::$class;
+    }
+
+    public static function changeLocale($locale)
+    {
+        $class = self::getInstance();
+        $class->setLocale($locale);
+    }
+
+    private function setLocale($locale)
+    {
+        // ...
+    }
+}
+
+
+
+
+
 
 
 

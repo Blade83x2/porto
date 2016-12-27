@@ -15,7 +15,7 @@ defined('C5_EXECUTE') or die("Access Denied.");
 =>  Project:  Porto
 =>  Coder:    $ Blade83
 */
-$db = Database::getActiveConnection();
+$db = Database::connection();
 $portoSetup = $db->getRow('SELECT * FROM PortoPackage WHERE cID=?', array(1));
 $this->inc('inc/header.php', array('portoSetup' => $portoSetup));
 $this->inc('inc/headerTypes/'.$portoSetup['header_type'].'.php', array('portoSetup' => $portoSetup));?>

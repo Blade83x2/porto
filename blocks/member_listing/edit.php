@@ -15,19 +15,15 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
 =>  Project:  Porto
 =>  Coder:    $ Blade83
 */
-
 ?>
 <div class="form-group form-group-md">
-
     <label class="col-md-6 control-label"><?php echo t('Type')?></label>
-
     <div class="col-md-3">
         <input type="radio" class="pointer" name="createFrom" id="createFromSingle" value="createFromSingle"<?php if($createFrom=='createFromSingle'){echo ' checked="checked"';}?> />&nbsp;<label for="createFromSingle" class="control-label pointer"><?php echo t('Single Entry')?></label><br>
     </div>
     <div class="col-md-3">
         <input type="radio" class="pointer" name="createFrom" id="createFromGroup" value="createFromGroup"<?php if($createFrom=='createFromGroup'){echo ' checked="checked"';}?> />&nbsp;<label for="createFromGroup" class="control-label pointer"><?php echo t('User Group')?></label><br>
     </div>
-
 </div>
 <div class="form-group form-group-md">
     <label for="effect" class="col-md-4 control-label"><?php echo t('Loading Effect')?></label>
@@ -188,53 +184,53 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
 
 <!-- Group -->
 <div class="form-group form-group-md" id="groupDiv"<?php if (isset($createFrom) && $createFrom!='createFromGroup'){ echo ' style="display:none;"';}?>>
-    <label for="groupUl" class="col-md-4 control-label"><?php echo t('Display Users from Group')?>
-        <i class="launch-tooltip fa fa-question-circle" title="<?php echo t('Each User from the selected Group returns a Table of data!')?>"></i>
-    </label>
+    <label for="groupUl" class="col-md-4 control-label"><?php echo t('Display Users from Group')?> <i class="launch-tooltip fa fa-question-circle" title="<?php echo t('Each User from the selected Group returns a Table of data!')?>"></i></label>
     <div class="col-md-6 col-md-offset-2">
-	<div class="btn-group" role="group">
-	    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" id="groupButton">
-		<?php 
-		$db = \Database::getActiveConnection();
-		if(isset($gID) && $gID > 0)
-		{ 
-		    $gName = $db->fetchColumn("SELECT gName FROM Groups WHERE gID=?", array($gID));
-		    $gCount = $db->fetchAll("SELECT uID FROM UserGroups WHERE gID=?", array($gID));
-		    echo t($gName).' ('.count($gCount).')'; 
-		} 
-		else  
-		{ 
-		    echo t('Select a User Group to display'); 
-		}
-		?> <span class="caret"></span>
-	    </button>
-	    <input type="hidden" id="gID" name="gID" value="<?php if(isset($gID)){ echo $gID; } else { echo 'groupID_select'; } ?>">
-	    <ul class="dropdown-menu" role="menu" style="width:300px" id="groupUl">
-		<?php
-		echo '<li><a href="javascript:$(\'#gID\').val(\'groupID_select\'); $(\'#groupButton\').html(\''.t('Select a User Group to display').' <span class=\\\'caret\\\'></span> \')">'.t('Select a User Group to display').'</a></li>';
-		$groups = $db->fetchAll("SELECT gID, gName FROM Groups");
-		if(count($groups))
-		{
-		    foreach($groups as $key => $g)
-		    {
-			if ($g['gName'] != "Guest")
-			{
-			    $gCount = $db->fetchAll("SELECT uID FROM UserGroups WHERE gID=?", array($g['gID']));
-			    echo '<li><a href="javascript:$(\'#gID\').val('.$g['gID'].'); $(\'#groupButton\').html(\''.t($g['gName']).' ('.count($gCount).') <span class=\\\'caret\\\'></span> \')">'.t($g['gName']).' ('.count($gCount).')</a></li>';
-			}
-		    }
-		}
-		?>
-	    </ul>
-	</div>
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" id="groupButton">
+                <?php
+                $db = \Database::connection();
+                if(isset($gID) && $gID > 0)
+                {
+                    $gName = $db->fetchColumn("SELECT gName FROM Groups WHERE gID=?", array($gID));
+                    $gCount = $db->fetchAll("SELECT uID FROM UserGroups WHERE gID=?", array($gID));
+                    echo t($gName).' ('.count($gCount).')';
+                }
+                else
+                {
+                    echo t('Select a User Group to display');
+                }
+                ?>
+                <span class="caret"></span>
+            </button>
+            <input type="hidden" id="gID" name="gID" value="<?php if(isset($gID)){ echo $gID; } else { echo 'groupID_select'; } ?>">
+            <ul class="dropdown-menu" role="menu" style="width:300px" id="groupUl">
+            <?php
+            echo '<li><a href="javascript:$(\'#gID\').val(\'groupID_select\'); $(\'#groupButton\').html(\''.t('Select a User Group to display').' <span class=\\\'caret\\\'></span> \')">'.t('Select a User Group to display').'</a></li>';
+            $groups = $db->fetchAll("SELECT gID, gName FROM Groups");
+            if(count($groups))
+            {
+                foreach($groups as $key => $g)
+                {
+                    if ($g['gName'] != "Guest")
+                    {
+                        $gCount = $db->fetchAll("SELECT uID FROM UserGroups WHERE gID=?", array($g['gID']));
+                        echo '<li><a href="javascript:$(\'#gID\').val('.$g['gID'].'); $(\'#groupButton\').html(\''.t($g['gName']).' ('.count($gCount).') <span class=\\\'caret\\\'></span> \')">'.t($g['gName']).' ('.count($gCount).')</a></li>';
+                    }
+                }
+            }
+            ?>
+            </ul>
+        </div>
     </div>
 </div>
 <div class="form-group form-group-md" id="groupAttributesDiv"<?php if (isset($createFrom) && $createFrom!='createFromGroup'){ echo ' style="display:none;"';}?>>
     <br>
     <?php
     // I know, there are Helpers for that! But i want to lern the c5 Structure!
-    $db = \Database::getActiveConnection();
-    if ($akCategoryID = $db->fetchColumn("SELECT akCategoryID FROM AttributeKeyCategories WHERE akCategoryHandle=?", array('user'))) {
+    $db = \Database::connection();
+    if ($akCategoryID = $db->fetchColumn("SELECT akCategoryID FROM AttributeKeyCategories WHERE akCategoryHandle=?", array('user')))
+    {
 	$AttributeKeys = $db->fetchAll("SELECT akName, atID, akHandle FROM AttributeKeys WHERE akCategoryID=?", array($akCategoryID));
 	echo '
 	<div class="form-group form-group-md">
@@ -334,7 +330,6 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
 	    $("#addownfieldsDiv").css("display", "none");
 	}
     });
-
 
     if (typeof removeField == "undefined") {
         function removeField(id)

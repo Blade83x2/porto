@@ -18,15 +18,15 @@ defined('C5_EXECUTE') or die("Access Denied.");
 */
 if ($options instanceof OptionList && $options->count() > 0): ?>
     <p>
-    <?php if ($title): ?>
-        <h5><?php echo $title?></h5>
-    <?php endif; ?>
-    <?php foreach($options as $option) { ?>
-        <?php if ($target) { ?>
-            <a href="<?php echo $controller->getTagLink($option) ?>"><span class="label label-dark"><?php echo $option->getSelectAttributeOptionValue()?></span></a>
-        <?php } else { ?>
-            <a href="#" style="text-decoration: none"><span class="label label-dark"><?php echo $option->getSelectAttributeOptionValue()?></span></a>
+        <?php if ($title): ?>
+            <h5><?php echo $title?></h5>
+        <?php endif; ?>
+        <?php foreach($options as $option) { ?>
+            <?php if ($target) { ?>
+                <a href="<?php echo $controller->getTagLink($option) ?>"><span class="label label-dark"><?php echo $option->getSelectAttributeOptionValue()?></span></a>
+            <?php } else { ?>
+                <a href="#" style="text-decoration: none"><span class="label label-dark"><?php echo $option->getSelectAttributeOptionValue()?></span></a>
+            <?php } ?>
         <?php } ?>
-    <?php } ?>
     </p>
 <?php endif; ?>

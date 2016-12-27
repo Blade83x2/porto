@@ -132,7 +132,6 @@ $ih = Core::make('helper/image');
                                             echo '</span>';
                                         }
                                         ?>
-                                        <!--<span><i class="fa fa-comments"></i> <a href="#">12 Comments</a></span>-->
                                         <a href="<?php echo $url; ?>" target="<?php echo $target; ?>" class="btn btn-xs btn-primary pull-right"><?php echo t('More')?>...</a>
                                     </div>
                                 </div>
