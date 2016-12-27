@@ -15,7 +15,7 @@
 =>  Coder:    $ Blade83
 */
 $nh = Core::make('helper/navigation');
-$db = Database::getActiveConnection();
+$db = Database::connection();
 $portoSetup = $db->getRow('SELECT * FROM PortoPackage WHERE cID=?', array(1));
 echo '<nav class="nav-main mega-menu"><ul class="nav nav-pills nav-main" id="mainMenu">';
 foreach ($controller->getNavItems() as $ni)
@@ -32,7 +32,7 @@ foreach ($controller->getNavItems() as $ni)
     echo '<li'.((strlen($ni->classes)>0)?' class="'.$ni->classes.'"':'').'>';
     $href = '#id'.$ni->cID;
     $niObj = $ni->cObj;
-    $icon = ($niObj->getAttribute('porto_navigation_fa_icon') && $niObj->getAttribute('porto_navigation_fa_icon')!='')?'<i class="fa fa-'.$niObj->getAttribute('porto_navigation_fa_icon').'"></i>':'';
+    $icon = ($niObj->getAttribute('porto_navigation_fa_icon') && $niObj->getAttribute('porto_navigation_fa_icon')!='')?'<i class="fa fa-'.$niObj->getAttribute('porto_navigation_fa_icon').'"></i>&nbsp;':'';
     unset($niObj);
     echo '<a data-hash href="'.$href.'">'.$icon.t($ni->name).(($ni->hasSubmenu && $ni->level==1)?' <i class="fa fa-angle-down"></i>':'').'</a>';
     if ($ni->hasSubmenu)    
@@ -44,7 +44,6 @@ foreach ($controller->getNavItems() as $ni)
         echo '</li>'.(str_repeat('</ul></li>', $ni->subDepth));
     }
 }
-
 
 if ($portoSetup['show_login'])
 {
@@ -88,7 +87,6 @@ if ($portoSetup['show_login'])
         echo '<p>';
         unset($av);
         echo '<strong>'.(is_object($u)?$u->getUserName():'').'</strong>';
-
         echo '</p>';
         echo '</div>';
         echo '</div>';
@@ -114,9 +112,11 @@ if ($portoSetup['show_login'])
         echo '</ul>';
         echo '</li>';
     }
-    elseif(!$u->isLoggedIn()) {
+    elseif(!$u->isLoggedIn())
+    {
         if(is_object($login=\Concrete\Core\Page\Page::getByPath('/login')) && is_object($c=\Concrete\Core\Page\Page::getCurrentPage())) {
-            if($c->cID != $login->cID) {
+            if($c->cID != $login->cID)
+            {
                 echo '<li class="dropdown mega-menu-item mega-menu-signin signin" id="headerAccount">';
                 echo '<a class="dropdown-toggle" href="#"><i class="fa fa-user"></i>'.t('Login').'</a>';
                 echo '<ul class="dropdown-menu">';
@@ -125,14 +125,17 @@ if ($portoSetup['show_login'])
                 echo '<div class="row">';
                 echo '<div class="col-md-12">';
                 echo '<div class="signin-form">';
-                echo '<div style="float:left;margin-right:3px"><h4 class="portoMenuLinkTextColor">'.t('Login').'</h4></div>';
+                echo '<div style="float:left;margin-right:3px"><span style="font-size:20px" class="portoMenuLinkTextColor">'.t('Login').'</span></div>';
                 $activeAuths = AuthenticationType::getList(true, true);
                 $loadAuthScript = true;
-                foreach ($activeAuths as $auth) {
-                    if($auth->getAuthenticationTypeHandle()=='concrete' && count($activeAuths)>1) {
+                foreach ($activeAuths as $auth)
+                {
+                    if($auth->getAuthenticationTypeHandle()=='concrete' && count($activeAuths)>1)
+                    {
                         echo '<div style="float:left"><div onclick="portoNavigationLoad(\'login_form_concrete\')" class="portoMenuLinkTextColor"><i class="fa fa-user" title="'.BASE_URL.'" style="cursor:pointer;margin-left:5px;"></i></div></div>';
                     }
-                    if($auth->getAuthenticationTypeHandle()=='community') {
+                    if($auth->getAuthenticationTypeHandle()=='community')
+                    {
                         echo '<div style="float:left"><div onclick="portoNavigationLoad(\'login_form_community\')" class="portoMenuLinkTextColor"><i class="fa fa-users" title="concrete5.org" style="cursor:pointer;margin-left: 2px;"></i></div></div>';
                     }
                     echo '<div style="float:left"><div onclick="portoNavigationLoad(\'login_form_'.$auth->getAuthenticationTypeHandle().'\')" class="portoMenuLinkTextColor"><i class="fa fa-'.$auth->getAuthenticationTypeHandle().'" title="'.$auth->getAuthenticationTypeName().'" style="cursor:pointer;margin-left: 5px;"></i></div></div>';
@@ -141,22 +144,23 @@ if ($portoSetup['show_login'])
                 echo '<div class="row" id="login_form_concrete">';
                 echo '<div class="col-md-12">';
                 echo '<form action="'.View::url('/login', 'authenticate', 'concrete').'" method="post">';
-                #$p = Page::getCurrentPage();
-                #echo '<input type="hidden" name="rcID" id="rcID" value="'.$p->cID.'">';
                 echo '<div class="row"><div class="form-group"><div class="col-sm-12"><input type="text" name="uName" placeholder="'.((Config::get('concrete.user.registration.email_registration'))?t('Email Address'):t('Username')).'" class="form-control input-sm" required></div></div></div>';
                 echo '<div class="row"><div class="form-group"><div class="col-md-12"><input type="password" name="uPassword" placeholder="'.t('Password').'" class="form-control input-sm" required><div style="cursor: pointer;" class="pull-right portoMenuLinkTextColor" id="headerRecover">'.t('Forgot Your Password?').'</div></div></div></div>';
                 echo '<div class="row"><div class="col-md-9"><span class="remember-box checkbox"><label for="uMaintainLogin"><input type="checkbox" id="uMaintainLogin" name="uMaintainLogin" value="1">'.t('Stay signed in for two weeks').'</label></span></div><div class="col-md-3">'.(Core::make('helper/validation/token')->output('login_concrete', true)).'<input type="submit" value="'.t('Login').'" class="btn btn-primary pull-right push-bottom"></div></div>';
                 echo '</form>';
                 echo '</div>';
                 echo '</div>';
-                foreach ($activeAuths as $auth) {
-                    if($auth->getAuthenticationTypeHandle()!='concrete') {
+                foreach ($activeAuths as $auth)
+                {
+                    if($auth->getAuthenticationTypeHandle()!='concrete')
+                    {
                         echo '<div class="row" id="login_form_'.$auth->getAuthenticationTypeHandle().'" style="display:none"><div class="col-md-12"><form action="'.View::url('/ccm/system/authentication/oauth2/'.$auth->getAuthenticationTypeHandle(), 'attempt_auth').'" method="post"><div class="row"><div class="col-md-12"><input type="submit" value="'.t('Sign in with %s', $auth->getAuthenticationTypeName()).'" class="btn btn-primary pull-left push-bottom"></div></div></form></div></div>';
                     }
                 }
                 $registerPage = \Concrete\Core\Page\Page::getByPath('/register');
                 $currentPage = \Concrete\Core\Page\Page::getCurrentPage();
-                if (Config::get('concrete.user.registration.enabled') && ($registerPage->cID != $currentPage->cID)) {
+                if (Config::get('concrete.user.registration.enabled') && ($registerPage->cID != $currentPage->cID))
+                {
                     echo '<div onclick="location.href=\''.View::url('/register').'\';" class="portoMenuLinkTextColor" style="cursor:pointer">'.t('Register').'</div>';
                 }
                 unset($registerPage, $currentPage);
@@ -177,11 +181,13 @@ if ($portoSetup['show_login'])
     }
 }
 echo '</ul></nav>'."\n";
-if ($loadAuthScript==true) {
+if ($loadAuthScript==true)
+{
     echo '<script> ';
     echo ' if (typeof portoNavigationLoad != \'function\') { ';
     echo ' function portoNavigationLoad(handle) { ';
-    foreach ($activeAuths as $auth) {
+    foreach ($activeAuths as $auth)
+    {
         echo ' if ($(\'div #login_form_'.$auth->getAuthenticationTypeHandle().'\').is(\':visible\')){ ';
         echo ' if (handle == \'login_form_'.$auth->getAuthenticationTypeHandle().'\') return; ';
         echo ' $("div #login_form_'.$auth->getAuthenticationTypeHandle().'").fadeOut( "fast", function() { ';
@@ -193,7 +199,8 @@ if ($loadAuthScript==true) {
     echo ' } ';
     echo '</script>';
 }
-if ($loadSearchSript==true && $portoSetup['searchpage_empty_query']!='') {
+if ($loadSearchSript==true && $portoSetup['searchpage_empty_query']!='')
+{
     echo '<script> ';
     echo '$(document).ready(function(){ ';
     echo "$('#searchTextResponsive').keypress(function(e){ ";

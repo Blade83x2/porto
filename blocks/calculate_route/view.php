@@ -19,8 +19,8 @@ defined('C5_EXECUTE') or die("Access Denied.");
 <script>
 function calculateRouteAction<?php if(isset($bID)) { echo $bID; }?>(service, start, end){
     var
-        startescaped    = escape(start),
-        endescaped      = escape(end),
+        startescaped    = decodeURI(start),
+        endescaped      = decodeURI(end),
         startescaped1   = encodeURI(start),
         endescaped1     = encodeURI(end),
         url             = "";
@@ -29,8 +29,6 @@ function calculateRouteAction<?php if(isset($bID)) { echo $bID; }?>(service, sta
     {
         service = $("#serviceProvider2").val();
     }
-
-
     if(service == "falk")
     {
         url = "http://www.falk.de/?start="+startescaped1+"&dest="+endescaped1;
@@ -55,10 +53,6 @@ function calculateRouteAction<?php if(isset($bID)) { echo $bID; }?>(service, sta
     {
         url = "http://www.klicktel.de/routenplaner/?lng=&lat=&zoom=&s0="+start+"&s1=&s2=&s3=&s4="+end+"&s=1";
     }
-    else if(service == "viamichelin")
-    {
-        url = "http://www.viamichelin.de/web/ItiWGPerformPage?strStartAddress="+startescaped+"&strDestAddress="+endescaped+"&strDestCP=&strDestCity=&strDestCityCountry=&strVehicle=0&ItineraryType=1&from=";
-    }
     routeWin<?php if(isset($bID)) { echo $bID; }?> = window.open(url, "calculateRoute<?php if(isset($bID)) { echo $bID; }?>", "status=no,scrollbars=yes,resizable=yes,location=no,directories=no");
     routeWin<?php if(isset($bID)) { echo $bID; }?>.focus();
     return false;
@@ -76,12 +70,9 @@ function calculateRouteAction<?php if(isset($bID)) { echo $bID; }?>(service, sta
                  <option value="bing">bing</option>
                  <option value="map24">map24</option>
                  <option value="klicktel">klicktel</option>
-                 <option value="viamichelin">viamichelin</option>
              </select>
          <?php } ?>  
-         
          <input type='text' style="margin-bottom: 5px;" class="input-sm col-md-<?php if($serviceProvider=='userchoice') { echo '8';} else { echo '10';}?>" id='calculateRouteStart<?php if(isset($bID)) { echo $bID; }?>' required='required' placeholder="<?php if(isset($startPlaceholder)) { echo $startPlaceholder; }?>"/>
-
          <input type='submit' style="margin-bottom: 15px;" class="btn btn-primary btn-sm col-md-2" value='<?php if(isset($buttonText)) { echo $buttonText; }?>' />
      </form>
  </div>

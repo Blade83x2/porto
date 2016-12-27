@@ -27,6 +27,7 @@ use
     \Log,
     \Core,
     \Package,
+    \Database,
     \Job,
     \Config,
     \Concrete\Core\View,
@@ -75,7 +76,7 @@ class Controller extends Package
 
     protected
         $pkgHandle                      = 'porto',
-	    $pkgVersion                     = '0.7.16',
+	    $pkgVersion                     = '0.7.18',
         $appVersionRequired             = '5.7.5.2',
         $pkgAutoloaderMapCoreExtensions = false;
 
@@ -210,7 +211,10 @@ class Controller extends Package
         }
     }
 
-	public function install()
+    /**
+     * @return Package|void
+     */
+    public function install()
 	{
 		$pkg = parent::install();
 		$this->configure($pkg);

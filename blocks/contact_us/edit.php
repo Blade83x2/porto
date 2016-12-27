@@ -79,7 +79,7 @@ function getTr($nameId, $sort, $tText, $val)
 {
     $tr = '<tr>';
     $tr .= '    <td class="priority col-md-1"><i class="fa fa-arrows"></i> '.$sort.'</td>';
-    $tr .= '    <td class="col-md-3"><label for="'.$nameId.'" class="control-label">'.t(preg_replace('/Zipcodelocation/', 'Zipcode, Location', $tText)).'</label><span class="fieldname" style="display: none;">'.$tText.'</span></td>';
+    $tr .= '    <td class="col-md-3"><label for="'.$nameId.'" class="control-label">'.t(preg_replace('/Zipcodelocation/', t('Zipcode & Location'), $tText)).'</label><span class="fieldname" style="display: none;">'.$tText.'</span></td>';
     $tr .= '    <td class="col-md-8"><input type="text" class="form-control" id="'.$nameId.'" name="'.$nameId.'" value="'.(($val=='0')?'':$val).'" /></td>';
     $tr .= '</tr>';
     return $tr;

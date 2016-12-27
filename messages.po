@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PortoPackage\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-10-30 16:24+0100\n"
-"PO-Revision-Date: 2016-12-27 07:12+0100\n"
+"PO-Revision-Date: 2016-12-27 08:18+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1076,11 +1076,11 @@ msgstr "Button Text"
 
 #: blocks/calculate_route/edit.php:26
 msgid "Source Address Placeholder"
-msgstr "Platzhalter für Start Adresse"
+msgstr "Platzhalter Start"
 
 #: blocks/calculate_route/edit.php:27
 msgid "Placeholder for Input example!"
-msgstr "Platzhalterr für Eingabe Beispiel!"
+msgstr "Platzhalter mit Muster für Eingabe"
 
 #: blocks/calculate_route/edit.php:35
 msgid "Service Provider that delivers the information about the route!"

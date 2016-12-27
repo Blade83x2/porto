@@ -4,7 +4,7 @@ Porto Package für Concrete5 >= 5.7 entwickelt von Johannes Krämer.
 ---------------------------------------------------------------------------------
 
 -::BUGS::-
- - Controller > UpdateScript Datenbank auslesen und mit create/insert neu schreiben --------------------
+
  - package aufräumen
  - handy dashboard/porto nicht sichtbar
  - Profil -> User kann kein Bild hoch laden
@@ -23,6 +23,8 @@ Version 0.7.12
 
 In dieser Version wurde die Deutsche Sprache komplett integriert! Alle Seiten mussten sich der W3C Validierung unterziehen und es wurden einige Bugs entfernt.
 
+ - Controller > UpdateScript Datenbank auslesen und mit create/insert neu schreiben --------------------######################
+ - BUGFIX-> Strecke berechnen Block -> 1 Provider entfernt weil Dienst nicht mehr online
  - BUGFIX-> Leerzeichen in OnePage Version bei Awesome Icons
  - BUGFIX-> Navigation-> Megamenu style Farbe kann jetzt mit dem Designer eingestellt werden
  - BUGFIX-> Navigation->Loginbutton style Fehler für Textlinks behoben
