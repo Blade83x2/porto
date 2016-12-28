@@ -20,11 +20,6 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
 =>  Project:  Porto
 =>  Coder:    $ Blade83
 */
-
-/**
- * Class Controller
- * @package Concrete\Package\Porto\Block\CalculateRoute
- */
 class Controller extends BlockController
 {
 	protected
@@ -37,33 +32,22 @@ class Controller extends BlockController
         $btCacheBlockOutputOnPost                 = true,
         $btCacheBlockOutputForRegisteredUsers     = true;
 
-    /**
-     * @return string
-     */
+
     public function getBlockTypeDescription()
     {
         return t("Calculate a Route");
     }
 
-    /**
-     * @return string
-     */
     public function getBlockTypeName()
     {
         return t("Calculate Route");
     }
 
-    /**
-     * @return string
-     */
     public function getSearchableContent()
     {
         return $this->buttonText.' - '.$this->textHeading;
     }
 
-    /**
-     * @return string
-     */
     public function getBlockTypeHelp()
     {
         $help = t("<b>Add a route planner.</b><p>Select a Service Provider and set a target Address and your Visitors can type in an Address and get a Route to you!</p>");
@@ -71,17 +55,12 @@ class Controller extends BlockController
     }
 
 
-    /**
-     * @param void
-     */
+
     public function on_start()
     {
 
     }
 
-    /**
-     * @param void
-     */
     public function view()
     {
         $this->set('bID', $this->bID);
@@ -94,9 +73,6 @@ class Controller extends BlockController
 
     }
 
-    /**
-     * @param array $args
-     */
     public function save($args)
     {
         $args['textHeading'] = trim($args['textHeading']);
@@ -108,10 +84,6 @@ class Controller extends BlockController
         parent::save($args);
     }
 
-    /**
-     * @param $args
-     * @return bool|\Concrete\Core\Error\Error
-     */
     public function validate($args)
     {
         $error = Core::make('helper/validation/error');
@@ -134,6 +106,10 @@ class Controller extends BlockController
         {
             $error->add(t('Error').' '.t('in').' '.t('Button Text').'!');
         }
+       # if($args['buttonWidth']<3 || $args['buttonWidth']>12)
+       # {
+       #     $error->add(t('Error').' '.t('in').' '.t('Button Width').'!');
+      #  }
         return $error;
     }
 }

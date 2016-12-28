@@ -19,6 +19,13 @@ $db = Database::getActiveConnection();
 $portoSetup = $db->getRow('SELECT * FROM PortoPackage WHERE cID=?', array(1));
 $this->inc('inc/header.php', array('portoSetup' => $portoSetup));
 ?>
+
+<?php
+$a = new \Concrete\Core\Area\Area('Slider');
+$a->display($c);
+?>
+
+
 <div class="container">
     <?php
     $a = new \Concrete\Core\Area\Area('Main');

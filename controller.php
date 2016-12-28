@@ -76,12 +76,13 @@ class Controller extends Package
 
     protected
         $pkgHandle                      = 'porto',
-	    $pkgVersion                     = '0.7.18',
+	    $pkgVersion                     = '0.7.23',
         $appVersionRequired             = '5.7.5.2',
         $pkgAutoloaderMapCoreExtensions = false;
 
     private
         $db                             = NULL,
+        $req                            = NULL,
         $isUpdate                       = false;
 
     /**
@@ -130,7 +131,9 @@ class Controller extends Package
         #$r->requireAsset('core/legacy');
 
         $al = AssetList::getInstance();
+        $this->req = \Request::getInstance();
         $this->db = \Database::connection();
+
         $cdn = $this->db->getRow("SELECT load_from_cdn FROM PortoPackage WHERE cID=?", array(1));
         # http://documentation.concrete5.org/developers/appendix/asset-list
         if($cdn['load_from_cdn'])
@@ -231,9 +234,45 @@ class Controller extends Package
     public function uninstall()
     {
         parent::uninstall();
-        $r = \Request::getInstance();
-        $this->deletePackageTables("PortoPackage");
-        if ($r->request->get('portoUninstallFilesets')) 
+        $this->req = \Request::getInstance();
+        if ($this->req->request->get('portoInstallEnableLogForInstallation'))
+        {
+            Log::addEntry("Controller Init", 'Debug');
+        }
+        if ($this->req->request->get('portoUninstallDatabases'))
+        {
+            $this->deletePackageTables("PortoPackage");
+            # konfiguration entfernen
+            if (is_object($config = \Core::make('config/database')))
+            {
+                if ($config->has('porto.datamodel'))
+                {
+                    $config->clear('porto.datamodel');
+                }
+            }
+        }
+        if ($this->req->request->get('portoUninstallFileExtension'))
+        {
+            # Datei Erweiterungen löschen
+            $this->delAllowedFileExtensionIfExists('apk');
+            $this->delAllowedFileExtensionIfExists('ipa');
+            $this->delAllowedFileExtensionIfExists('mp3');
+        }
+        if ($this->req->request->get('portoUninstallCronJobs'))
+        {
+
+        }
+        # PageTheme
+        if ($this->req->request->get('portoUninstallTheme'))
+        {
+
+        }
+        # PageTemplate
+        if ($this->req->request->get('portoUninstallTemplates'))
+        {
+
+        }
+        if ($this->req->request->get('portoUninstallFilesets'))
 	    {
             if (is_object($fileSet=FileSet::getByName('Porto Theme Backgrounds')))
             {
@@ -248,93 +287,192 @@ class Controller extends Package
                 $this->delFilesAndFileSetIfExists($fileSet);
             }
 	    }
-
-        # Gruppen von GroupSet lösen
-        $this->delUserGroupFromUserGroupSet(
-            GroupSet::getByName('Porto UA Set'),
-            Group::getByID(ADMIN_GROUP_ID)
-        );
-        $this->delUserGroupFromUserGroupSet(
-            GroupSet::getByName('Porto UA Set'),
-            Group::getByName('Porto Admins')
-        );
-
-        # Gruppen entfernen
-        $this->deleteUserGroupSetIfExists('Porto UA Set');
-        $this->deleteUserGroupIfExists('Porto Admins');
-
-        # Datei Erweiterungen löschen
-        $this->delAllowedFileExtensionIfExists('apk');
-        $this->delAllowedFileExtensionIfExists('ipa');
-        $this->delAllowedFileExtensionIfExists('mp3');
-
-        # konfiguration entfernen
-        if (is_object($config = \Core::make('config/database')))
+        if ($this->req->request->get('portoUninstallUserGroupSetAndUserGroup'))
         {
-            if ($config->has('porto.datamodel'))
-            {
-                $config->clear('porto.datamodel');
-            }
+            # Gruppen von GroupSet lösen
+            $this->delUserGroupFromUserGroupSet(
+                GroupSet::getByName('Porto UA Set'),
+                Group::getByID(ADMIN_GROUP_ID)
+            );
+            $this->delUserGroupFromUserGroupSet(
+                GroupSet::getByName('Porto UA Set'),
+                Group::getByName('Porto Admins')
+            );
+
+            # Gruppen entfernen
+            $this->deleteUserGroupSetIfExists('Porto UA Set');
+            $this->deleteUserGroupIfExists('Porto Admins');
         }
-        \Core::make('cache')->flush();
+        if ($this->req->request->get('portoInstallFlushCache'))
+        {
+            \Core::make('cache')->flush();
+        }
     }
+
+
+
+
+
+
 
     /**
      * @param $pkg
      * @return void
-     */
+    */
     protected function configure($pkg)
     {
-        $r = \Request::getInstance();
-        if ($r->request->get('portoInstallEnableLogForInstallation'))
+        $this->req = \Request::getInstance();
+        $this->db = \Database::connection();
+        if ($this->req->request->get('portoInstallEnableLogForInstallation'))
         {
             Log::addEntry("Controller Init", 'Debug');
         }
-
-        # Datenbank prüfen
-        $this->db = \Database::connection();
-        if (!$res = $this->db->getRow("SELECT cID FROM PortoPackage WHERE cID=1"))
+        if ($this->req->request->get('portoInstallDatabases'))
         {
-            //TODO hier könnnen BUGS entstehen!!!! ÄNDERN !
-            $ui = UserInfo::getByID(USER_SUPER_ID);
-            $sql= "INSERT INTO PortoPackage    (cID, breadcrump_banner_active, breadcrump_banner_text, stickymenu_active, scrolltotop_active, load_from_cdn, load_footerinfotext_from_metadescription, second_stickymenu_gfx, second_stickymenu_gfx_x, second_stickymenu_gfx_y, page_logo_x, page_logo_y, header_type, footer_type, show_login, boxed_design, background_image, background_fix, searchpage_id, searchpage_text, searchpage_empty_query, page_logo, page_logo_mini, footer_copyright,                       footer_ribbon, email)"
-                 ."VALUES (                     ?,   ?,                        ?,                      ?,                 ?,                  ?,             ?,                                        ?,                     ?,                       ?,                       ?,           ?,           ?,           ?,           ?,          ?,            ?,                ?,              ?,             ?,               ?,                      ?,         ?,              ?,                                      ?,             ?)";
-            $this->db->ExecuteQuery($sql,array (1,   1,                        '',                     0,                 1,                  1,             1,                                        0,                     0,                       0,                       0,           0,           1,           3,           1,          0,            0,                0,              0,             t('Search...'),  '',                     0,         0,              '© Copyright %Y. All Rights Reserved.', '',            (is_object($ui)?$ui->getUserEmail():'')));
-
-        /*
-         *
-         *
-         *             // now we add a pending version to the collectionversions table
-            $v2 = array(
-                $newCID,
-                1,
-                $pTemplateID,
-                $data['name'],
-                $data['handle'],
-                $data['cDescription'],
-                $cDatePublic,
-                $cDate,
-                VERSION_INITIAL_COMMENT,
-                $data['uID'],
-                $cvIsApproved,
-                $cvIsNew,
-                $pThemeID,
+            if ($PortoPackage = $this->db->getRow("SELECT * FROM PortoPackage WHERE cID=?", array(1)))
+            {
+                $this->db->executeQuery("DROP TABLE IF EXISTS `PortoPackage`");
+            }
+            else
+            {
+                // neu, ui generieren um admin email auszulesen
+                $ui = UserInfo::getByID(USER_SUPER_ID);
+            }
+            $sql = "CREATE TABLE IF NOT EXISTS `PortoPackage` (
+                      `cID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+                      `breadcrump_banner_active` tinyint(1) DEFAULT NULL,
+                      `breadcrump_banner_text` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+                      `stickymenu_active` tinyint(1) DEFAULT NULL,
+                      `scrolltotop_active` tinyint(1) DEFAULT NULL,
+                      `load_from_cdn` tinyint(1) DEFAULT NULL,
+                      `load_footerinfotext_from_metadescription` tinyint(1) DEFAULT NULL,
+                      `second_stickymenu_gfx` int(10) unsigned DEFAULT NULL,
+                      `second_stickymenu_gfx_x` smallint(5) unsigned DEFAULT NULL,
+                      `second_stickymenu_gfx_y` smallint(5) unsigned DEFAULT NULL,
+                      `second_stickymenu_gfx_top` smallint(6) DEFAULT NULL,
+                      `page_logo_x` smallint(5) unsigned DEFAULT NULL,
+                      `page_logo_y` smallint(5) unsigned DEFAULT NULL,
+                      `header_type` smallint(6) DEFAULT NULL,
+                      `footer_type` smallint(6) DEFAULT NULL,
+                      `show_login` tinyint(1) DEFAULT NULL,
+                      `boxed_design` tinyint(1) DEFAULT NULL,
+                      `background_image` smallint(6) DEFAULT NULL,
+                      `background_fix` tinyint(1) DEFAULT NULL,
+                      `searchpage_id` smallint(6) DEFAULT NULL,
+                      `searchpage_text` varchar(80) COLLATE utf8_unicode_ci DEFAULT NULL,
+                      `searchpage_empty_query` text COLLATE utf8_unicode_ci,
+                      `page_logo` int(11) DEFAULT NULL,
+                      `page_logo_mini` int(11) DEFAULT NULL,
+                      `footer_copyright` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+                      `footer_ribbon` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+                      `email` varchar(120) COLLATE utf8_unicode_ci DEFAULT NULL,
+                      PRIMARY KEY (`cID`)
+                  ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;";
+            $this->db->executeQuery($sql);
+            $insertVal = array(
+                $PortoPackage['cID']                                        || (int) 1,
+                $PortoPackage['breadcrump_banner_active']                   || NULL,
+                $PortoPackage['breadcrump_banner_text']                     || (string) '',
+                $PortoPackage['stickymenu_active']                          || NULL,
+                $PortoPackage['scrolltotop_active']                         || (int)1,
+                $PortoPackage['load_from_cdn']                              || (int)1,
+                $PortoPackage['load_footerinfotext_from_metadescription']   || NULL,
+                $PortoPackage['second_stickymenu_gfx']                      || NULL,
+                $PortoPackage['second_stickymenu_gfx_x']                    || NULL,
+                $PortoPackage['second_stickymenu_gfx_y']                    || NULL,
+                $PortoPackage['page_logo_x']                                || NULL,
+                $PortoPackage['page_logo_y']                                || NULL,
+                $PortoPackage['header_type']                                || (int)1,
+                $PortoPackage['footer_type']                                || (int)3,
+                $PortoPackage['show_login']                                 || (int)1,
+                $PortoPackage['boxed_design']                               || (int)1,
+                $PortoPackage['background_image']                           || NULL,
+                $PortoPackage['background_fix']                             || NULL,
+                $PortoPackage['searchpage_id']                              || NULL,
+                $PortoPackage['searchpage_text']                            || (string)t('Search...'),
+                $PortoPackage['searchpage_empty_query']                     || (string)'',
+                $PortoPackage['page_logo']                                  || NULL,
+                $PortoPackage['page_logo_mini']                             || Null,
+                $PortoPackage['footer_copyright']                           || (string)t('© Copyright %Y. All Rights Reserved.'),
+                $PortoPackage['footer_ribbon']                              || NULL,
+                $PortoPackage['email']                                      || (is_object($ui) ? (string)$ui->getUserEmail() : Null)
             );
-            $q2 = 'insert into CollectionVersions (cID, cvID, pTemplateID, cvName, cvHandle, cvDescription, cvDatePublic, cvDateCreated, cvComments, cvAuthorUID, cvIsApproved, cvIsNew, pThemeID) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-            $r2 = $db->prepare($q2);
-            $res2 = $db->execute($r2, $v2);
-         */
+            $insertQuery = 'INSERT INTO PortoPackage (
+                                cID,
+                                breadcrump_banner_active,
+                                breadcrump_banner_text,
+                                stickymenu_active,
+                                scrolltotop_active,
+                                load_from_cdn,
+                                load_footerinfotext_from_metadescription,
+                                second_stickymenu_gfx,
+                                second_stickymenu_gfx_x,
+                                second_stickymenu_gfx_y,
+                                page_logo_x,
+                                page_logo_y,
+                                header_type,
+                                footer_type,
+                                show_login,
+                                boxed_design,
+                                background_image,
+                                background_fix,
+                                searchpage_id,
+                                searchpage_text,
+                                searchpage_empty_query,
+                                page_logo,
+                                page_logo_mini,
+                                footer_copyright,
+                                footer_ribbon,
+                                email
+            ) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+
+            /**
+             *  phpmyadmin dump
+             *
+            CREATE TABLE `PortoPackage` (
+                `cID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+                `breadcrump_banner_active` tinyint(1) DEFAULT NULL,
+                `breadcrump_banner_text` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+                `load_from_cdn` tinyint(1) DEFAULT NULL,
+                `load_footerinfotext_from_metadescription` tinyint(1) DEFAULT NULL,
+                `second_stickymenu_gfx` int(10) unsigned DEFAULT NULL,
+                `second_stickymenu_gfx_x` smallint(5) unsigned DEFAULT NULL,
+                `second_stickymenu_gfx_y` smallint(5) unsigned DEFAULT NULL,
+                `second_stickymenu_gfx_top` smallint(6) DEFAULT NULL,
+                `page_logo_x` smallint(5) unsigned DEFAULT NULL,
+                `page_logo_y` smallint(5) unsigned DEFAULT NULL,
+                `header_type` smallint(6) DEFAULT NULL,
+                `footer_type` smallint(6) DEFAULT NULL,
+                `show_login` tinyint(1) DEFAULT NULL,
+                `boxed_design` tinyint(1) DEFAULT NULL,
+                `background_image` smallint(6) DEFAULT NULL,
+                `background_fix` tinyint(1) DEFAULT NULL,
+                `searchpage_id` smallint(6) DEFAULT NULL,
+                `searchpage_text` varchar(80) COLLATE utf8_unicode_ci DEFAULT NULL,
+                `searchpage_empty_query` text COLLATE utf8_unicode_ci,
+                `page_logo` int(11) DEFAULT NULL,
+                `page_logo_mini` int(11) DEFAULT NULL,
+                `footer_copyright` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+                `footer_ribbon` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+                `email` varchar(120) COLLATE utf8_unicode_ci DEFAULT NULL,
+                `stickymenu_active` tinyint(1) DEFAULT NULL,
+                `scrolltotop_active` tinyint(1) DEFAULT NULL,
 
 
-
-
+                PRIMARY KEY (`cID`)
+            ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
+            */
+            $insertPrepare = $this->db->prepare($insertQuery);
+            $insertDb = $this->db->execute($insertPrepare, $insertVal);
+            unset($PortoPackage, $ui, $insertVal, $insertQuery, $insertPrepare, $insertDb, $sql);
         }
-
         # Datei Erweiterungen hinzufügen
-        $this->addAllowedFileExtensionIfNotInList('apk');
-        $this->addAllowedFileExtensionIfNotInList('ipa');
-        $this->addAllowedFileExtensionIfNotInList('mp3');
-
+        if ($this->req->request->get('portoInstallFileExtension'))
+        {
+            $this->addAllowedFileExtensionIfNotInList('apk');
+            $this->addAllowedFileExtensionIfNotInList('ipa');
+            $this->addAllowedFileExtensionIfNotInList('mp3');
+        }
         # Sicherheitscode
         if (is_object($config = \Core::make('config/database')))
         {
@@ -344,30 +482,37 @@ class Controller extends Package
                 $obj->security = new \stdClass();
                 $obj->security->formToken = $this->generateRandomString(32);
                 $config->save('porto.datamodel', serialize($obj));
+                unset($obj);
             }
         }
 
         # Jobs
-        if ($r->request->get('portoInstallCronJobs') || $this->isUpdate = TRUE)
+        if ($this->req->request->get('portoInstallCronJobs'))
         {
             $this->addCronJobIfNotExists($pkg, 'clear_empty_workflow_progress');
         }
 
         # PageTheme
-	    $this->setThemeIfNotExists('porto', $pkg);
-	    $this->setThemeIfNotExists('onepage', $pkg);
-	
+        if ($this->req->request->get('portoInstallTheme'))
+        {
+            $this->setThemeIfNotExists('porto', $pkg);
+            $this->setThemeIfNotExists('onepage', $pkg);
+        }
         # PageTemplate
-        $this->setPageTemplateIfNotExists('blank', t('Blank'), $pkg);
-        $this->setPageTemplateIfNotExists('full', t('Full'), $pkg);
-        $this->setPageTemplateIfNotExists('landing', t('Landing Page'), $pkg);
-        $this->setPageTemplateIfNotExists('left_sidebar', t('Left Sidebar'), $pkg);
-        $this->setPageTemplateIfNotExists('right_sidebar', t('Right Sidebar'), $pkg);
-        $this->setPageTemplateIfNotExists('blog', t('Blog'), $pkg);
-
+        if ($this->req->request->get('portoInstallTemplates'))
+        {
+            $this->setPageTemplateIfNotExists('blank', t('Blank'), $pkg);
+            $this->setPageTemplateIfNotExists('full', t('Full'), $pkg);
+            $this->setPageTemplateIfNotExists('landing', t('Landing Page'), $pkg);
+            $this->setPageTemplateIfNotExists('left_sidebar', t('Left Sidebar'), $pkg);
+            $this->setPageTemplateIfNotExists('right_sidebar', t('Right Sidebar'), $pkg);
+            $this->setPageTemplateIfNotExists('blog', t('Blog'), $pkg);
+        }
         # Pagetypes (z.B. für Composer o.ä.)
-        $this->installPageType('blog', t('Blog'), $pkg);
-
+        if ($this->req->request->get('portoInstallPageType'))
+        {
+            $this->installPageType('blog', t('Blog'), $pkg);
+        }
         # Dashboard
         $this->setDashboardIfNotExists('porto_design/', t('Porto Package'), $pkg);
         $this->setDashboardIfNotExists('porto_design/settings', t('Settings'), $pkg);
@@ -375,7 +520,7 @@ class Controller extends Package
         $this->setDashboardIfNotExists('porto_design/menu_logos', t('Menu & Logos'), $pkg);
         $this->setDashboardIfNotExists('porto_design/informationen', t('Information'), $pkg);
 
-        if ($r->request->get('portoInstallBlocks') || $this->isUpdate = TRUE)
+        if ($this->req->request->get('portoInstallBlocks'))
         {
             # BlocktypeSet
             $this->setBlockSetIfNotExists('porto', t('Porto Blocktypes'), $pkg);
@@ -392,351 +537,365 @@ class Controller extends Package
             $this->setBlockIfNotExistsOrUpdate('audio_player', $pkg);
         }
 
-        # AttributeSet fuer Collection
-        $AttribSetIDCollection = $this->setAttributeSetIfNotExistsAndGet('collection', 'porto_collection_attr', t('Porto Menu'), $pkg);
-        # AttributeTypes (collection)
-        $this->setCollectionAttributeKeyIfNotExists('porto_navigation_fa_icon', t('Font Awesome Icon'), $AttribSetIDCollection, 'select', array(
-            'akSelectValues' => array(
-                'angellist','area-chart','at','bell-slash','bell-slash-o','bicycle','binoculars','birthday-cake','bus','calculator','cc','cc-amex',
-                'cc-discover','cc-mastercard','cc-paypal','cc-stripe','cc-visa','copyright','eyedropper','futbol-o','google-wallet','ils','ioxhost',
-                'lastfm','lastfm-square','line-chart','meanpath','newspaper-o','paint-brush','paypal','pie-chart','plug','shekel','sheqel','slideshare',
-                'soccer-ball-o','toggle-off','toggle-on','trash','tty','twitch','wifi','yelp','adjust','anchor','archive','area-chart','arrows','arrows-h',
-                'arrows-v','asterisk','at','automobile','ban','bank','bar-chart','bar-chart-o','barcode','bars','beer','bell','bell-o','bell-slash',
-                'bell-slash-o','bicycle','binoculars','birthday-cake','bolt','bomb','book','bookmark','bookmark-o','briefcase','bug','building',
-                'building-o','bullhorn','bullseye','bus','cab','calculator','calendar','calendar-o','camera','camera-retro','car','caret-square-o-down',
-                'caret-square-o-left','caret-square-o-right','caret-square-o-up','cc','certificate','check','check-circle','check-circle-o','check-square',
-                'check-square-o','child','circle','circle-o','circle-o-notch','circle-thin','clock-o','close','cloud','cloud-download','cloud-upload',
-                'code','code-fork','coffee','cog','cogs','comment','comment-o','comments','comments-o','compass','copyright','credit-card','crop',
-                'crosshairs','cube','cubes','cutlery','dashboard','database','desktop','dot-circle-o','download','edit','ellipsis-h','ellipsis-v',
-                'envelope','envelope-o','envelope-square','eraser','exchange','exclamation','exclamation-circle','exclamation-triangle','external-link',
-                'external-link-square','eye','eye-slash','eyedropper','fax','female','fighter-jet','file-archive-o','file-audio-o','file-code-o',
-                'file-excel-o','file-image-o','file-movie-o','file-pdf-o','file-photo-o','file-picture-o','file-powerpoint-o','file-sound-o',
-                'file-video-o','file-word-o','file-zip-o','film','filter','fire','fire-extinguisher','flag','flag-checkered','flag-o','flash',
-                'flask','folder','folder-o','folder-open','folder-open-o','frown-o','futbol-o','gamepad','gavel','gear','gears','gift','glass',
-                'globe','graduation-cap','group','hdd-o','headphones','heart','heart-o','history','home','image','inbox','info','info-circle',
-                'institution','key','keyboard-o','language','laptop','leaf','legal','lemon-o','level-down','level-up','life-bouy','life-buoy',
-                'life-ring','life-saver','lightbulb-o','line-chart','location-arrow','lock','magic','magnet','mail-forward','mail-reply','mail-reply-all',
-                'male','map-marker','meh-o','microphone','microphone-slash','minus','minus-circle','minus-square','minus-square-o','mobile',
-                'mobile-phone','money','moon-o','mortar-board','music','navicon','newspaper-o','paint-brush','paper-plane','paper-plane-o','paw',
-                'pencil','pencil-square','pencil-square-o','phone','phone-square','photo','picture-o','pie-chart','plane','plug','plus','plus-circle',
-                'plus-square','plus-square-o','power-off','print','puzzle-piece','qrcode','question','question-circle','quote-left','quote-right',
-                'random','recycle','refresh','remove','reorder','reply','reply-all','retweet','road','rocket','rss','rss-square','search','search-minus',
-                'search-plus','send','send-o','share','share-alt','share-alt-square','share-square','share-square-o','shield','shopping-cart','sign-in',
-                'sign-out','signal','sitemap','sliders','smile-o','soccer-ball-o','sort','sort-alpha-asc','sort-alpha-desc','sort-amount-asc',
-                'sort-amount-desc','sort-asc','sort-desc','sort-down','sort-numeric-asc','sort-numeric-desc','sort-up','space-shuttle','spinner',
-                'spoon','square','square-o','star','star-half','star-half-empty','star-half-full','star-half-o','star-o','suitcase','sun-o','support',
-                'tablet','tachometer','tag','tags','tasks','taxi','terminal','thumb-tack','thumbs-down','thumbs-o-down','thumbs-o-up','thumbs-up',
-                'ticket','times','times-circle','times-circle-o','tint','toggle-down','toggle-left','toggle-off','toggle-on','toggle-right','toggle-up',
-                'trash','trash-o','tree','trophy','truck','tty','umbrella','university','unlock','unlock-alt','unsorted','upload','user','users',
-                'video-camera','volume-down','volume-off','volume-up','warning','wheelchair','wifi','wrench','file','file-archive-o','file-audio-o',
-                'file-code-o','file-excel-o','file-image-o','file-movie-o','file-o','file-pdf-o','file-photo-o','file-picture-o','file-powerpoint-o',
-                'file-sound-o','file-text','file-text-o','file-video-o','file-word-o','file-zip-o','circle-o-notch','cog','gear','refresh','spinner',
-                'check-square','check-square-o','circle','circle-o','dot-circle-o','minus-square','minus-square-o','plus-square','plus-square-o',
-                'square','square-o','cc-amex','cc-discover','cc-mastercard','cc-paypal','cc-stripe','cc-visa','credit-card','google-wallet','paypal',
-                'area-chart','bar-chart','bar-chart-o','line-chart','pie-chart','bitcoin','btc','cny','dollar','eur','euro','gbp','ils','inr','jpy',
-                'krw','money','rmb','rouble','rub','ruble','rupee','shekel','sheqel','try','turkish-lira','usd','won','yen','align-center','align-justify',
-                'align-left','align-right','bold','chain','chain-broken','clipboard','columns','copy','cut','dedent','eraser','file','file-o','file-text',
-                'file-text-o','files-o','floppy-o','font','header','indent','italic','link','list','list-alt','list-ol','list-ul','outdent','paperclip',
-                'paragraph','paste','repeat','rotate-left','rotate-right','save','scissors','strikethrough','subscript','superscript','table','text-height',
-                'text-width','th','th-large','th-list','underline','undo','unlink','angle-double-down','angle-double-left','angle-double-right',
-                'angle-double-up','angle-down','angle-left','angle-right','angle-up','arrow-circle-down','arrow-circle-left','arrow-circle-o-down',
-                'arrow-circle-o-left','arrow-circle-o-right','arrow-circle-o-up','arrow-circle-right','arrow-circle-up','arrow-down','arrow-left',
-                'arrow-right','arrow-up','arrows','arrows-alt','arrows-h','arrows-v','caret-down','caret-left','caret-right','caret-square-o-down',
-                'caret-square-o-left','caret-square-o-right','caret-square-o-up','caret-up','chevron-circle-down','chevron-circle-left','chevron-circle-right',
-                'chevron-circle-up','chevron-down','chevron-left','chevron-right','chevron-up','hand-o-down','hand-o-left','hand-o-right','hand-o-up',
-                'long-arrow-down','long-arrow-left','long-arrow-right','long-arrow-up','toggle-down','toggle-left','toggle-right','toggle-up','arrows-alt',
-                'backward','compress','eject','expand','fast-backward','fast-forward','forward','pause','play','play-circle','play-circle-o','step-backward',
-                'step-forward','stop','youtube-play','warning','adn','android','angellist','apple','behance','behance-square','bitbucket','bitbucket-square',
-                'bitcoin','btc','cc-amex','cc-discover','cc-mastercard','cc-paypal','cc-stripe','cc-visa','codepen','css3','delicious','deviantart','digg',
-                'dribbble','dropbox','drupal','empire','facebook','facebook-square','flickr','foursquare','ge','git','git-square','github','github-alt',
-                'github-square','gittip','google','google-plus','google-plus-square','google-wallet','hacker-news','html5','instagram','ioxhost','joomla',
-                'jsfiddle','lastfm','lastfm-square','linkedin','linkedin-square','linux','maxcdn','meanpath','openid','pagelines','paypal','pied-piper',
-                'pied-piper-alt','pinterest','pinterest-square','qq','ra','rebel','reddit','reddit-square','renren','share-alt','share-alt-square','skype',
-                'slack','slideshare','soundcloud','spotify','stack-exchange','stack-overflow','steam','steam-square','stumbleupon','stumbleupon-circle',
-                'tencent-weibo','trello','tumblr','tumblr-square','twitch','twitter','twitter-square','vimeo-square','vine','vk','wechat','weibo','weixin',
-                'windows','wordpress','xing','xing-square','yahoo','yelp','youtube','youtube-play','youtube-square','ambulance','h-square','hospital-o',
-                'medkit','plus-square','stethoscope','user-md','wheelchair'
-            )
-        ), $pkg);
-        # Porto Meta Tags
-        $MetaTagCollection = $this->setAttributeSetIfNotExistsAndGet('collection', 'porto_meta_tags', t('Porto Meta Tags'), $pkg);
-        $this->setCollectionAttributeKeyIfNotExists('porto_meta_tags_revisit_after', t('Revisit after'), $MetaTagCollection, 'select', array(
-            'akSelectValues' => array(
-                '3 days','5 days','7 days','10 days','14 days','21 days','1 month','2 month','4 month','6 month','9 month'
-             )
-        ), $pkg);
-        $this->setCollectionAttributeKeyIfNotExists('porto_meta_tags_robots', t('Robots'), $MetaTagCollection, 'select', array(
-            'akSelectValues' => array(
-                'index,follow','index,nofollow','noindex,follow','noindex,nofollow'
-             )
-        ), $pkg);
-        $this->setCollectionAttributeKeyIfNotExists('porto_meta_tags_audience', t('Audience'), $MetaTagCollection, 'text', array(
-            'akHandle'              => 'porto_meta_tags_audience',
-            'akName'                => t('Audience')
-        ), $pkg);
-        $this->setCollectionAttributeKeyIfNotExists('porto_meta_tags_page_topic', t('Page Topic'), $MetaTagCollection, 'text', array(
-            'akHandle'              => 'porto_meta_tags_page_topic',
-            'akName'                => t('Page Topic')
-        ), $pkg);
+        if ($this->req->request->get('portoInstallAttributes'))
+        {
+            # AttributeSet fuer Collection
+            $AttribSetIDCollection = $this->setAttributeSetIfNotExistsAndGet('collection', 'porto_collection_attr', t('Porto Menu'), $pkg);
+            # AttributeTypes (collection)
+            $this->setCollectionAttributeKeyIfNotExists('porto_navigation_fa_icon', t('Font Awesome Icon'), $AttribSetIDCollection, 'select', array(
+                'akSelectValues' => array(
+                    'angellist','area-chart','at','bell-slash','bell-slash-o','bicycle','binoculars','birthday-cake','bus','calculator','cc','cc-amex',
+                    'cc-discover','cc-mastercard','cc-paypal','cc-stripe','cc-visa','copyright','eyedropper','futbol-o','google-wallet','ils','ioxhost',
+                    'lastfm','lastfm-square','line-chart','meanpath','newspaper-o','paint-brush','paypal','pie-chart','plug','shekel','sheqel','slideshare',
+                    'soccer-ball-o','toggle-off','toggle-on','trash','tty','twitch','wifi','yelp','adjust','anchor','archive','area-chart','arrows','arrows-h',
+                    'arrows-v','asterisk','at','automobile','ban','bank','bar-chart','bar-chart-o','barcode','bars','beer','bell','bell-o','bell-slash',
+                    'bell-slash-o','bicycle','binoculars','birthday-cake','bolt','bomb','book','bookmark','bookmark-o','briefcase','bug','building',
+                    'building-o','bullhorn','bullseye','bus','cab','calculator','calendar','calendar-o','camera','camera-retro','car','caret-square-o-down',
+                    'caret-square-o-left','caret-square-o-right','caret-square-o-up','cc','certificate','check','check-circle','check-circle-o','check-square',
+                    'check-square-o','child','circle','circle-o','circle-o-notch','circle-thin','clock-o','close','cloud','cloud-download','cloud-upload',
+                    'code','code-fork','coffee','cog','cogs','comment','comment-o','comments','comments-o','compass','copyright','credit-card','crop',
+                    'crosshairs','cube','cubes','cutlery','dashboard','database','desktop','dot-circle-o','download','edit','ellipsis-h','ellipsis-v',
+                    'envelope','envelope-o','envelope-square','eraser','exchange','exclamation','exclamation-circle','exclamation-triangle','external-link',
+                    'external-link-square','eye','eye-slash','eyedropper','fax','female','fighter-jet','file-archive-o','file-audio-o','file-code-o',
+                    'file-excel-o','file-image-o','file-movie-o','file-pdf-o','file-photo-o','file-picture-o','file-powerpoint-o','file-sound-o',
+                    'file-video-o','file-word-o','file-zip-o','film','filter','fire','fire-extinguisher','flag','flag-checkered','flag-o','flash',
+                    'flask','folder','folder-o','folder-open','folder-open-o','frown-o','futbol-o','gamepad','gavel','gear','gears','gift','glass',
+                    'globe','graduation-cap','group','hdd-o','headphones','heart','heart-o','history','home','image','inbox','info','info-circle',
+                    'institution','key','keyboard-o','language','laptop','leaf','legal','lemon-o','level-down','level-up','life-bouy','life-buoy',
+                    'life-ring','life-saver','lightbulb-o','line-chart','location-arrow','lock','magic','magnet','mail-forward','mail-reply','mail-reply-all',
+                    'male','map-marker','meh-o','microphone','microphone-slash','minus','minus-circle','minus-square','minus-square-o','mobile',
+                    'mobile-phone','money','moon-o','mortar-board','music','navicon','newspaper-o','paint-brush','paper-plane','paper-plane-o','paw',
+                    'pencil','pencil-square','pencil-square-o','phone','phone-square','photo','picture-o','pie-chart','plane','plug','plus','plus-circle',
+                    'plus-square','plus-square-o','power-off','print','puzzle-piece','qrcode','question','question-circle','quote-left','quote-right',
+                    'random','recycle','refresh','remove','reorder','reply','reply-all','retweet','road','rocket','rss','rss-square','search','search-minus',
+                    'search-plus','send','send-o','share','share-alt','share-alt-square','share-square','share-square-o','shield','shopping-cart','sign-in',
+                    'sign-out','signal','sitemap','sliders','smile-o','soccer-ball-o','sort','sort-alpha-asc','sort-alpha-desc','sort-amount-asc',
+                    'sort-amount-desc','sort-asc','sort-desc','sort-down','sort-numeric-asc','sort-numeric-desc','sort-up','space-shuttle','spinner',
+                    'spoon','square','square-o','star','star-half','star-half-empty','star-half-full','star-half-o','star-o','suitcase','sun-o','support',
+                    'tablet','tachometer','tag','tags','tasks','taxi','terminal','thumb-tack','thumbs-down','thumbs-o-down','thumbs-o-up','thumbs-up',
+                    'ticket','times','times-circle','times-circle-o','tint','toggle-down','toggle-left','toggle-off','toggle-on','toggle-right','toggle-up',
+                    'trash','trash-o','tree','trophy','truck','tty','umbrella','university','unlock','unlock-alt','unsorted','upload','user','users',
+                    'video-camera','volume-down','volume-off','volume-up','warning','wheelchair','wifi','wrench','file','file-archive-o','file-audio-o',
+                    'file-code-o','file-excel-o','file-image-o','file-movie-o','file-o','file-pdf-o','file-photo-o','file-picture-o','file-powerpoint-o',
+                    'file-sound-o','file-text','file-text-o','file-video-o','file-word-o','file-zip-o','circle-o-notch','cog','gear','refresh','spinner',
+                    'check-square','check-square-o','circle','circle-o','dot-circle-o','minus-square','minus-square-o','plus-square','plus-square-o',
+                    'square','square-o','cc-amex','cc-discover','cc-mastercard','cc-paypal','cc-stripe','cc-visa','credit-card','google-wallet','paypal',
+                    'area-chart','bar-chart','bar-chart-o','line-chart','pie-chart','bitcoin','btc','cny','dollar','eur','euro','gbp','ils','inr','jpy',
+                    'krw','money','rmb','rouble','rub','ruble','rupee','shekel','sheqel','try','turkish-lira','usd','won','yen','align-center','align-justify',
+                    'align-left','align-right','bold','chain','chain-broken','clipboard','columns','copy','cut','dedent','eraser','file','file-o','file-text',
+                    'file-text-o','files-o','floppy-o','font','header','indent','italic','link','list','list-alt','list-ol','list-ul','outdent','paperclip',
+                    'paragraph','paste','repeat','rotate-left','rotate-right','save','scissors','strikethrough','subscript','superscript','table','text-height',
+                    'text-width','th','th-large','th-list','underline','undo','unlink','angle-double-down','angle-double-left','angle-double-right',
+                    'angle-double-up','angle-down','angle-left','angle-right','angle-up','arrow-circle-down','arrow-circle-left','arrow-circle-o-down',
+                    'arrow-circle-o-left','arrow-circle-o-right','arrow-circle-o-up','arrow-circle-right','arrow-circle-up','arrow-down','arrow-left',
+                    'arrow-right','arrow-up','arrows','arrows-alt','arrows-h','arrows-v','caret-down','caret-left','caret-right','caret-square-o-down',
+                    'caret-square-o-left','caret-square-o-right','caret-square-o-up','caret-up','chevron-circle-down','chevron-circle-left','chevron-circle-right',
+                    'chevron-circle-up','chevron-down','chevron-left','chevron-right','chevron-up','hand-o-down','hand-o-left','hand-o-right','hand-o-up',
+                    'long-arrow-down','long-arrow-left','long-arrow-right','long-arrow-up','toggle-down','toggle-left','toggle-right','toggle-up','arrows-alt',
+                    'backward','compress','eject','expand','fast-backward','fast-forward','forward','pause','play','play-circle','play-circle-o','step-backward',
+                    'step-forward','stop','youtube-play','warning','adn','android','angellist','apple','behance','behance-square','bitbucket','bitbucket-square',
+                    'bitcoin','btc','cc-amex','cc-discover','cc-mastercard','cc-paypal','cc-stripe','cc-visa','codepen','css3','delicious','deviantart','digg',
+                    'dribbble','dropbox','drupal','empire','facebook','facebook-square','flickr','foursquare','ge','git','git-square','github','github-alt',
+                    'github-square','gittip','google','google-plus','google-plus-square','google-wallet','hacker-news','html5','instagram','ioxhost','joomla',
+                    'jsfiddle','lastfm','lastfm-square','linkedin','linkedin-square','linux','maxcdn','meanpath','openid','pagelines','paypal','pied-piper',
+                    'pied-piper-alt','pinterest','pinterest-square','qq','ra','rebel','reddit','reddit-square','renren','share-alt','share-alt-square','skype',
+                    'slack','slideshare','soundcloud','spotify','stack-exchange','stack-overflow','steam','steam-square','stumbleupon','stumbleupon-circle',
+                    'tencent-weibo','trello','tumblr','tumblr-square','twitch','twitter','twitter-square','vimeo-square','vine','vk','wechat','weibo','weixin',
+                    'windows','wordpress','xing','xing-square','yahoo','yelp','youtube','youtube-play','youtube-square','ambulance','h-square','hospital-o',
+                    'medkit','plus-square','stethoscope','user-md','wheelchair'
+                )
+            ), $pkg);
 
-        $this->setCollectionAttributeKeyIfNotExists('porto_megamenu_full_width', t('Megamenu full width'), $AttribSetIDCollection, 'boolean', array(), $pkg);
-        $this->setCollectionAttributeKeyIfNotExists('porto_link_show_in_footer', t('Show link in footer'), $AttribSetIDCollection, 'boolean', array(), $pkg);
-        $this->setCollectionAttributeKeyIfNotExists('detailimage', t('Detail Image'), $AttribSetIDCollection, 'image_file', array(), $pkg);
-        $this->setCollectionAttributeKeyIfNotExists('thumbnail', t('Thumbnail Image'), $AttribSetIDCollection, 'image_file', array(), $pkg);
-        # AttributeSet fuer User
-        $AttribSetIDUser = $this->setAttributeSetIfNotExistsAndGet('user', 'porto_user_attr', t('Porto User Attribute Set'), $pkg);
-        # AttributeTypes (user)
-        $this->setUserAttributeKeyIfNotExistsOrUpdate('boolean', $pkg, array(
-            'akHandle'              => 'company',
-            'akName'                => t('Show profile as Company profile'),
-            'akIsSearchable'        => true,          // Feld verfügbar in der Benutzersuche der Verwaltung
-            'akIsSearchableIndexed' => true,          // Inhalt in die Benutzersuche aufnehmen
-            'uakMemberListDisplay'  => false,         // In Benutzerliste anzeigen
-            'uakProfileDisplay'     => false,          // Im öffentlichen Profil sichtbar
-            'uakProfileEdit'        => true,          // Kann im Profil bearbeitet werden
-            'uakProfileEditRequired'=> false,         // Pflichtfeld im Profil
-            'uakRegisterEdit'       => false,         // Im Registrierungsformular anzeigen.
-            'uakRegisterEditRequired'=> false,        // Pflichtfeld im Registrierungsformular
-            'akCheckedByDefault'    => false,        // Kontrollkästchen standardmäßig aktivieren
-            'asID'                  => $AttribSetIDUser // zugehöriges userattribute set
-        ));
-        $this->setUserAttributeKeyIfNotExistsOrUpdate('text', $pkg, array(
-            'akHandle'              => 'firma_name',
-            'akName'                => t('Company Name'),
-            'akIsSearchable'        => true,          // Feld verfügbar in der Benutzersuche der Verwaltung
-            'akIsSearchableIndexed' => true,          // Inhalt in die Benutzersuche aufnehmen
-            'uakMemberListDisplay'  => false,          // In Benutzerliste anzeigen
-            'uakProfileDisplay'     => true,          // Im öffentlichen Profil sichtbar
-            'uakProfileEdit'        => true,          // Kann im Profil bearbeitet werden
-            'uakProfileEditRequired'=> false,         // Pflichtfeld im Profil
-            'uakRegisterEdit'       => false,         // Im Registrierungsformular anzeigen.
-            'uakRegisterEditRequired'=> false,        // Pflichtfeld im Registrierungsformular
-            'asID'                  => $AttribSetIDUser   // zugehöriges userattribute set
-        ));
-        $this->setUserAttributeKeyIfNotExistsOrUpdate('image_file', $pkg, array(
-            'akHandle'              => 'firma_logo',
-            'akName'                => t('Company Logo'),
-            'akIsSearchable'        => true,          // Feld verfügbar in der Benutzersuche der Verwaltung
-            'akIsSearchableIndexed' => true,          // Inhalt in die Benutzersuche aufnehmen
-            'uakMemberListDisplay'  => false,         // In Benutzerliste anzeigen
-            'uakProfileDisplay'     => true,          // Im öffentlichen Profil sichtbar
-            'uakProfileEdit'        => true,          // Kann im Profil bearbeitet werden
-            'uakProfileEditRequired'=> false,         // Pflichtfeld im Profil
-            'uakRegisterEdit'       => false,         // Im Registrierungsformular anzeigen.
-            'uakRegisterEditRequired'=> false,        // Pflichtfeld im Registrierungsformular
-            'asID'                  => $AttribSetIDUser // zugehöriges userattribute set
-        ));
-        $this->setUserAttributeKeyIfNotExistsOrUpdate('text', $pkg, array(
-            'akHandle'              => 'firma_branche',
-            'akName'                => t('Company branch'),
-            'akIsSearchable'        => true,          // Feld verfügbar in der Benutzersuche der Verwaltung
-            'akIsSearchableIndexed' => true,          // Inhalt in die Benutzersuche aufnehmen
-            'uakMemberListDisplay'  => false,          // In Benutzerliste anzeigen
-            'uakProfileDisplay'     => true,          // Im öffentlichen Profil sichtbar
-            'uakProfileEdit'        => true,          // Kann im Profil bearbeitet werden
-            'uakProfileEditRequired'=> false,         // Pflichtfeld im Profil
-            'uakRegisterEdit'       => false,         // Im Registrierungsformular anzeigen.
-            'uakRegisterEditRequired'=> false,        // Pflichtfeld im Registrierungsformular
-            'asID'                  => $AttribSetIDUser   // zugehöriges userattribute set
-        ));
-        $this->setUserAttributeKeyIfNotExistsOrUpdate('address', $pkg, array(
-            'akHandle'              => 'firma_addresse',
-            'akName'                => t('Company location'),
-            'akIsSearchable'        => true,          // Feld verfügbar in der Benutzersuche der Verwaltung
-            'akIsSearchableIndexed' => true,          // Inhalt in die Benutzersuche aufnehmen
-            'uakMemberListDisplay'  => false,         // In Benutzerliste anzeigen
-            'uakProfileDisplay'     => true,          // Im öffentlichen Profil sichtbar
-            'uakProfileEdit'        => true,          // Kann im Profil bearbeitet werden
-            'uakProfileEditRequired'=> false,         // Pflichtfeld im Profil
-            'uakRegisterEdit'       => false,         // Im Registrierungsformular anzeigen.
-            'uakRegisterEditRequired'=> false,        // Pflichtfeld im Registrierungsformular
-            'akHasCustomCountries'  => 0,             // 1=Bestimmte aus der Liste laden
-            'akDefaultCountry'      => 'DE',	      // Default Land
-            'asID'                  => $AttribSetIDUser// zugehöriges userattribute set
-        ));
-        /*$this->setUserAttributeKeyIfNotExistsOrUpdate('social_links', $pkg, array(
-            'akHandle'              => 'firma_social_links',
-            'akName'                => t('Firmen Links'),
-            'akIsSearchable'        => true,          // Feld verfügbar in der Benutzersuche der Verwaltung
-            'akIsSearchableIndexed' => true,          // Inhalt in die Benutzersuche aufnehmen
-            'uakMemberListDisplay'  => false,         // In Benutzerliste anzeigen
-            'uakProfileDisplay'     => true,          // Im öffentlichen Profil sichtbar
-            'uakProfileEdit'        => true,          // Kann im Profil bearbeitet werden
-            'uakProfileEditRequired'=> false,         // Pflichtfeld im Profil
-            'uakRegisterEdit'       => false,         // Im Registrierungsformular anzeigen.
-            'uakRegisterEditRequired'=> false,        // Pflichtfeld im Registrierungsformular
-            'asID'                  => $AttribSetIDUser   // zugehöriges userattribute set
-        ));*/
-        $this->setUserAttributeKeyIfNotExistsOrUpdate('textarea', $pkg, array(
-            'akHandle'              		=> 'firmen_motto',
-            'akName'                		=> t('Company motto'),
-            'akIsSearchable'        		=> true,        // Feld verfügbar in der Benutzersuche der Verwaltung
-            'akIsSearchableIndexed' 		=> true,        // Inhalt in die Benutzersuche aufnehmen
-            'uakMemberListDisplay'  		=> false,        // In Benutzerliste anzeigen
-            'uakProfileDisplay'     		=> true,        // Im öffentlichen Profil sichtbar
-            'uakProfileEdit'        		=> true,        // Kann im Profil bearbeitet werden
-            'uakProfileEditRequired'		=> false,       // Pflichtfeld und bearbeitbar im Profil
-            'uakRegisterEdit'       		=> false,       // Im Registrierungsformular anzeigen.
-            'uakRegisterEditRequired'		=> false,       // Pflichtfeld im Registrierungsformular
-            'akTextareaDisplayMode' 		=> 'rich_text',	// (text|rich_text|rich_text_custom)
-            'akTextareaDisplayModeCustomOptions'=> '',   	// Optionen wenn rich_text_custom rewaehlt wird
-            'asID'                  		=> $AttribSetIDUser // zugehöriges userattribute set
-        ));
+            # Porto Meta Tags
+            $MetaTagCollection = $this->setAttributeSetIfNotExistsAndGet('collection', 'porto_meta_tags', t('Porto Meta Tags'), $pkg);
+            $this->setCollectionAttributeKeyIfNotExists('porto_meta_tags_revisit_after', t('Revisit after'), $MetaTagCollection, 'select', array(
+                'akSelectValues' => array(
+                    '3 days','5 days','7 days','10 days','14 days','21 days','1 month','2 month','4 month','6 month','9 month'
+                 )
+            ), $pkg);
+            $this->setCollectionAttributeKeyIfNotExists('porto_meta_tags_robots', t('Robots'), $MetaTagCollection, 'select', array(
+                'akSelectValues' => array(
+                    'index,follow','index,nofollow','noindex,follow','noindex,nofollow'
+                 )
+            ), $pkg);
+            $this->setCollectionAttributeKeyIfNotExists('porto_meta_tags_audience', t('Audience'), $MetaTagCollection, 'text', array(
+                'akHandle'              => 'porto_meta_tags_audience',
+                'akName'                => t('Audience')
+            ), $pkg);
+            $this->setCollectionAttributeKeyIfNotExists('porto_meta_tags_page_topic', t('Page Topic'), $MetaTagCollection, 'text', array(
+                'akHandle'              => 'porto_meta_tags_page_topic',
+                'akName'                => t('Page Topic')
+            ), $pkg);
 
-        $this->setUserAttributeKeyIfNotExistsOrUpdate('select', $pkg, array(
-            'akHandle'              => 'gender',
-            'akSelectValues'        => array(
-                t('male'),
-                t('female')
-            ),
-            'akName'                => t('Gender'),
-            'akIsSearchable'        => true,          // Feld verfügbar in der Benutzersuche der Verwaltung
-            'akIsSearchableIndexed' => true,          // Inhalt in die Benutzersuche aufnehmen
-            'uakMemberListDisplay'  => false,         // In Benutzerliste anzeigen
-            'uakProfileDisplay'     => true,          // Im öffentlichen Profil sichtbar
-            'uakProfileEdit'        => true,          // Kann im Profil bearbeitet werden
-            'uakProfileEditRequired'=> false,         // Pflichtfeld im Profil
-            'uakRegisterEdit'       => false,         // Im Registrierungsformular anzeigen.
-            'uakRegisterEditRequired'=> false,        // Pflichtfeld im Registrierungsformular
-            'akSelectAllowOtherValues'  => false,     // Benutzern erlauben, eintraege hinzuzufuegen
-            'akSelectAllowMultipleValues'=> false,    // Mehrfachselektion erlauben
-            'asID'                  => $AttribSetIDUser  // zugehöriges userattribute set
-        ));
-        $this->setUserAttributeKeyIfNotExistsOrUpdate('text', $pkg, array(
-            'akHandle'              => 'firstname',
-            'akName'                => t('Firstname'),
-            'akIsSearchable'        => true,          // Feld verfügbar in der Benutzersuche der Verwaltung
-            'akIsSearchableIndexed' => true,          // Inhalt in die Benutzersuche aufnehmen
-            'uakMemberListDisplay'  => false,          // In Benutzerliste anzeigen
-            'uakProfileDisplay'     => true,          // Im öffentlichen Profil sichtbar
-            'uakProfileEdit'        => true,          // Kann im Profil bearbeitet werden
-            'uakProfileEditRequired'=> false,         // Pflichtfeld im Profil
-            'uakRegisterEdit'       => false,         // Im Registrierungsformular anzeigen.
-            'uakRegisterEditRequired'=> false,        // Pflichtfeld im Registrierungsformular
-            'asID'                  => $AttribSetIDUser   // zugehöriges userattribute set
-        ));
-        $this->setUserAttributeKeyIfNotExistsOrUpdate('text', $pkg, array(
-            'akHandle'              => 'lastname',
-            'akName'                => t('Lastname'),
-            'akIsSearchable'        => true,          // Feld verfügbar in der Benutzersuche der Verwaltung
-            'akIsSearchableIndexed' => true,          // Inhalt in die Benutzersuche aufnehmen
-            'uakMemberListDisplay'  => false,          // In Benutzerliste anzeigen
-            'uakProfileDisplay'     => true,          // Im öffentlichen Profil sichtbar
-            'uakProfileEdit'        => true,          // Kann im Profil bearbeitet werden
-            'uakProfileEditRequired'=> false,         // Pflichtfeld im Profil
-            'uakRegisterEdit'       => false,         // Im Registrierungsformular anzeigen.
-            'uakRegisterEditRequired'=> false,        // Pflichtfeld im Registrierungsformular
-            'asID'                  => $AttribSetIDUser   // zugehöriges userattribute set
-        ));
-        $this->setUserAttributeKeyIfNotExistsOrUpdate('address', $pkg, array(
-            'akHandle'              => 'adresse',
-            'akName'                => t('Location'),
-            'akIsSearchable'        => true,          // Feld verfügbar in der Benutzersuche der Verwaltung
-            'akIsSearchableIndexed' => true,          // Inhalt in die Benutzersuche aufnehmen
-            'uakMemberListDisplay'  => false,         // In Benutzerliste anzeigen
-            'uakProfileDisplay'     => true,          // Im öffentlichen Profil sichtbar
-            'uakProfileEdit'        => true,          // Kann im Profil bearbeitet werden
-            'uakProfileEditRequired'=> false,         // Pflichtfeld im Profil
-            'uakRegisterEdit'       => false,         // Im Registrierungsformular anzeigen.
-            'uakRegisterEditRequired'=> false,        // Pflichtfeld im Registrierungsformular
-            'akHasCustomCountries'  => 0,             // 1=Bestimmte aus der Liste laden
-            'akDefaultCountry'      => 'DE',	      // Default Land
-            'asID'                  => $AttribSetIDUser// zugehöriges userattribute set
-        ));
-        $this->setUserAttributeKeyIfNotExistsOrUpdate('image_file', $pkg, array(
-            'akHandle'              => 'selfi',
-            'akName'                => t('Picture'),
-            'akIsSearchable'        => true,          // Feld verfügbar in der Benutzersuche der Verwaltung
-            'akIsSearchableIndexed' => true,          // Inhalt in die Benutzersuche aufnehmen
-            'uakMemberListDisplay'  => false,         // In Benutzerliste anzeigen
-            'uakProfileDisplay'     => true,          // Im öffentlichen Profil sichtbar
-            'uakProfileEdit'        => true,          // Kann im Profil bearbeitet werden
-            'uakProfileEditRequired'=> false,         // Pflichtfeld im Profil
-            'uakRegisterEdit'       => false,         // Im Registrierungsformular anzeigen.
-            'uakRegisterEditRequired'=> false,        // Pflichtfeld im Registrierungsformular
-            'asID'                  => $AttribSetIDUser // zugehöriges userattribute set
-        ));
-        $this->setUserAttributeKeyIfNotExistsOrUpdate('social_links', $pkg, array(
-            'akHandle'              => 'social_links',
-            'akName'                => t('Social Links'),
-            'akIsSearchable'        => false,          // Feld verfügbar in der Benutzersuche der Verwaltung
-            'akIsSearchableIndexed' => false,          // Inhalt in die Benutzersuche aufnehmen
-            'uakMemberListDisplay'  => false,         // In Benutzerliste anzeigen
-            'uakProfileDisplay'     => true,          // Im öffentlichen Profil sichtbar
-            'uakProfileEdit'        => true,          // Kann im Profil bearbeitet werden
-            'uakProfileEditRequired'=> false,         // Pflichtfeld im Profil
-            'uakRegisterEdit'       => false,         // Im Registrierungsformular anzeigen.
-            'uakRegisterEditRequired'=> false,        // Pflichtfeld im Registrierungsformular
-            'asID'                  => $AttribSetIDUser   // zugehöriges userattribute set
-        ));
-        $this->setUserAttributeKeyIfNotExistsOrUpdate('textarea', $pkg, array(
-            'akHandle'              		=> 'zitat',
-            'akName'                		=> t('Blockquote'),
-            'akIsSearchable'        		=> true,        // Feld verfügbar in der Benutzersuche der Verwaltung
-            'akIsSearchableIndexed' 		=> true,        // Inhalt in die Benutzersuche aufnehmen
-            'uakMemberListDisplay'  		=> false,        // In Benutzerliste anzeigen
-            'uakProfileDisplay'     		=> true,        // Im öffentlichen Profil sichtbar
-            'uakProfileEdit'        		=> true,        // Kann im Profil bearbeitet werden
-            'uakProfileEditRequired'		=> false,       // Pflichtfeld und bearbeitbar im Profil
-            'uakRegisterEdit'       		=> false,       // Im Registrierungsformular anzeigen.
-            'uakRegisterEditRequired'		=> false,       // Pflichtfeld im Registrierungsformular
-            'akTextareaDisplayMode' 		=> 'rich_text',	// (text|rich_text|rich_text_custom)
-            'akTextareaDisplayModeCustomOptions'=> '',   	// Optionen wenn rich_text_custom rewaehlt wird
-            'asID'                  		=> $AttribSetIDUser // zugehöriges userattribute set
-        ));
+            $this->setCollectionAttributeKeyIfNotExists('porto_megamenu_full_width', t('Megamenu full width'), $AttribSetIDCollection, 'boolean', array(), $pkg);
+            $this->setCollectionAttributeKeyIfNotExists('porto_link_show_in_footer', t('Show link in footer'), $AttribSetIDCollection, 'boolean', array(), $pkg);
+            $this->setCollectionAttributeKeyIfNotExists('detailimage', t('Detail Image'), $AttribSetIDCollection, 'image_file', array(), $pkg);
+            $this->setCollectionAttributeKeyIfNotExists('thumbnail', t('Thumbnail Image'), $AttribSetIDCollection, 'image_file', array(), $pkg);
+            # AttributeSet fuer User
+            $AttribSetIDUser = $this->setAttributeSetIfNotExistsAndGet('user', 'porto_user_attr', t('Porto User Attribute Set'), $pkg);
+            # AttributeTypes (user)
+            $this->setUserAttributeKeyIfNotExistsOrUpdate('boolean', $pkg, array(
+                'akHandle'              => 'company',
+                'akName'                => t('Show profile as Company profile'),
+                'akIsSearchable'        => true,          // Feld verfügbar in der Benutzersuche der Verwaltung
+                'akIsSearchableIndexed' => true,          // Inhalt in die Benutzersuche aufnehmen
+                'uakMemberListDisplay'  => false,         // In Benutzerliste anzeigen
+                'uakProfileDisplay'     => false,          // Im öffentlichen Profil sichtbar
+                'uakProfileEdit'        => true,          // Kann im Profil bearbeitet werden
+                'uakProfileEditRequired'=> false,         // Pflichtfeld im Profil
+                'uakRegisterEdit'       => false,         // Im Registrierungsformular anzeigen.
+                'uakRegisterEditRequired'=> false,        // Pflichtfeld im Registrierungsformular
+                'akCheckedByDefault'    => false,        // Kontrollkästchen standardmäßig aktivieren
+                'asID'                  => $AttribSetIDUser // zugehöriges userattribute set
+            ));
+            $this->setUserAttributeKeyIfNotExistsOrUpdate('text', $pkg, array(
+                'akHandle'              => 'firma_name',
+                'akName'                => t('Company Name'),
+                'akIsSearchable'        => true,          // Feld verfügbar in der Benutzersuche der Verwaltung
+                'akIsSearchableIndexed' => true,          // Inhalt in die Benutzersuche aufnehmen
+                'uakMemberListDisplay'  => false,          // In Benutzerliste anzeigen
+                'uakProfileDisplay'     => true,          // Im öffentlichen Profil sichtbar
+                'uakProfileEdit'        => true,          // Kann im Profil bearbeitet werden
+                'uakProfileEditRequired'=> false,         // Pflichtfeld im Profil
+                'uakRegisterEdit'       => false,         // Im Registrierungsformular anzeigen.
+                'uakRegisterEditRequired'=> false,        // Pflichtfeld im Registrierungsformular
+                'asID'                  => $AttribSetIDUser   // zugehöriges userattribute set
+            ));
+            $this->setUserAttributeKeyIfNotExistsOrUpdate('image_file', $pkg, array(
+                'akHandle'              => 'firma_logo',
+                'akName'                => t('Company Logo'),
+                'akIsSearchable'        => true,          // Feld verfügbar in der Benutzersuche der Verwaltung
+                'akIsSearchableIndexed' => true,          // Inhalt in die Benutzersuche aufnehmen
+                'uakMemberListDisplay'  => false,         // In Benutzerliste anzeigen
+                'uakProfileDisplay'     => true,          // Im öffentlichen Profil sichtbar
+                'uakProfileEdit'        => true,          // Kann im Profil bearbeitet werden
+                'uakProfileEditRequired'=> false,         // Pflichtfeld im Profil
+                'uakRegisterEdit'       => false,         // Im Registrierungsformular anzeigen.
+                'uakRegisterEditRequired'=> false,        // Pflichtfeld im Registrierungsformular
+                'asID'                  => $AttribSetIDUser // zugehöriges userattribute set
+            ));
+            $this->setUserAttributeKeyIfNotExistsOrUpdate('text', $pkg, array(
+                'akHandle'              => 'firma_branche',
+                'akName'                => t('Company branch'),
+                'akIsSearchable'        => true,          // Feld verfügbar in der Benutzersuche der Verwaltung
+                'akIsSearchableIndexed' => true,          // Inhalt in die Benutzersuche aufnehmen
+                'uakMemberListDisplay'  => false,          // In Benutzerliste anzeigen
+                'uakProfileDisplay'     => true,          // Im öffentlichen Profil sichtbar
+                'uakProfileEdit'        => true,          // Kann im Profil bearbeitet werden
+                'uakProfileEditRequired'=> false,         // Pflichtfeld im Profil
+                'uakRegisterEdit'       => false,         // Im Registrierungsformular anzeigen.
+                'uakRegisterEditRequired'=> false,        // Pflichtfeld im Registrierungsformular
+                'asID'                  => $AttribSetIDUser   // zugehöriges userattribute set
+            ));
+            $this->setUserAttributeKeyIfNotExistsOrUpdate('address', $pkg, array(
+                'akHandle'              => 'firma_addresse',
+                'akName'                => t('Company location'),
+                'akIsSearchable'        => true,          // Feld verfügbar in der Benutzersuche der Verwaltung
+                'akIsSearchableIndexed' => true,          // Inhalt in die Benutzersuche aufnehmen
+                'uakMemberListDisplay'  => false,         // In Benutzerliste anzeigen
+                'uakProfileDisplay'     => true,          // Im öffentlichen Profil sichtbar
+                'uakProfileEdit'        => true,          // Kann im Profil bearbeitet werden
+                'uakProfileEditRequired'=> false,         // Pflichtfeld im Profil
+                'uakRegisterEdit'       => false,         // Im Registrierungsformular anzeigen.
+                'uakRegisterEditRequired'=> false,        // Pflichtfeld im Registrierungsformular
+                'akHasCustomCountries'  => 0,             // 1=Bestimmte aus der Liste laden
+                'akDefaultCountry'      => 'DE',	      // Default Land
+                'asID'                  => $AttribSetIDUser// zugehöriges userattribute set
+            ));
+            /*$this->setUserAttributeKeyIfNotExistsOrUpdate('social_links', $pkg, array(
+                'akHandle'              => 'firma_social_links',
+                'akName'                => t('Firmen Links'),
+                'akIsSearchable'        => true,          // Feld verfügbar in der Benutzersuche der Verwaltung
+                'akIsSearchableIndexed' => true,          // Inhalt in die Benutzersuche aufnehmen
+                'uakMemberListDisplay'  => false,         // In Benutzerliste anzeigen
+                'uakProfileDisplay'     => true,          // Im öffentlichen Profil sichtbar
+                'uakProfileEdit'        => true,          // Kann im Profil bearbeitet werden
+                'uakProfileEditRequired'=> false,         // Pflichtfeld im Profil
+                'uakRegisterEdit'       => false,         // Im Registrierungsformular anzeigen.
+                'uakRegisterEditRequired'=> false,        // Pflichtfeld im Registrierungsformular
+                'asID'                  => $AttribSetIDUser   // zugehöriges userattribute set
+            ));*/
+            $this->setUserAttributeKeyIfNotExistsOrUpdate('textarea', $pkg, array(
+                'akHandle'              		=> 'firmen_motto',
+                'akName'                		=> t('Company motto'),
+                'akIsSearchable'        		=> true,        // Feld verfügbar in der Benutzersuche der Verwaltung
+                'akIsSearchableIndexed' 		=> true,        // Inhalt in die Benutzersuche aufnehmen
+                'uakMemberListDisplay'  		=> false,        // In Benutzerliste anzeigen
+                'uakProfileDisplay'     		=> true,        // Im öffentlichen Profil sichtbar
+                'uakProfileEdit'        		=> true,        // Kann im Profil bearbeitet werden
+                'uakProfileEditRequired'		=> false,       // Pflichtfeld und bearbeitbar im Profil
+                'uakRegisterEdit'       		=> false,       // Im Registrierungsformular anzeigen.
+                'uakRegisterEditRequired'		=> false,       // Pflichtfeld im Registrierungsformular
+                'akTextareaDisplayMode' 		=> 'rich_text',	// (text|rich_text|rich_text_custom)
+                'akTextareaDisplayModeCustomOptions'=> '',   	// Optionen wenn rich_text_custom rewaehlt wird
+                'asID'                  		=> $AttribSetIDUser // zugehöriges userattribute set
+            ));
 
-        # FileSets
-        if (($fileSet=$this->addFileSetIfNotExistsAndGet('Porto Theme Backgrounds', 'public')) instanceof FileSet)
-        {
-           $this->importFilesToFileSet($fileSet, 'import/porto_package/Backgrounds');
+            $this->setUserAttributeKeyIfNotExistsOrUpdate('select', $pkg, array(
+                'akHandle'              => 'gender',
+                'akSelectValues'        => array(
+                    t('male'),
+                    t('female')
+                ),
+                'akName'                => t('Gender'),
+                'akIsSearchable'        => true,          // Feld verfügbar in der Benutzersuche der Verwaltung
+                'akIsSearchableIndexed' => true,          // Inhalt in die Benutzersuche aufnehmen
+                'uakMemberListDisplay'  => false,         // In Benutzerliste anzeigen
+                'uakProfileDisplay'     => true,          // Im öffentlichen Profil sichtbar
+                'uakProfileEdit'        => true,          // Kann im Profil bearbeitet werden
+                'uakProfileEditRequired'=> false,         // Pflichtfeld im Profil
+                'uakRegisterEdit'       => false,         // Im Registrierungsformular anzeigen.
+                'uakRegisterEditRequired'=> false,        // Pflichtfeld im Registrierungsformular
+                'akSelectAllowOtherValues'  => false,     // Benutzern erlauben, eintraege hinzuzufuegen
+                'akSelectAllowMultipleValues'=> false,    // Mehrfachselektion erlauben
+                'asID'                  => $AttribSetIDUser  // zugehöriges userattribute set
+            ));
+            $this->setUserAttributeKeyIfNotExistsOrUpdate('text', $pkg, array(
+                'akHandle'              => 'firstname',
+                'akName'                => t('Firstname'),
+                'akIsSearchable'        => true,          // Feld verfügbar in der Benutzersuche der Verwaltung
+                'akIsSearchableIndexed' => true,          // Inhalt in die Benutzersuche aufnehmen
+                'uakMemberListDisplay'  => false,          // In Benutzerliste anzeigen
+                'uakProfileDisplay'     => true,          // Im öffentlichen Profil sichtbar
+                'uakProfileEdit'        => true,          // Kann im Profil bearbeitet werden
+                'uakProfileEditRequired'=> false,         // Pflichtfeld im Profil
+                'uakRegisterEdit'       => false,         // Im Registrierungsformular anzeigen.
+                'uakRegisterEditRequired'=> false,        // Pflichtfeld im Registrierungsformular
+                'asID'                  => $AttribSetIDUser   // zugehöriges userattribute set
+            ));
+            $this->setUserAttributeKeyIfNotExistsOrUpdate('text', $pkg, array(
+                'akHandle'              => 'lastname',
+                'akName'                => t('Lastname'),
+                'akIsSearchable'        => true,          // Feld verfügbar in der Benutzersuche der Verwaltung
+                'akIsSearchableIndexed' => true,          // Inhalt in die Benutzersuche aufnehmen
+                'uakMemberListDisplay'  => false,          // In Benutzerliste anzeigen
+                'uakProfileDisplay'     => true,          // Im öffentlichen Profil sichtbar
+                'uakProfileEdit'        => true,          // Kann im Profil bearbeitet werden
+                'uakProfileEditRequired'=> false,         // Pflichtfeld im Profil
+                'uakRegisterEdit'       => false,         // Im Registrierungsformular anzeigen.
+                'uakRegisterEditRequired'=> false,        // Pflichtfeld im Registrierungsformular
+                'asID'                  => $AttribSetIDUser   // zugehöriges userattribute set
+            ));
+            $this->setUserAttributeKeyIfNotExistsOrUpdate('address', $pkg, array(
+                'akHandle'              => 'adresse',
+                'akName'                => t('Location'),
+                'akIsSearchable'        => true,          // Feld verfügbar in der Benutzersuche der Verwaltung
+                'akIsSearchableIndexed' => true,          // Inhalt in die Benutzersuche aufnehmen
+                'uakMemberListDisplay'  => false,         // In Benutzerliste anzeigen
+                'uakProfileDisplay'     => true,          // Im öffentlichen Profil sichtbar
+                'uakProfileEdit'        => true,          // Kann im Profil bearbeitet werden
+                'uakProfileEditRequired'=> false,         // Pflichtfeld im Profil
+                'uakRegisterEdit'       => false,         // Im Registrierungsformular anzeigen.
+                'uakRegisterEditRequired'=> false,        // Pflichtfeld im Registrierungsformular
+                'akHasCustomCountries'  => 0,             // 1=Bestimmte aus der Liste laden
+                'akDefaultCountry'      => 'DE',	      // Default Land
+                'asID'                  => $AttribSetIDUser// zugehöriges userattribute set
+            ));
+            $this->setUserAttributeKeyIfNotExistsOrUpdate('image_file', $pkg, array(
+                'akHandle'              => 'selfi',
+                'akName'                => t('Picture'),
+                'akIsSearchable'        => true,          // Feld verfügbar in der Benutzersuche der Verwaltung
+                'akIsSearchableIndexed' => true,          // Inhalt in die Benutzersuche aufnehmen
+                'uakMemberListDisplay'  => false,         // In Benutzerliste anzeigen
+                'uakProfileDisplay'     => true,          // Im öffentlichen Profil sichtbar
+                'uakProfileEdit'        => true,          // Kann im Profil bearbeitet werden
+                'uakProfileEditRequired'=> false,         // Pflichtfeld im Profil
+                'uakRegisterEdit'       => false,         // Im Registrierungsformular anzeigen.
+                'uakRegisterEditRequired'=> false,        // Pflichtfeld im Registrierungsformular
+                'asID'                  => $AttribSetIDUser // zugehöriges userattribute set
+            ));
+            $this->setUserAttributeKeyIfNotExistsOrUpdate('social_links', $pkg, array(
+                'akHandle'              => 'social_links',
+                'akName'                => t('Social Links'),
+                'akIsSearchable'        => false,          // Feld verfügbar in der Benutzersuche der Verwaltung
+                'akIsSearchableIndexed' => false,          // Inhalt in die Benutzersuche aufnehmen
+                'uakMemberListDisplay'  => false,         // In Benutzerliste anzeigen
+                'uakProfileDisplay'     => true,          // Im öffentlichen Profil sichtbar
+                'uakProfileEdit'        => true,          // Kann im Profil bearbeitet werden
+                'uakProfileEditRequired'=> false,         // Pflichtfeld im Profil
+                'uakRegisterEdit'       => false,         // Im Registrierungsformular anzeigen.
+                'uakRegisterEditRequired'=> false,        // Pflichtfeld im Registrierungsformular
+                'asID'                  => $AttribSetIDUser   // zugehöriges userattribute set
+            ));
+            $this->setUserAttributeKeyIfNotExistsOrUpdate('textarea', $pkg, array(
+                'akHandle'              		=> 'zitat',
+                'akName'                		=> t('Blockquote'),
+                'akIsSearchable'        		=> true,        // Feld verfügbar in der Benutzersuche der Verwaltung
+                'akIsSearchableIndexed' 		=> true,        // Inhalt in die Benutzersuche aufnehmen
+                'uakMemberListDisplay'  		=> false,        // In Benutzerliste anzeigen
+                'uakProfileDisplay'     		=> true,        // Im öffentlichen Profil sichtbar
+                'uakProfileEdit'        		=> true,        // Kann im Profil bearbeitet werden
+                'uakProfileEditRequired'		=> false,       // Pflichtfeld und bearbeitbar im Profil
+                'uakRegisterEdit'       		=> false,       // Im Registrierungsformular anzeigen.
+                'uakRegisterEditRequired'		=> false,       // Pflichtfeld im Registrierungsformular
+                'akTextareaDisplayMode' 		=> 'rich_text',	// (text|rich_text|rich_text_custom)
+                'akTextareaDisplayModeCustomOptions'=> '',   	// Optionen wenn rich_text_custom rewaehlt wird
+                'asID'                  		=> $AttribSetIDUser // zugehöriges userattribute set
+            ));
         }
-        if (($fileSet=$this->addFileSetIfNotExistsAndGet('Porto Theme Logos', 'public')) instanceof FileSet)
+        if ($this->req->request->get('portoInstallFilesInFileSets'))
         {
-           $this->importFilesToFileSet($fileSet, 'import/porto_package/Logos');
-        }
-        if (($fileSet=$this->addFileSetIfNotExistsAndGet('Porto System Images', 'public')) instanceof FileSet)
-        {
-            $this->importFilesToFileSet($fileSet, 'import/porto_package/Systemimages');
-        }
-        # UserGroupSet & UserGroups
-        $user_group_set = $this->createUserGroupSetIfNotExistsAndGetSet('Porto UA Set', $pkg);
-        $user_group = $this->createUserGroupIfNotExistsAndGet('Porto Admins', t('Can change settings for the Porto Package'), $pkg);
-        $this->addUserGroupToUserGroupSet($user_group_set, $user_group);
-        $this->addUserGroupToUserGroupSet($user_group_set, Group::getByName('Administrators'));
-        # User + evt. SuperAdmin zur Porto-Admin Gruppe hinzufügen
-        $installerAcc = new User();
-        if (!$installerAcc->inGroup($user_group))
-        {
-            $installerAcc->enterGroup($user_group);
-        }
-        # su in gruppe adden
-        if (is_object($superUser = User::getByUserID(1)))
-        {
-            if ($superUser->getUserID() != $installerAcc->getUserID())
+            # FileSets
+            if (($fileSet=$this->addFileSetIfNotExistsAndGet('Porto Theme Backgrounds', 'public')) instanceof FileSet)
             {
-                if (!$superUser->inGroup($user_group))
-                {
-                    $superUser->enterGroup($user_group);
-                }
+               $this->importFilesToFileSet($fileSet, 'import/porto_package/Backgrounds');
+            }
+            if (($fileSet=$this->addFileSetIfNotExistsAndGet('Porto Theme Logos', 'public')) instanceof FileSet)
+            {
+               $this->importFilesToFileSet($fileSet, 'import/porto_package/Logos');
+            }
+            if (($fileSet=$this->addFileSetIfNotExistsAndGet('Porto System Images', 'public')) instanceof FileSet)
+            {
+                $this->importFilesToFileSet($fileSet, 'import/porto_package/Systemimages');
             }
         }
-        unset($installerAcc, $user_group, $user_group_set, $superUser);
-        # Berechtigungen setzen
-        $this->addTaskPermissionsIfNotExists(
-            'porto_dashboard',
-            t('Porto Dashboard'),
-            t('Can change settings for the Porto Package'),
-            'Porto Admins',
-            $pkg
-        );
-
-        # Thumbnail Types für Responsive Kompatiblität anlegen
-        $this->addThumbnailTypeIfNotExists('small','Small', 740);
-        $this->addThumbnailTypeIfNotExists('mini','Mini', 320);
-        $this->addThumbnailTypeIfNotExists('medium','Medium', 940);
-        $this->addThumbnailTypeIfNotExists('large','Large', 1140);
-
-        \Core::make('cache')->flush();
+        if ($this->req->request->get('portoInstallUserGroupSetAndUserGroup'))
+        {
+            # UserGroupSet & UserGroups
+            $user_group_set = $this->createUserGroupSetIfNotExistsAndGetSet('Porto UA Set', $pkg);
+            $user_group = $this->createUserGroupIfNotExistsAndGet('Porto Admins', t('Can change settings for the Porto Package'), $pkg);
+            $this->addUserGroupToUserGroupSet($user_group_set, $user_group);
+            $this->addUserGroupToUserGroupSet($user_group_set, Group::getByName('Administrators'));
+            # User + evt. SuperAdmin zur Porto-Admin Gruppe hinzufügen
+            $installerAcc = new User();
+            if (!$installerAcc->inGroup($user_group))
+            {
+                $installerAcc->enterGroup($user_group);
+            }
+            # su in gruppe adden
+            if (is_object($superUser = User::getByUserID(1)))
+            {
+                if ($superUser->getUserID() != $installerAcc->getUserID())
+                {
+                    if (!$superUser->inGroup($user_group))
+                    {
+                        $superUser->enterGroup($user_group);
+                    }
+                }
+            }
+            unset($installerAcc, $user_group, $user_group_set, $superUser);
+            # Berechtigungen setzen
+            $this->addTaskPermissionsIfNotExists(
+                'porto_dashboard',
+                t('Porto Dashboard'),
+                t('Can change settings for the Porto Package'),
+                'Porto Admins',
+                $pkg
+            );
+        }
+        if ($this->req->request->get('portoInstallThumbnailType'))
+        {
+            # Thumbnail Types für Responsive Kompatiblität anlegen
+            $this->addThumbnailTypeIfNotExists('micro', 'Micro',    160);
+            $this->addThumbnailTypeIfNotExists('mini',  'Mini',     320);
+            $this->addThumbnailTypeIfNotExists('small', 'Small',    740);
+            $this->addThumbnailTypeIfNotExists('medium','Medium',   940);
+            $this->addThumbnailTypeIfNotExists('large', 'Large',    1140);
+        }
+        if ($this->req->request->get('portoInstallFlushCache'))
+        {
+            \Core::make('cache')->flush();
+        }
     }
 
 
@@ -757,9 +916,8 @@ class Controller extends Package
     */
     protected function deletePackageTables($tableName)
     {
-
-        $db = \Database::connection();
-        $tables = $db->executeQuery("SHOW TABLES LIKE '%".$tableName."%'");
+        $this->db = \Database::connection();
+        $tables = $this->db->executeQuery("SHOW TABLES LIKE '%".(string)$tableName."%'");
         $allTables = array();
         foreach($tables as $key => $val)
         {
@@ -768,9 +926,9 @@ class Controller extends Package
         }
         for($i=0; $i<count($allTables); $i++)
         {
-            $db->executeQuery("DROP TABLE IF EXISTS ".trim($allTables[$i]));
+            $this->db->executeQuery("DROP TABLE IF EXISTS ".trim($allTables[$i]));
         }
-        $db->executeQuery("DELETE FROM Config WHERE configGroup=?", array('porto'));
+        $this->db->executeQuery("DELETE FROM Config WHERE configGroup=?", array('porto'));
     }
 
 
@@ -1789,6 +1947,7 @@ class Controller extends Package
         }
     }
 
+
     /**--------------------------------------------------------------
      *
      * Löscht ein User Attribute Key
@@ -1807,9 +1966,6 @@ class Controller extends Package
         }
         return false;
     }
-
-
-
 
 
     /** --------------------------------------------------------------
@@ -1840,7 +1996,6 @@ class Controller extends Package
     }
 
 
-
     /** --------------------------------------------------------------
      *
      * Erzeugt einen Alphanumerischen Random String
@@ -1861,7 +2016,6 @@ class Controller extends Package
         }
         return $randomString;
     }
-
 
 
     /** --------------------------------------------------------------

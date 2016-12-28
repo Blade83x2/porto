@@ -1,6 +1,5 @@
 <?php defined('C5_EXECUTE') or die("Access Denied.");
-use
-    \Concrete\Core\File\Type\Type as FileType,
+use Concrete\Core\File\Type\Type as FileType,
     \Concrete\Core\File\Set;
 
 /*>       ____  _           _       ___ _____
@@ -44,8 +43,7 @@ use
                 <div id="htmlcaption<?php echo $bID?>" class="nivo-html-caption"></div>
             </div>
             <?php
-            #if(count($fileList->get())==0){
-            if(count($fileList->getResults())==0){
+            if(count($fileList->get())==0){
                 $c = Page::getCurrentPage();
                 if ($c->isEditMode())
                 {

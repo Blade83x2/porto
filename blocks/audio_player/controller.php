@@ -41,23 +41,34 @@ class Controller extends BlockController
         $al,
         $ih;
 
+    /**
+     * @return string
+     */
     public function getBlockTypeName()
     {
         return t("MP3 Player");
     }
 
+    /**
+     * @return string
+     */
     public function getBlockTypeDescription()
     {
         return t("Audio Player for MP3 files from Fileset");
     }
 
+    /**
+     * @return string
+    */
     public function getBlockTypeHelp()
     {
         $help = t("Select a Fileset with MP3 Files included for displaying a MP3 Player with Playlist");
         return $help;
     }
 
-
+    /**
+     * @return array
+    */
     public function getJavaScriptStrings()
     {
         return array(
@@ -67,17 +78,27 @@ class Controller extends BlockController
         // in javascriptcode alert( ccm_t('prev_btn') );
     }
 
+    /**
+     * @param string $outputContent
+    */
     public function registerViewAssets($outputContent = '')
     {
         ## Require our formigoSlider javascript
         #$this->requireAsset('javascript','formigoSlider');
     }
 
+    /**
+     * @return string
+    */
     public function getSearchableContent()
     {
         return $this->name.' - '.$this->description;
     }
 
+    /**
+     * @param void
+     * @return void
+    */
     public function on_start()
     {
         $this->al = Core::make('helper/concrete/asset_library');
@@ -89,16 +110,28 @@ class Controller extends BlockController
         $this->set('ih', $this->ih);
     }
 
+    /**
+     * @param void
+     * @return void
+    */
     public function add()
     {
 	    $this->set('editor', Core::make('editor'));
     }
 
+    /**
+     * @param void
+     * @return void
+    */
     public function edit()
     {
 	    $this->set('editor', Core::make('editor'));
     }
 
+    /**
+     * @param void
+     * @return void
+    */
     public function view()
     {
         $html = Core::make('helper/html');
@@ -107,6 +140,9 @@ class Controller extends BlockController
 	    $this->addFooterItem($html->javascript(DIR_REL.'/packages/porto/blocks/audio_player/src/initaudioplayer.js'));
     }
 
+    /**
+     * @param array $args
+    */
     public function save($args)
     {
         $args['filesetid'] = (is_numeric($args['filesetid'])?$args['filesetid']:0);
@@ -116,6 +152,10 @@ class Controller extends BlockController
         parent::save($args);
     }
 
+    /**
+     * @param $args
+     * @return bool|\Concrete\Core\Error\Error
+    */
     public function validate($args)
     {
         $error = Core::make('helper/validation/error');
@@ -148,11 +188,18 @@ class Controller extends BlockController
         return $error;
     }
 
+    /**
+     * @return mixed
+    */
     public function getFileSetID()
     {
         return $this->filesetid;
     }
 
+    /**
+     * @param $int
+     * @return bool|File
+    */
     private function getImageObjFromInt($int)
     {
         $ret = false;

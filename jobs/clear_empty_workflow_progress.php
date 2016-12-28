@@ -26,6 +26,7 @@ use
 
 class ClearEmptyWorkflowProgress extends Job
 {
+
     public function getJobName()
     {
         return t("Clear Empty Workflow Progress");

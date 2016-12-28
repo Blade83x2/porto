@@ -45,30 +45,96 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
 		</tr>
 	    </thead>
 	    <tbody>
-		<tr>
-		    <td class="col-md-2"><?php echo '<label for="portoInstallEnableLogForInstallation"><small>'.t('Enable Loging for installation').'</small></label>'?></td>
-		    <td class="col-md-8">
-			<input type="checkbox" name="portoInstallEnableLogForInstallation" id="portoInstallEnableLogForInstallation" value="0" />
-		    </td>
-		</tr>
-		<tr>
-		    <td class="col-md-2"><?php echo '<label for="portoInstallFilesets"><small>'.t('Create Filesets').'</small></label>'?></td>
-		    <td class="col-md-8">
-			<input type="checkbox" name="portoInstallFilesets" id="portoInstallFilesets" value="1" />
-		    </td>
-		</tr>              
-		<tr>
-		    <td class="col-md-2"><?php echo '<label for="portoInstallCronJobs"><small>'.t('Create Cron Jobs').'</small></label>'?></td>
-		    <td class="col-md-8">
-			<input type="checkbox" name="portoInstallCronJobs" id="portoInstallCronJobs" value="1" />
-		    </td>
-		</tr> 
-		<tr>
-		    <td class="col-md-2"><?php echo '<label for="portoInstallBlocks"><small>'.t('Create Blocks').'</small></label>'?></td>
-		    <td class="col-md-8">
-			<input type="checkbox" name="portoInstallBlocks" id="portoInstallBlocks" value="1" />
-		    </td>
-		</tr> 
+            <tr>
+                <td class="col-md-2"><?php echo '<label for="portoInstallEnableLogForInstallation"><small>'.t('Enable Loging for installation').'</small></label>'?></td>
+                <td class="col-md-8">
+                <input type="checkbox" name="portoInstallEnableLogForInstallation" id="portoInstallEnableLogForInstallation" value="0" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-2"><?php echo '<label for="portoInstallDatabases"><small>'.t('Add Datebase').'</small></label>'?></td>
+                <td class="col-md-8">
+                    <input type="checkbox" name="portoInstallDatabases" id="portoInstallDatabases" value="1" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-2"><?php echo '<label for="portoInstallPageType"><small>'.t('Add Page Types').'</small></label>'?></td>
+                <td class="col-md-8">
+                    <input type="checkbox" name="portoInstallPageType" id="portoInstallPageType" value="1" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-2"><?php echo '<label for="portoInstallAttributes"><small>'.t('Add Page Attributes').'</small></label>'?></td>
+                <td class="col-md-8">
+                    <input type="checkbox" name="portoInstallAttributes" id="portoInstallAttributes" value="1" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-2"><?php echo '<label for="portoInstallFilesInFileSets"><small>'.t('Add Filesets and Files inFileset').'</small></label>'?></td>
+                <td class="col-md-8">
+                    <input type="checkbox" name="portoInstallFilesInFileSets" id="portoInstallFilesInFileSets" value="1" />
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-2"><?php echo '<label for="portoInstallFileExtension"><small>'.t('Add File extension').'</small></label>'?></td>
+                <td class="col-md-8">
+                    <input type="checkbox" name="portoInstallFileExtension" id="portoInstallFileExtension" value="1" />
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-2"><?php echo '<label for="portoInstallUserGroupSetAndUserGroup"><small>'.t('Add UserGroupSet and UserGroup').'</small></label>'?></td>
+                <td class="col-md-8">
+                    <input type="checkbox" name="portoInstallUserGroupSetAndUserGroup" id="portoInstallUserGroupSetAndUserGroup" value="1" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-2"><?php echo '<label for="portoInstallTheme"><small>'.t('Add 2 Themes').'</small></label>'?></td>
+                <td class="col-md-8">
+                    <input type="checkbox" name="portoInstallTheme" id="portoInstallTheme" value="1" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-2"><?php echo '<label for="portoInstallTemplates"><small>'.t('Add Page Templates').'</small></label>'?></td>
+                <td class="col-md-8">
+                    <input type="checkbox" name="portoInstallTemplates" id="portoInstallTemplates" value="1" />
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-2"><?php echo '<label for="portoInstallBlocks"><small>'.t('Add Blocks').'</small></label>'?></td>
+                <td class="col-md-8">
+                    <input type="checkbox" name="portoInstallBlocks" id="portoInstallBlocks" value="1" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-2"><?php echo '<label for="portoInstallThumbnailType"><small>'.t('Add Thumbnail Type').'</small></label>'?></td>
+                <td class="col-md-8">
+                    <input type="checkbox" name="portoInstallThumbnailType" id="portoInstallThumbnailType" value="1" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-2"><?php echo '<label for="portoInstallCronJobs"><small>'.t('Create Cron Jobs').'</small></label>'?></td>
+                <td class="col-md-8">
+                <input type="checkbox" name="portoInstallCronJobs" id="portoInstallCronJobs" value="1" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-2"><?php echo '<label for="portoInstallFlushCache"><small>'.t('Clear Cache').'</small></label>'?></td>
+                <td class="col-md-8">
+                    <input type="checkbox" name="portoInstallFlushCache" id="portoInstallFlushCache" value="1" />
+                </td>
+            </tr>
+
 	    </tbody>
 	</table>     
     </div>

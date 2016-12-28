@@ -118,6 +118,15 @@ $portoSetup = $db->getRow('SELECT * FROM PortoPackage WHERE cID=?', array(1));
 				    </div>
 			    </header>
 			    <div role="main" class="main">
+			    
+			    
+			    <?php
+$a = new \Concrete\Core\Area\Area('Slider');
+$a->display($c);
+?>
+			    
+			    
+			    
 				    <div class="container">
 					    <div class="row">
 						    <div class="col-md-12">

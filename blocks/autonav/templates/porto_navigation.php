@@ -15,10 +15,11 @@
 =>  Coder:    $ Blade83
 */
 $nh = Core::make('helper/navigation');
-$db = Database::getActiveConnection();
+$db = Database::connection();
 $portoSetup = $db->getRow('SELECT * FROM PortoPackage WHERE cID=?', array(1));
 echo '<nav class="nav-main mega-menu"><ul class="nav nav-pills nav-main" id="mainMenu">';
-if (!is_object($c)) $c = \Concrete\Core\Page\Page::getCurrentPage();
+if (!is_object($c))
+    $c = \Concrete\Core\Page\Page::getCurrentPage();
 if ($portoSetup['searchpage_id'] > 0 && $c->cID != $portoSetup['searchpage_id'])
 {
     if (is_object($searchPage=\Concrete\Core\Page\Page::getByID($portoSetup['searchpage_id'])))

@@ -21,14 +21,26 @@ use Concrete\Core\File\Type\Type as FileType,
 
 if (!class_exists('MP3File'))
 {
+    /**
+     * Class MP3File
+     */
     class MP3File
     {
         protected $filename;
+
+        /**
+         * @param $filename
+         * @return poid
+        */
         public function __construct($filename)
         {
             $this->filename = $filename;
         }
 
+        /**
+         * @param $duration
+         * @return string
+        */
         public static function formatTime($duration) //as hh:mm:ss
         {
             $hours = floor($duration / 3600);
@@ -179,11 +191,8 @@ if (!class_exists('MP3File'))
             else //layer 2, 3
                 return intval(((144 * $bitrate*1000)/$sample_rate) + $padding_bit);
         }
-
     }
 }
-
-
 ?>
 <div class="row">
     <?php if (is_object($picture)) { ?>
@@ -196,8 +205,7 @@ if (!class_exists('MP3File'))
                 $albumImage = $thumbnail->src;
                 echo '<img class="center-block img-thumbnail img-responsive img-rounded" src="'.$albumImage.'" alt="'.$name.'" />';
             }
-            ?>
-            <br />
+            ?><br />
         </div>
     </div>
     <?php } ?>
@@ -219,7 +227,7 @@ if (!class_exists('MP3File'))
             $fileList->filterByExtension('mp3');
             if ($c->isEditMode())
             {
-                if(count($fileList->get())==0)
+                if(count($fileList->getResults())==0)
                 {
                     echo '<div class="ccm-edit-mode-disabled-item">';
                     echo '<div>'.t('FileSet has no MP3 Files!').'</div>';
@@ -239,16 +247,16 @@ if (!class_exists('MP3File'))
                     <ul class="amazingaudioplayer-audios" style="display:none;">
                         <?php
                         $titles = '';
-                        foreach($fileList->get() as $f)
+                        foreach($fileList->getResults() as $f)
                         {
                             # ID3 Tags ermitteln
                            if (is_object( $mp3file = new MP3File($_SERVER['DOCUMENT_ROOT'].$f->getRelativePath()) )){
                                 $duration = $mp3file->getDuration();
                            }
-                           else {
+                           else
+                           {
                                 $duration = '';
                            }
-
                             $titles .= '<li data-artist="'.substr($f->getTitle(), 0, -4).'" data-title="'.substr($f->getTitle(), 0, -4).'" data-album="'.$name.'" data-info="jjj" data-image="'.$albumImage.'" data-duration="'.$duration.'">';
                             $titles .= '<div class="amazingaudioplayer-source" data-src="'.$f->getRelativePath().'" data-type="audio/mpeg"></div>';
                             $titles .= '</li>';
