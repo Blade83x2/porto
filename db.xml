@@ -80,4 +80,45 @@ DEFDATE 	    Set default value to call function to get today's date.
 DEFTIMESTAMP 	Set default to call function to get today's datetime.
 NOQUOTE 	    Prevents autoquoting of default string values.
 CONSTRAINTS 	Additional constraints defined at the end of the field definition.
+
+
+/**
+ *  phpmyadmin dump PortoPackage
+ *
+CREATE TABLE `PortoPackage` (
+    `cID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+    `breadcrump_banner_active` tinyint(1) DEFAULT NULL,
+    `breadcrump_banner_text` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+    `load_from_cdn` tinyint(1) DEFAULT NULL,
+    `load_footerinfotext_from_metadescription` tinyint(1) DEFAULT NULL,
+    `second_stickymenu_gfx` int(10) unsigned DEFAULT NULL,
+    `second_stickymenu_gfx_x` smallint(5) unsigned DEFAULT NULL,
+    `second_stickymenu_gfx_y` smallint(5) unsigned DEFAULT NULL,
+    `second_stickymenu_gfx_top` smallint(6) DEFAULT NULL,
+    `page_logo_x` smallint(5) unsigned DEFAULT NULL,
+    `page_logo_y` smallint(5) unsigned DEFAULT NULL,
+    `header_type` smallint(6) DEFAULT NULL,
+    `footer_type` smallint(6) DEFAULT NULL,
+    `show_login` tinyint(1) DEFAULT NULL,
+    `boxed_design` tinyint(1) DEFAULT NULL,
+    `background_image` smallint(6) DEFAULT NULL,
+    `background_fix` tinyint(1) DEFAULT NULL,
+    `searchpage_id` smallint(6) DEFAULT NULL,
+    `searchpage_text` varchar(80) COLLATE utf8_unicode_ci DEFAULT NULL,
+    `searchpage_empty_query` text COLLATE utf8_unicode_ci,
+    `page_logo` int(11) DEFAULT NULL,
+    `page_logo_mini` int(11) DEFAULT NULL,
+    `footer_copyright` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+    `footer_ribbon` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+    `email` varchar(120) COLLATE utf8_unicode_ci DEFAULT NULL,
+    `stickymenu_active` tinyint(1) DEFAULT NULL,
+    `scrolltotop_active` tinyint(1) DEFAULT NULL,
+    PRIMARY KEY (`cID`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
+*/
+
+
+
+
+
 -->
