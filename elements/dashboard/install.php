@@ -51,36 +51,30 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
                 <input type="checkbox" name="portoInstallEnableLogForInstallation" id="portoInstallEnableLogForInstallation" value="0" />
                 </td>
             </tr>
-
             <tr>
                 <td class="col-md-2"><?php echo '<label for="portoInstallDatabases"><small>'.t('Add Datebase').'</small></label>'?></td>
                 <td class="col-md-8">
                     <input type="checkbox" name="portoInstallDatabases" id="portoInstallDatabases" value="1" />
                 </td>
             </tr>
-
             <tr>
                 <td class="col-md-2"><?php echo '<label for="portoInstallPageType"><small>'.t('Add Page Types').'</small></label>'?></td>
                 <td class="col-md-8">
                     <input type="checkbox" name="portoInstallPageType" id="portoInstallPageType" value="1" />
                 </td>
             </tr>
-
             <tr>
                 <td class="col-md-2"><?php echo '<label for="portoInstallAttributes"><small>'.t('Add Page Attributes').'</small></label>'?></td>
                 <td class="col-md-8">
                     <input type="checkbox" name="portoInstallAttributes" id="portoInstallAttributes" value="1" />
                 </td>
             </tr>
-
             <tr>
                 <td class="col-md-2"><?php echo '<label for="portoInstallFilesInFileSets"><small>'.t('Add Filesets and Files inFileset').'</small></label>'?></td>
                 <td class="col-md-8">
                     <input type="checkbox" name="portoInstallFilesInFileSets" id="portoInstallFilesInFileSets" value="1" />
                 </td>
             </tr>
-
-
             <tr>
                 <td class="col-md-2"><?php echo '<label for="portoInstallFileExtension"><small>'.t('Add File extension').'</small></label>'?></td>
                 <td class="col-md-8">
@@ -93,14 +87,12 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
                     <input type="checkbox" name="portoInstallUserGroupSetAndUserGroup" id="portoInstallUserGroupSetAndUserGroup" value="1" />
                 </td>
             </tr>
-
             <tr>
                 <td class="col-md-2"><?php echo '<label for="portoInstallTheme"><small>'.t('Add 2 Themes').'</small></label>'?></td>
                 <td class="col-md-8">
                     <input type="checkbox" name="portoInstallTheme" id="portoInstallTheme" value="1" />
                 </td>
             </tr>
-
             <tr>
                 <td class="col-md-2"><?php echo '<label for="portoInstallTemplates"><small>'.t('Add Page Templates').'</small></label>'?></td>
                 <td class="col-md-8">
@@ -113,38 +105,43 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
                     <input type="checkbox" name="portoInstallBlocks" id="portoInstallBlocks" value="1" />
                 </td>
             </tr>
-
             <tr>
                 <td class="col-md-2"><?php echo '<label for="portoInstallThumbnailType"><small>'.t('Add Thumbnail Type').'</small></label>'?></td>
                 <td class="col-md-8">
                     <input type="checkbox" name="portoInstallThumbnailType" id="portoInstallThumbnailType" value="1" />
                 </td>
             </tr>
-
             <tr>
                 <td class="col-md-2"><?php echo '<label for="portoInstallCronJobs"><small>'.t('Create Cron Jobs').'</small></label>'?></td>
                 <td class="col-md-8">
                 <input type="checkbox" name="portoInstallCronJobs" id="portoInstallCronJobs" value="1" />
                 </td>
             </tr>
-
             <tr>
                 <td class="col-md-2"><?php echo '<label for="portoInstallFlushCache"><small>'.t('Clear Cache').'</small></label>'?></td>
                 <td class="col-md-8">
                     <input type="checkbox" name="portoInstallFlushCache" id="portoInstallFlushCache" value="1" />
                 </td>
             </tr>
-
 	    </tbody>
 	</table>     
     </div>
 </div>
 <script type="text/javascript">
-    $(function() 
-    {
+$(function()
+{
 	//$("#portoInstallEnableLogForInstallation").prop('checked', true);
-	$("#portoInstallFilesets").prop('checked', true);
-	$("#portoInstallCronJobs").prop('checked', true);
-	$("#portoInstallBlocks").prop('checked', true);
-    });
+    $("#portoInstallDatabases").prop('checked', true);
+    $("#portoInstallPageType").prop('checked', true);
+    $("#portoInstallAttributes").prop('checked', true);
+    $("#portoInstallFilesInFileSets").prop('checked', true);
+    $("#portoInstallFileExtension").prop('checked', true);
+    $("#portoInstallUserGroupSetAndUserGroup").prop('checked', true);
+    $("#portoInstallTheme").prop('checked', true);
+    $("#portoInstallTemplates").prop('checked', true);
+    $("#portoInstallBlocks").prop('checked', true);
+    $("#portoInstallThumbnailType").prop('checked', true);
+    $("#portoInstallCronJobs").prop('checked', true);
+    $("#portoInstallFlushCache").prop('checked', true);
+});
 </script>

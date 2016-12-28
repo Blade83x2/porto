@@ -32,14 +32,14 @@ class Controller extends BlockController
 	    $btInterfaceWidth                         = "850",
 	    $btInterfaceHeight                        = "615",
         $btCacheBlockRecord                       = true, // Should be safe in most cases, this will lighten the load on your database.
-        $btCacheBlockOutput                       = true, // Basically, when this option is set, the block will always load whatever was entered after the last "save". This is also generally safe to use. However, in situations where you are relying on visitor contribution or other dynamic content, the cached output will be wrong.
+        $btCacheBlockOutput                       = false, // Basically, when this option is set, the block will always load whatever was entered after the last "save". This is also generally safe to use. However, in situations where you are relying on visitor contribution or other dynamic content, the cached output will be wrong.
         $btCacheBlockOutputOnPost                 = true, // This option will cache a block, even when the page it is on is recieving a post request. So you would want this disabled for something that needs input to change, but you can set this to true for something that does not.
-        $btCacheBlockOutputForRegisteredUsers     = true; // Unregistered users will never have complicated permissions that might influence what they can or can not see, so some things are cacheable for them, but not registered users. If your block has nothing to do with permissions, this can be true.
+        $btCacheBlockOutputForRegisteredUsers     = false; // Unregistered users will never have complicated permissions that might influence what they can or can not see, so some things are cacheable for them, but not registered users. If your block has nothing to do with permissions, this can be true.
 
 
     public
-        $al,
-        $ih;
+        $al = NULL,
+        $ih = NULL;
 
     /**
      * @return string
@@ -170,7 +170,7 @@ class Controller extends BlockController
                 $fileList = new FileList();
                 $fileList->filterBySet($selectedSet);
                 $fileList->filterByType(FileType::T_AUDIO);
-                if(count($fileList->get())==0)
+                if(count($fileList->getResults())==0)
                 {
                     $error->add(t('MP3 FileSet has no Audio Files!'));
                 }
