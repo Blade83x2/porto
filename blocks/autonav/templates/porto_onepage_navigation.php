@@ -14,8 +14,8 @@
 =>  Project:  Porto
 =>  Coder:    $ Blade83
 */
-$nh = Core::make('helper/navigation');
-$db = Database::connection();
+$nh = \Core::make('helper/navigation');
+$db = \Database::connection();
 $portoSetup = $db->getRow('SELECT * FROM PortoPackage WHERE cID=?', array(1));
 echo '<nav class="nav-main mega-menu"><ul class="nav nav-pills nav-main" id="mainMenu">';
 foreach ($controller->getNavItems() as $ni)

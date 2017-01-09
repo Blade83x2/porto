@@ -674,19 +674,19 @@ class Controller extends Package
                 'asID'                  => $AttribSetIDUser   // zugehöriges userattribute set
             ));*/
             $this->setUserAttributeKeyIfNotExistsOrUpdate('textarea', $pkg, array(
-                'akHandle'              		=> 'firmen_motto',
-                'akName'                		=> t('Company motto'),
-                'akIsSearchable'        		=> true,        // Feld verfügbar in der Benutzersuche der Verwaltung
-                'akIsSearchableIndexed' 		=> true,        // Inhalt in die Benutzersuche aufnehmen
-                'uakMemberListDisplay'  		=> false,        // In Benutzerliste anzeigen
-                'uakProfileDisplay'     		=> true,        // Im öffentlichen Profil sichtbar
-                'uakProfileEdit'        		=> true,        // Kann im Profil bearbeitet werden
-                'uakProfileEditRequired'		=> false,       // Pflichtfeld und bearbeitbar im Profil
-                'uakRegisterEdit'       		=> false,       // Im Registrierungsformular anzeigen.
-                'uakRegisterEditRequired'		=> false,       // Pflichtfeld im Registrierungsformular
-                'akTextareaDisplayMode' 		=> 'rich_text',	// (text|rich_text|rich_text_custom)
-                'akTextareaDisplayModeCustomOptions'=> '',   	// Optionen wenn rich_text_custom rewaehlt wird
-                'asID'                  		=> $AttribSetIDUser // zugehöriges userattribute set
+                'akHandle'              		        => 'firmen_motto',
+                'akName'                		        => t('Company motto'),
+                'akIsSearchable'        		        => true,        // Feld verfügbar in der Benutzersuche der Verwaltung
+                'akIsSearchableIndexed' 		        => true,        // Inhalt in die Benutzersuche aufnehmen
+                'uakMemberListDisplay'  		        => false,        // In Benutzerliste anzeigen
+                'uakProfileDisplay'     		        => true,        // Im öffentlichen Profil sichtbar
+                'uakProfileEdit'        		        => true,        // Kann im Profil bearbeitet werden
+                'uakProfileEditRequired'		        => false,       // Pflichtfeld und bearbeitbar im Profil
+                'uakRegisterEdit'       		        => false,       // Im Registrierungsformular anzeigen.
+                'uakRegisterEditRequired'		        => false,       // Pflichtfeld im Registrierungsformular
+                'akTextareaDisplayMode' 		        => 'rich_text',	// (text|rich_text|rich_text_custom)
+                'akTextareaDisplayModeCustomOptions'    => '',   	// Optionen wenn rich_text_custom rewaehlt wird
+                'asID'                  		        => $AttribSetIDUser // zugehöriges userattribute set
             ));
 
             $this->setUserAttributeKeyIfNotExistsOrUpdate('select', $pkg, array(
@@ -695,44 +695,44 @@ class Controller extends Package
                     t('male'),
                     t('female')
                 ),
-                'akName'                => t('Gender'),
-                'akIsSearchable'        => true,          // Feld verfügbar in der Benutzersuche der Verwaltung
-                'akIsSearchableIndexed' => true,          // Inhalt in die Benutzersuche aufnehmen
-                'uakMemberListDisplay'  => false,         // In Benutzerliste anzeigen
-                'uakProfileDisplay'     => true,          // Im öffentlichen Profil sichtbar
-                'uakProfileEdit'        => true,          // Kann im Profil bearbeitet werden
-                'uakProfileEditRequired'=> false,         // Pflichtfeld im Profil
-                'uakRegisterEdit'       => false,         // Im Registrierungsformular anzeigen.
-                'uakRegisterEditRequired'=> false,        // Pflichtfeld im Registrierungsformular
-                'akSelectAllowOtherValues'  => false,     // Benutzern erlauben, eintraege hinzuzufuegen
-                'akSelectAllowMultipleValues'=> false,    // Mehrfachselektion erlauben
-                'asID'                  => $AttribSetIDUser  // zugehöriges userattribute set
+                'akName'                        => t('Gender'),
+                'akIsSearchable'                => true,            // Feld verfügbar in der Benutzersuche der Verwaltung
+                'akIsSearchableIndexed'         => true,            // Inhalt in die Benutzersuche aufnehmen
+                'uakMemberListDisplay'          => false,           // In Benutzerliste anzeigen
+                'uakProfileDisplay'             => true,            // Im öffentlichen Profil sichtbar
+                'uakProfileEdit'                => true,            // Kann im Profil bearbeitet werden
+                'uakProfileEditRequired'        => false,           // Pflichtfeld im Profil
+                'uakRegisterEdit'               => false,           // Im Registrierungsformular anzeigen.
+                'uakRegisterEditRequired'       => false,           // Pflichtfeld im Registrierungsformular
+                'akSelectAllowOtherValues'      => false,           // Benutzern erlauben, eintraege hinzuzufuegen
+                'akSelectAllowMultipleValues'   => false,           // Mehrfachselektion erlauben
+                'asID'                          => $AttribSetIDUser // zugehöriges userattribute set
             ));
             $this->setUserAttributeKeyIfNotExistsOrUpdate('text', $pkg, array(
-                'akHandle'              => 'firstname',
-                'akName'                => t('Firstname'),
-                'akIsSearchable'        => true,          // Feld verfügbar in der Benutzersuche der Verwaltung
-                'akIsSearchableIndexed' => true,          // Inhalt in die Benutzersuche aufnehmen
-                'uakMemberListDisplay'  => false,          // In Benutzerliste anzeigen
-                'uakProfileDisplay'     => true,          // Im öffentlichen Profil sichtbar
-                'uakProfileEdit'        => true,          // Kann im Profil bearbeitet werden
-                'uakProfileEditRequired'=> false,         // Pflichtfeld im Profil
-                'uakRegisterEdit'       => false,         // Im Registrierungsformular anzeigen.
-                'uakRegisterEditRequired'=> false,        // Pflichtfeld im Registrierungsformular
-                'asID'                  => $AttribSetIDUser   // zugehöriges userattribute set
+                'akHandle'                  => 'firstname',
+                'akName'                    => t('Firstname'),
+                'akIsSearchable'            => true,          // Feld verfügbar in der Benutzersuche der Verwaltung
+                'akIsSearchableIndexed'     => true,          // Inhalt in die Benutzersuche aufnehmen
+                'uakMemberListDisplay'      => false,          // In Benutzerliste anzeigen
+                'uakProfileDisplay'         => true,          // Im öffentlichen Profil sichtbar
+                'uakProfileEdit'            => true,          // Kann im Profil bearbeitet werden
+                'uakProfileEditRequired'    => false,         // Pflichtfeld im Profil
+                'uakRegisterEdit'           => false,         // Im Registrierungsformular anzeigen.
+                'uakRegisterEditRequired'   => false,        // Pflichtfeld im Registrierungsformular
+                'asID'                      => $AttribSetIDUser   // zugehöriges userattribute set
             ));
             $this->setUserAttributeKeyIfNotExistsOrUpdate('text', $pkg, array(
-                'akHandle'              => 'lastname',
-                'akName'                => t('Lastname'),
-                'akIsSearchable'        => true,          // Feld verfügbar in der Benutzersuche der Verwaltung
-                'akIsSearchableIndexed' => true,          // Inhalt in die Benutzersuche aufnehmen
-                'uakMemberListDisplay'  => false,          // In Benutzerliste anzeigen
-                'uakProfileDisplay'     => true,          // Im öffentlichen Profil sichtbar
-                'uakProfileEdit'        => true,          // Kann im Profil bearbeitet werden
-                'uakProfileEditRequired'=> false,         // Pflichtfeld im Profil
-                'uakRegisterEdit'       => false,         // Im Registrierungsformular anzeigen.
-                'uakRegisterEditRequired'=> false,        // Pflichtfeld im Registrierungsformular
-                'asID'                  => $AttribSetIDUser   // zugehöriges userattribute set
+                'akHandle'                  => 'lastname',
+                'akName'                    => t('Lastname'),
+                'akIsSearchable'            => true,          // Feld verfügbar in der Benutzersuche der Verwaltung
+                'akIsSearchableIndexed'     => true,          // Inhalt in die Benutzersuche aufnehmen
+                'uakMemberListDisplay'      => false,          // In Benutzerliste anzeigen
+                'uakProfileDisplay'         => true,          // Im öffentlichen Profil sichtbar
+                'uakProfileEdit'            => true,          // Kann im Profil bearbeitet werden
+                'uakProfileEditRequired'    => false,         // Pflichtfeld im Profil
+                'uakRegisterEdit'           => false,         // Im Registrierungsformular anzeigen.
+                'uakRegisterEditRequired'   => false,        // Pflichtfeld im Registrierungsformular
+                'asID'                      => $AttribSetIDUser   // zugehöriges userattribute set
             ));
             $this->setUserAttributeKeyIfNotExistsOrUpdate('address', $pkg, array(
                 'akHandle'              => 'adresse',
@@ -776,19 +776,19 @@ class Controller extends Package
                 'asID'                  => $AttribSetIDUser   // zugehöriges userattribute set
             ));
             $this->setUserAttributeKeyIfNotExistsOrUpdate('textarea', $pkg, array(
-                'akHandle'              		=> 'zitat',
-                'akName'                		=> t('Blockquote'),
-                'akIsSearchable'        		=> true,        // Feld verfügbar in der Benutzersuche der Verwaltung
-                'akIsSearchableIndexed' 		=> true,        // Inhalt in die Benutzersuche aufnehmen
-                'uakMemberListDisplay'  		=> false,        // In Benutzerliste anzeigen
-                'uakProfileDisplay'     		=> true,        // Im öffentlichen Profil sichtbar
-                'uakProfileEdit'        		=> true,        // Kann im Profil bearbeitet werden
-                'uakProfileEditRequired'		=> false,       // Pflichtfeld und bearbeitbar im Profil
-                'uakRegisterEdit'       		=> false,       // Im Registrierungsformular anzeigen.
-                'uakRegisterEditRequired'		=> false,       // Pflichtfeld im Registrierungsformular
-                'akTextareaDisplayMode' 		=> 'rich_text',	// (text|rich_text|rich_text_custom)
-                'akTextareaDisplayModeCustomOptions'=> '',   	// Optionen wenn rich_text_custom rewaehlt wird
-                'asID'                  		=> $AttribSetIDUser // zugehöriges userattribute set
+                'akHandle'              		        => 'zitat',
+                'akName'                		        => t('Blockquote'),
+                'akIsSearchable'        		        => true,            // Feld verfügbar in der Benutzersuche der Verwaltung
+                'akIsSearchableIndexed' 		        => true,            // Inhalt in die Benutzersuche aufnehmen
+                'uakMemberListDisplay'  		        => false,           // In Benutzerliste anzeigen
+                'uakProfileDisplay'     		        => true,            // Im öffentlichen Profil sichtbar
+                'uakProfileEdit'        		        => true,            // Kann im Profil bearbeitet werden
+                'uakProfileEditRequired'		        => false,           // Pflichtfeld und bearbeitbar im Profil
+                'uakRegisterEdit'       		        => false,           // Im Registrierungsformular anzeigen.
+                'uakRegisterEditRequired'		        => false,           // Pflichtfeld im Registrierungsformular
+                'akTextareaDisplayMode' 		        => 'rich_text',	    // (text|rich_text|rich_text_custom)
+                'akTextareaDisplayModeCustomOptions'    => '',   	        // Optionen wenn rich_text_custom rewaehlt wird
+                'asID'                  		        => $AttribSetIDUser // zugehöriges userattribute set
             ));
         }
         if ($this->req->request->get('portoInstallFilesInFileSets'))
