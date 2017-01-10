@@ -10,7 +10,7 @@ Version 0.7.12
 In dieser Version wurde die Deutsche Sprache komplett integriert! Alle Seiten mussten sich der W3C Validierung unterziehen und es wurden einige Bugs entfernt.
 
  - ADD-> Sprachdateien sind komplett auf Deutsch
- - BUGFIX-> Controller > UpdateScript Datenbank auslesen und mit create/insert neu schreiben --------------------######################
+ - BUGFIX-> Controller > UpdateScript Datenbank auslesen und mit create/insert neu schreiben
  - BUGFIX-> Strecke berechnen Block -> 1 Provider entfernt weil Dienst nicht mehr online
  - BUGFIX-> Leerzeichen in OnePage Version bei Awesome Icons
  - BUGFIX-> Navigation-> Megamenu style Farbe kann jetzt mit dem Designer eingestellt werden
