@@ -11,7 +11,7 @@
 =>  (c) ............... 2005-2016 Johannes Krämer |
 **  - - - - - - - - - - - - - - - - - - - - - - - +
 **
-=>  Project:  Porto
+
 =>  Coder:    $ Blade83
 */
 $nh = Core::make('helper/navigation');
@@ -30,7 +30,7 @@ if ($portoSetup['searchpage_id'] > 0 && $c->cID != $portoSetup['searchpage_id'])
                 echo '<button id="searchButtonResponsive" class="btn btn-default" type="button"><i class="fa fa-search"></i></button>';
             echo '</span>';
         echo '</div></li>';
-        $loadSearchSript = true;
+        $loadSearchScript = true;
         $searchSubmitPath = DIR_REL.$searchPage->getCollectionPath();
         unset($searchPage);
     }
@@ -197,7 +197,7 @@ if ($portoSetup['show_login'])
                                             echo '<div style="clear: left"></div>';
                                             echo '<div class="row" id="login_form_concrete">';
                                                 echo '<div class="col-md-12">';
-                                                    echo '<form action="'.View::url('/login', 'authenticate', 'concrete').'" method="post">';
+                                                    echo '<form action="'.URL::to('/login', 'authenticate', 'concrete').'" method="post">';
                                                         echo '<div class="row"><div class="form-group"><div class="col-sm-12"><input type="text" name="uName" placeholder="'.((Config::get('concrete.user.registration.email_registration'))?t('Email Address'):t('Username')).'" class="form-control input-sm" required></div></div></div>';
                                                         echo '<div class="row"><div class="form-group"><div class="col-md-12"><input type="password" name="uPassword" placeholder="'.t('Password').'" class="form-control input-sm" required><div style="cursor: pointer;" class="pull-right portoMenuLinkTextColor" id="headerRecover">'.t('Forgot Your Password?').'</div></div></div></div>';
                                                         echo '<div class="row"><div class="col-md-9"><span class="remember-box checkbox"><label for="uMaintainLogin"><input type="checkbox" id="uMaintainLogin" name="uMaintainLogin" value="1">'.t('Stay signed in for two weeks').'</label></span></div><div class="col-md-3">'.(Core::make('helper/validation/token')->output('login_concrete', true)).'<input type="submit" value="'.t('Login').'" class="btn btn-primary pull-right push-bottom"></div></div>';
@@ -206,20 +206,20 @@ if ($portoSetup['show_login'])
                                             echo '</div>';
                                             foreach ($activeAuths as $auth) {
                                                 if($auth->getAuthenticationTypeHandle()!='concrete') {
-                                                    echo '<div class="row" id="login_form_'.$auth->getAuthenticationTypeHandle().'" style="display:none"><div class="col-md-12"><form action="'.View::url('/ccm/system/authentication/oauth2/'.$auth->getAuthenticationTypeHandle(), 'attempt_auth').'" method="post"><div class="row"><div class="col-md-12"><input type="submit" value="'.t('Sign in with %s', $auth->getAuthenticationTypeName()).'" class="btn btn-primary pull-left push-bottom"></div></div></form></div></div>';
+                                                    echo '<div class="row" id="login_form_'.$auth->getAuthenticationTypeHandle().'" style="display:none"><div class="col-md-12"><form action="'.URL::to('/ccm/system/authentication/oauth2/'.$auth->getAuthenticationTypeHandle(), 'attempt_auth').'" method="post"><div class="row"><div class="col-md-12"><input type="submit" value="'.t('Sign in with %s', $auth->getAuthenticationTypeName()).'" class="btn btn-primary pull-left push-bottom"></div></div></form></div></div>';
                                                 }
                                             }
                                             $registerPage = \Concrete\Core\Page\Page::getByPath('/register');
                                             $currentPage = \Concrete\Core\Page\Page::getCurrentPage();
                                             if (Config::get('concrete.user.registration.enabled') && ($registerPage->cID != $currentPage->cID)) {
-                                                echo '<div onclick="location.href=\''.View::url('/register').'\';" class="portoMenuLinkTextColor" style="cursor:pointer">'.t('Register').'</div>';
+                                                echo '<div onclick="location.href=\''.URL::to('/register').'\';" class="portoMenuLinkTextColor" style="cursor:pointer">'.t('Register').'</div>';
                                             }
                                             unset($registerPage, $currentPage);
                                         echo '</div>';
                                         echo '<div class="recover-form">';
                                             echo '<span  style="font-size:20px">'.t('Forgot Your Password?').'</span>';
                                             echo '<p>'.t('Enter your email address below. We will send you instructions to reset your password.').'</p>';
-                                            echo '<form action="'.$view->url('/login/concrete', 'forgot_password').'" method="post"><div class="row"><div class="form-group"><div class="col-md-12"><input type="email" name="uEmail" id="uEmail" class="form-control input-sm" placeholder="'.t('Email Address').'" required></div></div></div><div class="row"><div class="col-md-6"><div style="cursor:pointer;" id="headerRecoverCancel" class="portoMenuLinkTextColor">'.t('Back').'</div></div><div class="col-md-6"><input type="submit" value="'.t('Reset and Email Password').'" name="resetPassword" class="btn btn-primary pull-right push-bottom"></div></div></form>';
+                                            echo '<form action="'.URL::to('/login/concrete', 'forgot_password').'" method="post"><div class="row"><div class="form-group"><div class="col-md-12"><input type="email" name="uEmail" id="uEmail" class="form-control input-sm" placeholder="'.t('Email Address').'" required></div></div></div><div class="row"><div class="col-md-6"><div style="cursor:pointer;" id="headerRecoverCancel" class="portoMenuLinkTextColor">'.t('Back').'</div></div><div class="col-md-6"><input type="submit" value="'.t('Reset and Email Password').'" name="resetPassword" class="btn btn-primary pull-right push-bottom"></div></div></form>';
                                         echo '</div>';
                                     echo '</div>';
                                 echo '</div>';
@@ -248,7 +248,7 @@ if ($loadAuthScript==true) {
         echo ' } ';
     echo '</script>';
 }
-if ($loadSearchSript==true && $portoSetup['searchpage_empty_query']!='') {
+if ($loadSearchScript==true && $portoSetup['searchpage_empty_query']!='') {
     echo '<script> ';
     echo '$(document).ready(function(){ ';
         echo "$('#searchTextResponsive').keypress(function(e){ ";

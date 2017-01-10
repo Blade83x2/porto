@@ -14,7 +14,7 @@ $token = \Core::make('Concrete\Core\Validation\CSRF\Token');
 =>  (c) ............... 2005-2016 Johannes Krämer |
 **  - - - - - - - - - - - - - - - - - - - - - - - +
 **
-=>  Project:  Porto
+
 =>  Coder:    $ Blade83
 */
 $db = \Database::connection();

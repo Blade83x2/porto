@@ -18,7 +18,7 @@ use
 =>  (c) ............... 2005-2016 Johannes Krämer |
 **  - - - - - - - - - - - - - - - - - - - - - - - +
 **
-=>  Project:  Porto
+
 =>  Filename: controller.php
 =>  Filetime: 00:08 - 16.12.14
 =>  Coder:    $ Blade83

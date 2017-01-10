@@ -11,7 +11,7 @@
 =>  (c) ............... 2005-2016 Johannes Krämer |
 **  - - - - - - - - - - - - - - - - - - - - - - - +
 **
-=>  Project:  Porto
+
 =>  Coder:    $ Blade83
 */
 $effectNameArray = array(

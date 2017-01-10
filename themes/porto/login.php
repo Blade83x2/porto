@@ -15,7 +15,7 @@ defined('C5_EXECUTE') or die("Access Denied.");
 =>  (c) ............... 2005-2016 Johannes Krämer |
 **  - - - - - - - - - - - - - - - - - - - - - - - +
 **
-=>  Project:  Porto
+
 =>  Coder:    $ Blade83
 */
 $db = \Database::connection();

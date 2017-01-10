@@ -11,7 +11,7 @@
 =>  (c) ............... 2005-2016 Johannes Krämer |
 **  - - - - - - - - - - - - - - - - - - - - - - - +
 **
-=>  Project:  Porto
+
 =>  Coder:    $ Blade83
 */
 if (count($navItems=$controller->getNavItems()) > 0)
@@ -21,7 +21,6 @@ if (count($navItems=$controller->getNavItems()) > 0)
     {
         echo '<li>';
         echo '<i class="fa fa-caret-right"></i>';
-        #echo ($ni->hasSubmenu) ? $ni->name : '<a href="' . $ni->url . '" target="' . $ni->target . '">' . $ni->name . '</a>';
         echo '<a href="' . $ni->url . '" target="' . $ni->target . '">' . t($ni->name) . '</a>';
         if ($ni->hasSubmenu)
         {

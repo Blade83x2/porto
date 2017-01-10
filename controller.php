@@ -13,7 +13,6 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
 =>  (c) ............... 2005-2016 Johannes Krämer |
  **  - - - - - - - - - - - - - - - - - - - - - - - +
  **
-=>  Project:  Porto
 =>  Filename: controller.php
 =>  Filetime: 00:08 - 16.12.14
 =>  Coder:    $ Blade83
@@ -109,7 +108,7 @@ class Controller extends Package
     */
     public function on_start()
     {
-        Config::set('concrete.white_label.logo', BASE_URL.'/packages/porto/concrete5_dashboard_icon.png');
+        Config::set('concrete.white_label.logo', BASE_URL.'/packages/'.$this->pkgHandle.'/concrete5_dashboard_icon.png');
         Config::set('concrete.white_label.name', Config::get('concrete.site'));
         Config::set('concrete.email.default.address', 'noreply@' . $_SERVER['SERVER_NAME']);
         Config::set('concrete.email.default.name', Config::get('concrete.site'));

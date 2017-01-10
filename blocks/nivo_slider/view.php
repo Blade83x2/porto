@@ -14,7 +14,6 @@ use Concrete\Core\File\Type\Type as FileType,
 =>  (c) ............... 2005-2016 Johannes Krämer |
 **  - - - - - - - - - - - - - - - - - - - - - - - +
 **
-=>  Project:  Porto
 =>  Coder:    $ Blade83
 */
 ?>

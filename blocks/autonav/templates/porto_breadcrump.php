@@ -18,7 +18,7 @@ if(!is_object($c))
         }
         if (count($links)>0)
         {
-            $db = Database::getActiveConnection();
+            $db = \Database::connection();
             $portoSetup = $db->getRow('SELECT breadcrump_banner_text FROM PortoPackage WHERE cID=?', array(1));
             if(!empty($portoSetup['breadcrump_banner_text'])){
                 echo $portoSetup['breadcrump_banner_text'];

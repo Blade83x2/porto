@@ -21,7 +21,7 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
 =>  (c) ............... 2005-2016 Johannes Krämer |
 **  - - - - - - - - - - - - - - - - - - - - - - - +
 **
-=>  Project:  Porto
+
 =>  Filetime: 00:08 - 24.03.15
 =>  Coder:    $ Blade83
 */
