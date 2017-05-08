@@ -181,10 +181,10 @@ class Controller extends BlockController
             }
         }
         $args['name'] = trim($args['name']);
-        if(empty($args['name']))
-        {
-            $error->add(t('Album Name fail!'));
-        }
+        #if(empty($args['name']))
+        #{
+        #    $error->add(t('Album Name fail!'));
+        #}
         return $error;
     }
 

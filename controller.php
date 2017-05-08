@@ -8,9 +8,9 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
  *>       |____/|_|\__,_|\__,_|\___|\___/____/
  *>
  **  - - - - - - - - - - - - - - - - - - - - - - - +
-=>  Web ......... http://cplusplus-development.de |
-=>  Mail ........................ mail@blade83.de |
-=>  (c) ............... 2005-2016 Johannes Krämer |
+ =>  Web ......... http://cplusplus-development.de |
+ =>  Mail ........................ mail@blade83.de |
+ =>  (c) ............... 2005-2016 Johannes Krämer |
  **  - - - - - - - - - - - - - - - - - - - - - - - +
  **
 =>  Filename: controller.php
@@ -26,6 +26,7 @@ use
     \Log,
     \Core,
     \Package,
+    \Route,
     \Database,
     \Job,
     \Config,
@@ -75,7 +76,7 @@ class Controller extends Package
 
     protected
         $pkgHandle                      = 'porto',
-	    $pkgVersion                     = '0.7.23',
+	$pkgVersion                     = '0.7.31',
         $appVersionRequired             = '5.7.5.2',
         $pkgAutoloaderMapCoreExtensions = false;
 
@@ -119,7 +120,12 @@ class Controller extends Package
 
         ##############################################################################################
         # für Ajax                                                                                   #
-        #Route::register('/my/custom/route', '\Concrete\Package\Porto\Elements\Classname::method');   #
+        #Route::register('/qrcode', '\Package\Porto\Elements\QRcode::png');
+
+
+        #Route::register('/ccm/porto/elements/qrc', '\Concrete\Package\Porto\Elements\Qrc\Qrc::view');
+
+
         ##############################################################################################
 
         #use Concrete\Core\Http\ResponseAssetGroup;
@@ -156,6 +162,13 @@ class Controller extends Package
             /* keine passende cdn version gefunden */ $al->register('javascript', 'jqueryappear', 'themes/porto/vendor/jquery.appear/jquery.appear.js', array('position'=>Asset::ASSET_POSITION_FOOTER, 'local' => true, 'version' => '1'), $this);
             /* keine passende cdn version gefunden */ $al->register('javascript', 'jqueryeasing', 'themes/porto/vendor/jquery.easing/jquery.easing.js', array('position'=>Asset::ASSET_POSITION_FOOTER, 'local' => true, 'version' => '1'), $this);
             $al->register('javascript', 'jquerycookie', '//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js', array('position'=>Asset::ASSET_POSITION_FOOTER, 'local' => false, 'version' => '1.4.1'), $this);
+            
+            
+            $al->register('javascript', 'jquerylazy', '//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.4/jquery.lazy.min.js', array('position'=>Asset::ASSET_POSITION_FOOTER, 'local' => false, 'version' => '1.7.4'), $this);
+            $al->register('javascript', 'jquerylazyplugins', '//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.4/jquery.lazy.plugins.min.js', array('position'=>Asset::ASSET_POSITION_FOOTER, 'local' => false, 'version' => '1.7.4'), $this);
+            
+            
+            
             /* Themespezifisch */ $al->register('javascript', 'common', 'themes/porto/vendor/common/common.js', array('position'=>Asset::ASSET_POSITION_FOOTER, 'local' => true, 'version' => '1'), $this);
             $al->register('javascript', 'jqueryvalidation', '//ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js', array('position'=>Asset::ASSET_POSITION_FOOTER, 'local' => false, 'version' => '1.13.0'), $this);
             $al->register('javascript', 'jquerystellar', '//cdnjs.cloudflare.com/ajax/libs/stellar.js/0.6.2/jquery.stellar.min.js', array('position'=>Asset::ASSET_POSITION_FOOTER, 'local' => false, 'version' => '0.6.2'), $this);
@@ -177,6 +190,13 @@ class Controller extends Package
         {
             $al->register('javascript', 'jquery', 'themes/porto/vendor/jquery/jquery.js', array('position'=>Asset::ASSET_POSITION_HEADER, 'local' => true, 'version' => '1.11.1'), $this);
             $al->register('css', 'bootstrap', 'themes/porto/vendor/bootstrap/bootstrap.css', array('position'=>Asset::ASSET_POSITION_HEADER, 'local' => true, 'version' => '3.2.0'), $this);
+            
+            
+            $al->register('javascript', 'jquerylazy', 'themes/porto/vendor/jquery.lazy/jquery.lazy.min.js', array('position'=>Asset::ASSET_POSITION_FOOTER, 'local' => true, 'version' => '1.7.4'), $this);
+            $al->register('javascript', 'jquerylazyplugins', 'themes/porto/vendor/jquery.lazy/jquery.lazy.plugins.min.js', array('position'=>Asset::ASSET_POSITION_FOOTER, 'local' => true, 'version' => '1.7.4'), $this);
+            
+            
+            
             $al->register('css', 'nivo-slider', 'themes/porto/vendor/nivo-slider/nivo-slider.css', array('position'=>Asset::ASSET_POSITION_HEADER, 'local' => true, 'version' => '1.3'), $this);
             $al->register('css', 'nivo-slider-default-theme', 'themes/porto/vendor/nivo-slider/default/default.css', array('position'=>Asset::ASSET_POSITION_HEADER, 'local' => true, 'version' => '3.2'), $this);
             $al->register('javascript', 'nivo-slider', 'themes/porto/vendor/nivo-slider/jquery.nivo.slider.js', array('position'=>Asset::ASSET_POSITION_HEADER, 'local' => true, 'version' => '3.2'), $this);
@@ -477,8 +497,8 @@ class Controller extends Package
         $this->setDashboardIfNotExists('porto_design/menu_logos', t('Menu & Logos'), $pkg);
         $this->setDashboardIfNotExists('porto_design/informationen', t('Information'), $pkg);
 
-        if ($this->req->request->get('portoInstallBlocks'))
-        {
+       # if ($this->req->request->get('portoInstallBlocks'))
+       # {
             # BlocktypeSet
             $this->setBlockSetIfNotExists('porto', t('Porto Blocktypes'), $pkg);
             # BlockTypes
@@ -492,7 +512,12 @@ class Controller extends Package
             $this->setBlockIfNotExistsOrUpdate('nivo_slider', $pkg);
             $this->setBlockIfNotExistsOrUpdate('pro_contra', $pkg);
             $this->setBlockIfNotExistsOrUpdate('audio_player', $pkg);
-        }
+            $this->setBlockIfNotExistsOrUpdate('qr_code', $pkg);
+       # }
+
+
+
+
 
         if ($this->req->request->get('portoInstallAttributes'))
         {
