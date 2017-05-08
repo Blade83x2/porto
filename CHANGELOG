@@ -4,6 +4,17 @@ Porto Package für Concrete5 >= 5.7 entwickelt von Johannes Krämer.
 ---------------------------------------------------------------------------------
 
 
+Page Theme Standart Klassen für Blocks gesetzt ################ in onepage einbinden
+Elemente ausblenden Klasse für Drucken
+lazi fertig implementieren
+
+
+QRCode Glock erstellen und auf cplusplus-api leiten. bild dann laden
+
+
+installationsroutinen ausschalten
+
+
 
 Version 0.7.23
 
@@ -332,6 +343,7 @@ Nachrichten Eingang falls vorhanden in navigation anzeigen
  - package aufräumen
  - handy dashboard/porto nicht sichtbar
  - Profil -> User kann kein Bild hoch laden
+ - Neue Nachrichten in Navigation anzeigen
  - BUGFIX-> Angezeigtes Image über einem Blogeintrag wird immer in voller Grüße angezeigt
 
  - getThemeResponsiveImageMap type  und responsive images prüfen ob auch die kleinen versionen geladen werden

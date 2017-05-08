@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<schema version="0.3">
+	<table name="PortoPackageQrCode">
+        <field name="bID" type="I">
+            <key />
+            <unsigned />
+            <autoincrement />
+            <notnull />
+        </field>
+        <field name="data" type="X"></field>
+        <field name="datatype" type="C" size="15"></field>
+        <field name="title" type="C" size="255"></field>
+        <field name="errorCorrectionLevel" type="C" size="1"></field>
+        <field name="size" type="I" size="2"></field>
+        <field name="margin" type="I" size="2"></field>
+        <field name="getReturnType" type="C" size="15"></field>
+	</table>
+</schema>
+<!--
+
+db.xml Field Type to MySQL
+C	VARCHAR
+XL	LONGTEXT
+X	TEXT
+C2	VARCHAR
+X2	LONGTEXT
+B	LONGBLOB
+D	DATE
+TS	DATETIME
+T	DATETIME
+I4	INTEGER
+I	INTEGER
+I1	TINYINT
+I2	SMALLINT
+I8	BIGINT
+F	DOUBLE
+N	NUMERIC
+
+
+Field Type Modifiers
+Keywords 	    Description
+AUTOINCREMENT 	For autoincrement number. Emulated with triggers if not available. Sets NOTNULL also.
+KEY 	        Primary key field. Sets NOTNULL also. Compound keys are supported.
+PRIMARY 	    Same as KEY.
+DEF 	        Synonym for DEFAULT for lazy typists.
+DEFAULT 	    The default value. Character strings are auto-quoted unless the string begins and ends with spaces, eg ' SYSDATE '.
+NOTNULL 	    If field is not null.
+DEFDATE 	    Set default value to call function to get today's date.
+DEFTIMESTAMP 	Set default to call function to get today's datetime.
+NOQUOTE 	    Prevents autoquoting of default string values.
+CONSTRAINTS 	Additional constraints defined at the end of the field definition.
+-->
