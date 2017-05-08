@@ -1242,3 +1242,41 @@ window.theme = {};
 		}
 	});
 }).apply(this, [window.theme, jQuery]);
+
+
+$(function() {
+  // http://jquery.eisbehr.de/lazy/example_basic-usage
+    var loadedElements = 0;
+    $('.lazy').lazy({
+            effect: 'fadeIn',
+	    effectTime: 3000,
+            threshold: 0,
+	    visibleOnly: true,
+	    afterLoad: function(element) {
+		    loadedElements++;
+		    if (window.console) console.info('Element "' + loadedElements + '" was loaded successfully');
+	    },
+	    onError: function(element) {
+		    if (window.console) console.log('Error loading Element ' + element.data('src'));
+	    },
+	    onFinishedAll: function() {
+		if(!this.config("autoDestroy"))
+		    this.destroy();
+	    },
+	    
+	    youtubeLoader: function(element) {
+                var url = 'https://www.youtube.com/embed/',
+                    frame = $('<iframe />');
+		frame.attr('width', '100%');
+		frame.attr('height', '100%');
+		frame.attr('frameborder', 0);
+		frame.attr('allowfullscreen', true);
+		frame.attr('src', url + element.data("video"));
+		element.append(frame).load();
+            },
+	    
+	    
+	    
+	    
+    });
+});

@@ -71,7 +71,9 @@ class PageTheme extends Theme
             'search'        => 'porto_search',
             'social_links'  => 'porto_social_links',
             'tags'          => 'porto_tags',
-            'image'         => 'magnific_pop',
+            'image'         => 'lazy',
+            'youtube'       => 'lazy',
+            'nivo_slider'   => 'hidden-print',
         );
     }
 
@@ -126,6 +128,12 @@ class PageTheme extends Theme
         $this->requireAsset('javascript', 'owlcarousel');
         $this->requireAsset('javascript', 'magnificpopup');
        # $this->requireAsset('javascript', 'jqueryvide'); # video backgrounds
+        
+        $this->requireAsset('javascript', 'jquerylazy');
+        $this->requireAsset('javascript', 'jquerylazyplugins');
+        
+        
+        
         $this->requireAsset('javascript', 'theme');
         $this->requireAsset('javascript', 'themepunchtools');
         $this->requireAsset('javascript', 'themepunchrevolution');
@@ -146,7 +154,7 @@ class PageTheme extends Theme
             'medium'    => '768px',
             'mini'      => '320px',
             'thumbnail' => '165px',
-            'small'     => '0'
+            'small'     => '130px'
         );
     }
 
@@ -159,9 +167,49 @@ class PageTheme extends Theme
     {
          return array(
              'image' => array(
-                 #'lightbox2',
+                 'hidden-print',
                  'img-thumbnail',
-                 'img-responsive'
+                 'img-roundet',
+                 'img-responsive',
+                 'hidden-xs',
+                 'hidden-sm',
+                 'hidden-md',
+                 'hidden-lg'
+             ),
+             'nivo_slider' => array(
+                 'hidden-print',
+                 'hidden-xs',
+                 'hidden-sm',
+                 'hidden-md',
+                 'hidden-lg'
+             ),
+             'social_share_lite' => array(
+                 'hidden-print',
+                 'hidden-xs',
+                 'hidden-sm',
+                 'hidden-md',
+                 'hidden-lg'
+             ),
+             'history' => array(
+                 'hidden-print',
+                 'hidden-xs',
+                 'hidden-sm',
+                 'hidden-md',
+                 'hidden-lg'
+             ),
+             'qr_code' => array(
+                 'hidden-print',
+                 'hidden-xs',
+                 'hidden-sm',
+                 'hidden-md',
+                 'hidden-lg'
+             ),
+             'youtube' => array(
+                 'hidden-print',
+                 'hidden-xs',
+                 'hidden-sm',
+                 'hidden-md',
+                 'hidden-lg'
              ),
          );
     }

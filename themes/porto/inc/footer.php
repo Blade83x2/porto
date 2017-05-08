@@ -302,8 +302,9 @@
                 if ($.isFunction(theme.PluginParallax.initialize)) { theme.PluginParallax.initialize(); }
                 if ($.isFunction(theme.Search.initialize)) { theme.Search.initialize(); }
             }).apply(this, [jQuery]);
-            </script>';
+            </script>'."\n";
         }
+
         ?>
     </body>
 </html>

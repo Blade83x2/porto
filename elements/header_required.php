@@ -126,6 +126,10 @@ echo '<script> var CCM_DISPATCHER_FILENAME="'. DIR_REL . '/' . DISPATCHER_FILENA
 
 
 $v = View::getInstance();
+
+
+
+
 $u = new User();
 if ($u->isRegistered())
 {

